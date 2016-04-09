@@ -41,24 +41,30 @@ public class Game_Window extends JFrame {
 
     /**Metoda opisujaca opcje glownego okna gry*/
     private void ops_Game_Window(){
+
         /**Tytul glownego okna gry*/
         setTitle("Lunar Lander");
+
         /**Rozmiar startowy glownego okna gry*/
         setSize(500,500);
+
         /**Minimalny rozmiar glownego okna gry*/
         setMinimumSize(new Dimension(500,500));
+
         /**Rozmieszczenie paneli w glownym oknie gry*/
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
+
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);
+
         /**Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //setIconImage(new ImageIcon("C:/Users/Jakub/OneDrive/ELKA/PROZE/PROJEKT/images/moon_icon.jpg").getImage());
 
-        //Wyswietla okno na monitorze
+        /**Wyswietla okno na monitorze*/
         setVisible(true);
     }
 }
