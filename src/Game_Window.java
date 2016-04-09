@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Game_Window extends JFrame {
 
-    //
+    //Inicjacja obiektow
     Small_GMenu smallgmenu;
     Game_Field gamefield;
 
