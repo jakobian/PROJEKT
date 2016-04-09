@@ -30,7 +30,7 @@ public class Game_Window extends JFrame {
 
     private void ops_Game_Window(){
         //Tytul glownego okna gry
-        setTitle("Lunar Laner");
+        setTitle("Lunar Lander");
         //Rozmiar startowy glownego okna gry
         setSize(500,500);
         //Minimalny rozmiar glownego okna gry
