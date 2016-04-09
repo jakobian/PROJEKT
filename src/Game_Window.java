@@ -7,6 +7,7 @@ public class Game_Window extends JFrame {
     Small_GMenu smallgmenu;
     Game_Field gamefield;
 
+    //Konstruktor glownego okna gry
     public Game_Window(){
         init_panels();
         ops_Game_Window();
@@ -14,20 +15,24 @@ public class Game_Window extends JFrame {
         ops_Game_Field();
     }
 
+    //Metoda tworzaca panele w glownym oknie gry
     private void init_panels(){
         smallgmenu = new Small_GMenu();
         gamefield = new Game_Field();
     }
 
+    //Metoda opisujaca opcje menu gry
     private void ops_Small_GMenu(){
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
     }
 
+    //Metoda opisujaca opcje pola gry
     private void ops_Game_Field(){
         gamefield.setVisible(true);
     }
 
+    //Metoda opisujaca opcje glownego okna gry
     private void ops_Game_Window(){
         //Tytul glownego okna gry
         setTitle("Lunar Lander");
@@ -45,6 +50,7 @@ public class Game_Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //setIconImage(new ImageIcon("C:/Users/Jakub/OneDrive/ELKA/PROZE/PROJEKT/images/moon_icon.jpg").getImage());
+
         //Wyswietla okno na monitorze
         setVisible(true);
     }
