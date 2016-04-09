@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Game_Window extends JFrame {
 
+    //
     Small_GMenu smallgmenu;
     Game_Field gamefield;
 
@@ -28,15 +29,23 @@ public class Game_Window extends JFrame {
     }
 
     private void ops_Game_Window(){
+        //Tytul glownego okna gry
         setTitle("Lunar Laner");
+        //Rozmiar startowy glownego okna gry
         setSize(500,500);
+        //Minimalny rozmiar glownego okna gry
         setMinimumSize(new Dimension(500,500));
+        //Rozmieszczenie paneli w glownym oknie gry
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
-        setLocationRelativeTo(null);                                             //ustawia okno na srodku ekranu
+        //ustawia okno na srodku ekranu
+        setLocationRelativeTo(null);
+        //Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon("C:/Users/Jakub/OneDrive/ELKA/PROZE/PROJEKT/images/moon_icon.jpg").getImage());
+
+        //setIconImage(new ImageIcon("C:/Users/Jakub/OneDrive/ELKA/PROZE/PROJEKT/images/moon_icon.jpg").getImage());
+        //Wyswietla okno na monitorze
         setVisible(true);
     }
 }

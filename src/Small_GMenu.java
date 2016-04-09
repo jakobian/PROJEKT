@@ -6,7 +6,6 @@ import java.awt.*;
 public class Small_GMenu extends JPanel {
 
     public final static String Menu = "Menu";
-
     public final static String Pause = "Pause";
 
     JButton menubutton;
