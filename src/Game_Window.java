@@ -63,8 +63,8 @@ public class Game_Window extends JFrame {
 
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);
-        setResizable(false);
 
+        setResizable(false);
         /**Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
