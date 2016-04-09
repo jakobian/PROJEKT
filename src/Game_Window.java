@@ -29,13 +29,18 @@ public class Game_Window extends JFrame {
     private void ops_Small_GMenu(){
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
-
+        smallgmenu.setPreferredSize(new Dimension(500,20));
+        smallgmenu.setMaximumSize(new Dimension(500,20));
+        smallgmenu.setMinimumSize(new Dimension(500,20));
     }
 
     /**Metoda opisujaca opcje pola gry*/
     private void ops_Game_Field(){
         gamefield.setVisible(true);
         gamefield.setBackground(Color.GRAY);
+        gamefield.setPreferredSize(new Dimension(500,480));
+        gamefield.setMaximumSize(new Dimension(500,480));
+        gamefield.setMinimumSize(new Dimension(500,480));
 
     }
 
@@ -64,7 +69,5 @@ public class Game_Window extends JFrame {
 
         //setIconImage(new ImageIcon("C:/Users/Jakub/OneDrive/ELKA/PROZE/PROJEKT/images/moon_icon.jpg").getImage());
 
-        /**Wyswietla okno na monitorze*/
-        setVisible(true);
     }
 }
