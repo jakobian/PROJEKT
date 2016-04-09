@@ -8,8 +8,8 @@ public class Game_Field extends JPanel {
     public static final String Score = "Score";
 
 
-    public Game_Field(){
-
-    }
+    /*public void paint (Graphics g){
+        g.drawRect(10,10,50,20);
+    }*/
 
 }
