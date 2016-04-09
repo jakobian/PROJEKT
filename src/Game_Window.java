@@ -22,6 +22,9 @@ public class Game_Window extends JFrame {
     private void ops_Small_GMenu(){
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
+        smallgmenu.setPreferredSize(new Dimension(20,500));
+        smallgmenu.setMinimumSize(new Dimension(20,500));
+
     }
 
     private void ops_Game_Field(){
