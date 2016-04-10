@@ -16,11 +16,13 @@ public class Game_Field extends JPanel {
     /**Pole do przechowania sciezki obrazka*/
     private BufferedImage image;
 
-
+/*
     public Game_Field(){
 
+        showImage();
+        setDimension();
     }
-/*
+
     private void showImage() {
 
         File imageFile = new File("..\\PROJEKT\\images\\makieta.jpg");
@@ -33,14 +35,18 @@ public class Game_Field extends JPanel {
         }
     }
 
-    private void
+    private void setDimension(){
+        Dimension dim = new Dimension(image.getWidth(), image.getHeight());
+        setPreferredSize(dim);
+    }
+
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image,0,0,this);
-    }
+        g2d.drawImage(image,100,100,this);
+    }*/
 
-*/
+
 
     /*public void paint (Graphics g){
         g.drawRect(10,10,50,20);
