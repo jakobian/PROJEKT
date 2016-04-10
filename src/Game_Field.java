@@ -20,7 +20,7 @@ public class Game_Field extends JPanel {
     public Game_Field(){
 
     }
-
+/*
     private void showImage() {
 
         File imageFile = new File("..\\PROJEKT\\images\\makieta.jpg");
@@ -33,13 +33,14 @@ public class Game_Field extends JPanel {
         }
     }
 
+    private void
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(image,0,0,this);
     }
 
-
+*/
 
     /*public void paint (Graphics g){
         g.drawRect(10,10,50,20);
