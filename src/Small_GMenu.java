@@ -25,6 +25,7 @@ public class Small_GMenu extends JPanel {
 
     private void createbutton(){
         this.setLayout(null);
+       // this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         menubutton = new JButton(Menu);
         pausebutton = new JButton(Pause);

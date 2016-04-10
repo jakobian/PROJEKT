@@ -30,7 +30,8 @@ public class Game_Field extends JPanel {
 
 
         showImage(properties);
-        setDimension();
+
+
     }
 
     private void showImage(Properties properties) {
@@ -46,9 +47,10 @@ public class Game_Field extends JPanel {
         }
     }
 
-    private void setDimension(){
-        Dimension dim = new Dimension(image.getWidth(), image.getHeight());
+    public void setDimension(int width, int height){
+        Dimension dim = new Dimension(width,height);
         setPreferredSize(dim);
+
     }
 
     @Override
@@ -58,8 +60,8 @@ public class Game_Field extends JPanel {
     }
 
 
-
-    /*public void paint (Graphics g){
+/*
+    public void paint (Graphics g){
         g.drawRect(10,10,50,20);
     }*/
 

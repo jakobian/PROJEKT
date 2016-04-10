@@ -12,6 +12,9 @@ public class Game_Window extends JFrame {
     Small_GMenu smallgmenu;
     Game_Field gamefield;
 
+    private int width = 500;
+    private int height = 480;
+
     /**Konstruktor glownego okna gry*/
     public Game_Window() throws IOException{
         init_panels();
@@ -30,18 +33,20 @@ public class Game_Window extends JFrame {
     private void ops_Small_GMenu(){
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
-        smallgmenu.setPreferredSize(new Dimension(500,20));
-        smallgmenu.setMaximumSize(new Dimension(500,20));
-        smallgmenu.setMinimumSize(new Dimension(500,20));
+        smallgmenu.setPreferredSize(new Dimension(width,width - height));
+        smallgmenu.setMaximumSize(new Dimension(width,width - height));
+        //smallgmenu.setMinimumSize(new Dimension(width,width - height));
+        //smallgmenu.seup
     }
 
     /**Metoda opisujaca opcje pola gry*/
     private void ops_Game_Field(){
         gamefield.setVisible(true);
-        gamefield.setBackground(Color.BLACK);
-        gamefield.setPreferredSize(new Dimension(500,480));
-        //gamefield.setMaximumSize(new Dimension(500,480));
-        gamefield.setMinimumSize(new Dimension(500,480));
+        gamefield.setBackground(Color.black);
+        gamefield.setPreferredSize(new Dimension(width,height));
+        //gamefield.setMaximumSize(new Dimension(width,height));
+        gamefield.setMinimumSize(new Dimension(width,height));
+        gamefield.setDimension(width, height);
 
     }
 
@@ -68,7 +73,7 @@ public class Game_Window extends JFrame {
         /**ustawia ikonke ramki*/
         setIconImage(new ImageIcon("..\\PROJEKT\\images\\moon_icon.jpg").getImage());
 
-        setResizable(true);
+        //setResizable(false);
         /**Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
