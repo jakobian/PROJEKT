@@ -11,11 +11,14 @@ import java.util.Properties;
 
 public class Game_Window extends JFrame {
 
-    /**Inicjacja obiektow*/
+    /** Inicjacja obiektu menu */
     Small_GMenu smallgmenu;
+    /** Inicjacja obiektu pola gry */
     Game_Field gamefield;
 
+    /** Pole przechowujace szerokosc okna gry */
     private int width;
+    /** Pole przechowujace wysokosc okna gry */
     private int height;
 
     /**Konstruktor glownego okna gry*/

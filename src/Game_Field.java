@@ -17,11 +17,14 @@ public class Game_Field extends JPanel {
     private static final String Score = "Score";
     private static final String Fuel = "Fuel";
 */
-    /** Pola do przechowania sciezki obrazka*/
+    /** Pole do przechowania sciezki obrazu tla*/
     private String canvasPath;
+    /** Pole do przechowania sciezki obrazu platformy*/
     private String platformPath;
 
+    /** Bufor do przechowania obrazu tla */
     private BufferedImage canvas;
+    /** Bufor do przechowania obrazu platformy */
     private BufferedImage platform;
 
 
