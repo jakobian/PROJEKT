@@ -40,7 +40,7 @@ public class Game_Window extends JFrame {
         gamefield.setVisible(true);
         gamefield.setBackground(Color.BLACK);
         gamefield.setPreferredSize(new Dimension(500,480));
-        gamefield.setMaximumSize(new Dimension(500,480));
+        //gamefield.setMaximumSize(new Dimension(500,480));
         gamefield.setMinimumSize(new Dimension(500,480));
 
     }
@@ -68,7 +68,7 @@ public class Game_Window extends JFrame {
         /**ustawia ikonke ramki*/
         setIconImage(new ImageIcon("..\\PROJEKT\\images\\moon_icon.jpg").getImage());
 
-        setResizable(false);
+        setResizable(true);
         /**Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
