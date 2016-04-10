@@ -73,7 +73,7 @@ public class Game_Field extends JPanel {
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(canvas,0,0,this);
-        g2d.drawImage(platform, 200,350,this);
+        g2d.drawImage(platform, 280,310,this);
     }
 
 
