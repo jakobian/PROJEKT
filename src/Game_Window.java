@@ -73,7 +73,7 @@ public class Game_Window extends JFrame {
         /**ustawia ikonke ramki*/
         setIconImage(new ImageIcon("..\\PROJEKT\\images\\moon_icon.jpg").getImage());
 
-        setResizable(true);
+        setResizable(false);
         /**Domyslna operacja po zamknieciu okna gry - zamkniecie aplikacji*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

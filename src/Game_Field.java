@@ -16,9 +16,11 @@ public class Game_Field extends JPanel {
     private static final String Fuel = "Fuel";
 
     private String canvasPath;
+    private String platformPath;
 
     /**Pole do przechowania sciezki obrazka*/
-    private BufferedImage image;
+    private BufferedImage canvas;
+    private BufferedImage platform;
 
 
     public Game_Field() throws IOException{
@@ -29,16 +31,18 @@ public class Game_Field extends JPanel {
         fileInput.close();
 
         showImage(properties);
-
-
     }
 
     private void showImage(Properties properties) {
-        canvasPath = properties.getProperty("path2");
+        canvasPath = properties.getProperty("path");
+        platformPath = properties.getProperty("platformPath");
 
-        File imageFile = new File(canvasPath);
+        File canvasFile = new File(canvasPath);
+        File platformFile = new File(platformPath);
+
         try{
-            image = ImageIO.read(imageFile);
+            canvas = ImageIO.read(canvasFile);
+            platform = ImageIO.read(platformFile);
         }
         catch (IOException ex){
             System.err.println("Cannot read a file");
@@ -55,7 +59,8 @@ public class Game_Field extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image,0,0,this);
+        g2d.drawImage(canvas,0,0,this);
+        g2d.drawImage(platform, 200,350,this);
     }
 
 
