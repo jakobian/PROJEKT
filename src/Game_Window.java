@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Klasa tworzaca okno gry
@@ -12,7 +13,7 @@ public class Game_Window extends JFrame {
     Game_Field gamefield;
 
     /**Konstruktor glownego okna gry*/
-    public Game_Window(){
+    public Game_Window() throws IOException{
         init_panels();
         ops_Game_Window();
         ops_Small_GMenu();
@@ -20,7 +21,7 @@ public class Game_Window extends JFrame {
     }
 
     /**Metoda tworzaca panele w glownym oknie gry*/
-    private void init_panels(){
+    private void init_panels() throws IOException{
         smallgmenu = new Small_GMenu();
         gamefield = new Game_Field();
     }
@@ -37,7 +38,7 @@ public class Game_Window extends JFrame {
     /**Metoda opisujaca opcje pola gry*/
     private void ops_Game_Field(){
         gamefield.setVisible(true);
-        gamefield.setBackground(Color.black);
+        gamefield.setBackground(Color.BLACK);
         gamefield.setPreferredSize(new Dimension(500,480));
         gamefield.setMaximumSize(new Dimension(500,480));
         gamefield.setMinimumSize(new Dimension(500,480));
