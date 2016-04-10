@@ -34,7 +34,7 @@ public class Game_Field extends JPanel {
     }
 
     private void showImage(Properties properties) {
-        canvasPath = properties.getProperty("path");
+        canvasPath = properties.getProperty("canvas");
         platformPath = properties.getProperty("platformPath");
 
         File canvasFile = new File(canvasPath);
