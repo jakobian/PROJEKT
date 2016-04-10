@@ -59,11 +59,13 @@ public class Game_Window extends JFrame {
         gamefield.setPreferredSize(new Dimension(width,height));
         //gamefield.setMaximumSize(new Dimension(width,height));
         gamefield.setMinimumSize(new Dimension(width,height));
-        gamefield.setDimension(width, height);
+        //gamefield.setDimension(width, height);
 
     }
 
-    /**Metoda opisujaca opcje glownego okna gry*/
+    /**
+     * Metoda opisujaca opcje glownego okna gry
+     */
     private void ops_Game_Window(){
 
         /**Tytul glownego okna gry*/

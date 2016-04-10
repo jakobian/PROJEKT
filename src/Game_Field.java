@@ -8,21 +8,24 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.swing.JPanel;
 
+/** Klasa glownego pola gry */
+
 public class Game_Field extends JPanel {
 
-    /**Pole do wyswietlania czasu gry paliwa wyniku*/
+    /*
     private static final String Time = "Time";
     private static final String Score = "Score";
     private static final String Fuel = "Fuel";
-
+*/
+    /** Pola do przechowania sciezki obrazka*/
     private String canvasPath;
     private String platformPath;
 
-    /**Pole do przechowania sciezki obrazka*/
     private BufferedImage canvas;
     private BufferedImage platform;
 
 
+    /** Konstruktor pola gry */
     public Game_Field() throws IOException{
         File file = new File("resources/field.properties");
         FileInputStream fileInput = new FileInputStream(file);
@@ -30,10 +33,11 @@ public class Game_Field extends JPanel {
         properties.load(fileInput);
         fileInput.close();
 
-        showImage(properties);
+        readImage(properties);
     }
 
-    private void showImage(Properties properties) {
+    /** Metoda czytajaca obrazy z pliku */
+    private void readImage(Properties properties) {
         canvasPath = properties.getProperty("canvas");
         platformPath = properties.getProperty("platformPath");
 
@@ -50,12 +54,18 @@ public class Game_Field extends JPanel {
         }
     }
 
+    /**
+     * Metoda ustawiajaca wielkosc obrazka
+     * @param width Poczatkowa szerokosc obrazka w pikselach
+     * @param height Poczatkowa wysokosc obrazka w pikselach
+     */
     public void setDimension(int width, int height){
         Dimension dim = new Dimension(width,height);
         setPreferredSize(dim);
 
     }
 
+    /** Metoda wyswietlajaca obrazki w panelu */
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
