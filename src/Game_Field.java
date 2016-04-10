@@ -28,7 +28,6 @@ public class Game_Field extends JPanel {
         properties.load(fileInput);
         fileInput.close();
 
-
         showImage(properties);
 
 
