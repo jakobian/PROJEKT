@@ -33,10 +33,10 @@ public class Game_Window extends JFrame {
     private void ops_Small_GMenu(){
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
-        smallgmenu.setPreferredSize(new Dimension(width,width - height));
-        smallgmenu.setMaximumSize(new Dimension(width,width - height));
-        //smallgmenu.setMinimumSize(new Dimension(width,width - height));
-        //smallgmenu.seup
+        //smallgmenu.setPreferredSize(new Dimension(120,70));
+        smallgmenu.setMaximumSize(new Dimension(5000,20));
+        smallgmenu.setMinimumSize(new Dimension(width,width - height));
+        smallgmenu.setDimensionButton(70, 20);
     }
 
     /**Metoda opisujaca opcje pola gry*/

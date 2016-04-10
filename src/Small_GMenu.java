@@ -20,12 +20,12 @@ public class Small_GMenu extends JPanel {
 
     public Small_GMenu(){
         createbutton();
-        setDimensionButton(70,20);
+        //setDimensionButton(70,20);
     }
 
     private void createbutton(){
-        this.setLayout(null);
-       // this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+       //this.setLayout(null);
+       this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         menubutton = new JButton(Menu);
         pausebutton = new JButton(Pause);
@@ -34,7 +34,9 @@ public class Small_GMenu extends JPanel {
     }
 
     public void setDimensionButton(int width, int height){
-        menubutton.setBounds(0,0,width,height);
-        pausebutton.setBounds(width,0,width,height);
+        //menubutton.setBounds(0,0,width,height);
+        //pausebutton.setBounds(width,0,width,height);
+        menubutton.setPreferredSize(new Dimension(width, height));
+        pausebutton.setPreferredSize(new Dimension(width, height));
     }
 }
