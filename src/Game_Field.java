@@ -16,7 +16,7 @@ public class Game_Field extends JPanel {
     /**Pole do przechowania sciezki obrazka*/
     private BufferedImage image;
 
-/*
+
     public Game_Field(){
 
         showImage();
@@ -44,7 +44,7 @@ public class Game_Field extends JPanel {
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(image,100,100,this);
-    }*/
+    }
 
 
 
