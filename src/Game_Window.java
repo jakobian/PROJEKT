@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Klasa tworzaca okno gry
@@ -12,15 +15,21 @@ public class Game_Window extends JFrame {
     Small_GMenu smallgmenu;
     Game_Field gamefield;
 
-    private int width = 500;
-    private int height = 480;
+    private int width;
+    private int height;
 
     /**Konstruktor glownego okna gry*/
     public Game_Window() throws IOException{
+        File file = new File("resources/window.properties");
+        FileInputStream fileInput = new FileInputStream(file);
+        Properties properties = new Properties();
+        properties.load(fileInput);
+        fileInput.close();
+
         init_panels();
         ops_Game_Window();
-        ops_Small_GMenu();
-        ops_Game_Field();
+        ops_Small_GMenu(properties);
+        ops_Game_Field(properties);
     }
 
     /**Metoda tworzaca panele w glownym oknie gry*/
@@ -30,7 +39,9 @@ public class Game_Window extends JFrame {
     }
 
     /**Metoda opisujaca opcje menu gry*/
-    private void ops_Small_GMenu(){
+    private void ops_Small_GMenu(Properties properties){
+        width = Integer.parseInt(properties.getProperty("width"));
+        height = Integer.parseInt(properties.getProperty("height"));
         smallgmenu.setBackground(Color.WHITE);
         smallgmenu.setVisible(true);
         //smallgmenu.setPreferredSize(new Dimension(120,70));
@@ -40,7 +51,9 @@ public class Game_Window extends JFrame {
     }
 
     /**Metoda opisujaca opcje pola gry*/
-    private void ops_Game_Field(){
+    private void ops_Game_Field(Properties properties){
+        width = Integer.parseInt(properties.getProperty("width"));
+        height = Integer.parseInt(properties.getProperty("height"));
         gamefield.setVisible(true);
         gamefield.setBackground(Color.black);
         gamefield.setPreferredSize(new Dimension(width,height));
