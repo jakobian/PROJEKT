@@ -3,7 +3,7 @@ import java.awt.*;
 
 
 /** Klasa menu okna gry */
-public class Small_GMenu extends JPanel {
+public class SmallGMenu extends JPanel {
 
     /**
      * Pola przechowujace nazwe przycisku "Menu" wyswietlanego w menu okna gry
@@ -27,7 +27,7 @@ public class Small_GMenu extends JPanel {
     /**
      * Konstruktor menu okna gry
      */
-    public Small_GMenu(){
+    public SmallGMenu(){
         createbutton();
     }
 

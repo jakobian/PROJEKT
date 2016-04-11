@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /** Klasa glownego pola gry */
 
-public class Game_Field extends JPanel {
+public class GameField extends JPanel {
 
     /*
     private static final String Time = "Time";
@@ -29,7 +29,7 @@ public class Game_Field extends JPanel {
 
 
     /** Konstruktor pola gry */
-    public Game_Field() throws IOException{
+    public GameField() throws IOException{
         File file = new File("resources/field.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();

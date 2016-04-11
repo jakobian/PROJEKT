@@ -9,12 +9,12 @@ import java.util.Properties;
  * Klasa tworzaca okno gry
  */
 
-public class Game_Window extends JFrame {
+public class GameWindow extends JFrame {
 
     /** Inicjacja obiektu menu */
-    Small_GMenu smallgmenu;
+    SmallGMenu smallgmenu;
     /** Inicjacja obiektu pola gry */
-    Game_Field gamefield;
+    GameField gamefield;
 
     /** Pole przechowujace szerokosc okna gry */
     private int width;
@@ -22,27 +22,27 @@ public class Game_Window extends JFrame {
     private int height;
 
     /**Konstruktor glownego okna gry*/
-    public Game_Window() throws IOException{
+    public GameWindow() throws IOException{
         File file = new File("resources/window.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
 
-        init_panels();
-        ops_Game_Window();
-        ops_Small_GMenu(properties);
-        ops_Game_Field(properties);
+        initpanels();
+        opsGameWindow();
+        opsSmallGMenu(properties);
+        opsGameField(properties);
     }
 
     /**Metoda tworzaca panele w glownym oknie gry*/
-    private void init_panels() throws IOException{
-        smallgmenu = new Small_GMenu();
-        gamefield = new Game_Field();
+    private void initpanels() throws IOException{
+        smallgmenu = new SmallGMenu();
+        gamefield = new GameField();
     }
 
     /**Metoda opisujaca opcje menu gry*/
-    private void ops_Small_GMenu(Properties properties){
+    private void opsSmallGMenu(Properties properties){
         width = Integer.parseInt(properties.getProperty("width"));
         height = Integer.parseInt(properties.getProperty("height"));
         smallgmenu.setBackground(Color.WHITE);
@@ -54,7 +54,7 @@ public class Game_Window extends JFrame {
     }
 
     /**Metoda opisujaca opcje pola gry*/
-    private void ops_Game_Field(Properties properties){
+    private void opsGameField(Properties properties){
         width = Integer.parseInt(properties.getProperty("width"));
         height = Integer.parseInt(properties.getProperty("height"));
         gamefield.setVisible(true);
@@ -69,7 +69,7 @@ public class Game_Window extends JFrame {
     /**
      * Metoda opisujaca opcje glownego okna gry
      */
-    private void ops_Game_Window(){
+    private void opsGameWindow(){
 
         /**Tytul glownego okna gry*/
         setTitle("Lunar Lander");
