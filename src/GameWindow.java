@@ -29,14 +29,14 @@ public class GameWindow extends JFrame {
         properties.load(fileInput);
         fileInput.close();
 
-        initpanels();
+        initPanels();
         opsGameWindow();
         opsSmallGMenu(properties);
         opsGameField(properties);
     }
 
     /**Metoda tworzaca panele w glownym oknie gry*/
-    private void initpanels() throws IOException{
+    private void initPanels() throws IOException{
         smallgmenu = new SmallGMenu();
         gamefield = new GameField();
     }

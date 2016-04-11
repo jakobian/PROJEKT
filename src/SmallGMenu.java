@@ -28,13 +28,13 @@ public class SmallGMenu extends JPanel {
      * Konstruktor menu okna gry
      */
     public SmallGMenu(){
-        createbutton();
+        createButton();
     }
 
     /**
      * Metoda tworzaca przyciski menu okna gry
      */
-    private void createbutton(){
+    private void createButton(){
        this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         menubutton = new JButton(Menu);
