@@ -30,13 +30,15 @@ public class DrawUniverse {
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+
+        createArea(properties);
     }
 
-    private void createArea(){
-        area = new Point[Integer.parseInt(properties.getProperty(""))];
+    private void createArea(Properties properties){
+        area = new Point[Integer.parseInt(properties.getProperty("number_of_point"))];
         for(int i = 0; i<area.length;++i){
-            area[i] = new Point(Integer.parseInt(properties.getProperty("")),
-                    Integer.parseInt(properties.getProperty("")));
+            area[i] = new Point(Integer.parseInt(properties.getProperty("point_x_" + Integer.toString(i))),
+                    Integer.parseInt(properties.getProperty("point_y_" + Integer.toString(i))));
         }
 
     }

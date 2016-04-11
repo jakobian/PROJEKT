@@ -17,6 +17,7 @@ public class GameField extends JPanel {
     private static final String Score = "Score";
     private static final String Fuel = "Fuel";
 */
+
     /** Pole do przechowania sciezki obrazu tla*/
     private String canvasPath;
     /** Pole do przechowania sciezki obrazu platformy*/
@@ -36,11 +37,11 @@ public class GameField extends JPanel {
         properties.load(fileInput);
         fileInput.close();
 
-        readImage(properties);
+        //readImage(properties);
     }
 
     /** Metoda czytajaca obrazy z pliku */
-    private void readImage(Properties properties) {
+   /* private void readImage(Properties properties) {
         canvasPath = properties.getProperty("canvas");
         platformPath = properties.getProperty("platformPath");
 
@@ -55,7 +56,7 @@ public class GameField extends JPanel {
             System.err.println("Cannot read a file");
             ex.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Metoda ustawiajaca wielkosc obrazka
@@ -69,12 +70,12 @@ public class GameField extends JPanel {
     }
 
     /** Metoda wyswietlajaca obrazki w panelu */
-    @Override
+    /*@Override
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(canvas,0,0,this);
         g2d.drawImage(platform, 280,310,this);
-    }
+    }*/
 
 
 /*
