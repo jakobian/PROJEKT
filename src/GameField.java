@@ -47,7 +47,9 @@ public class GameField extends JPanel{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        g.setColor(Color.gray);
         drawArea(g, point_x, point_y);
+
 
     }
 }
