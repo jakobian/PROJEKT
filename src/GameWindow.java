@@ -76,6 +76,7 @@ public class GameWindow extends JFrame {
 
         gamefield.setVisible(true);
 
+
         gamefield.setBackground(Color.white);
 
         gamefield.setPreferredSize(new Dimension(width,height));
