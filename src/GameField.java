@@ -21,8 +21,13 @@ public class GameField extends JPanel{
      */
     private int[] point_y;
 
-
+    /**
+     * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia ladowiska przed skalowaniem
+     */
     private int[] landingPoint_x;
+    /**
+     * Pole przechowujace tablice wspolrzednych Y potrzebnych do tworzenia ladowiska przed skalowaniem
+     */
     private int[] landingPoint_y;
 
     /**
@@ -34,8 +39,15 @@ public class GameField extends JPanel{
      */
     private int[] current_point_y;
 
+    /**
+     * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
+     */
     private int[] current_landing_point_x;
+    /**
+     * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
+     */
     private int[] current_landing_point_y;
+
     /**
      * Konstruktor klasy GameField
      * @throws IOException
@@ -66,6 +78,10 @@ public class GameField extends JPanel{
         }
     }
 
+    /**
+     * Metoda wczytujaca wspolrzedne punktow ladowiska z pliku konfiguracyjnego i zapisujaca je w tablicy
+     * @param properties
+     */
     private void createLandingPoints(Properties properties){
         landingPoint_x = new int[4];
         landingPoint_y = new int[4];
@@ -88,6 +104,12 @@ public class GameField extends JPanel{
         g.fillPolygon(point_xc, point_yc, point_x.length);
     }
 
+    /**
+     * Metoda rysujaca ladowisko
+     * @param g
+     * @param point_xc
+     * @param point_yc
+     */
     private void drawLandingArea(Graphics g, int[] point_xc, int[] point_yc){
 
         g.fillPolygon(point_xc, point_yc, landingPoint_x.length);
