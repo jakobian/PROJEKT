@@ -37,31 +37,53 @@ public class GameWindow extends JFrame {
 
     /**Metoda tworzaca panele w glownym oknie gry*/
     private void initPanels() throws IOException{
+
         smallgmenu = new SmallGMenu();
+
         gamefield = new GameField();
+
     }
 
     /**Metoda opisujaca opcje menu gry*/
     private void opsSmallGMenu(Properties properties){
+
         width = Integer.parseInt(properties.getProperty("width"));
+
         height = Integer.parseInt(properties.getProperty("height"));
-        smallgmenu.setBackground(Color.WHITE);
-        smallgmenu.setVisible(true);
+
+        smallgmenu.setBackground(Color.green);
+
+
+
         //smallgmenu.setPreferredSize(new Dimension(120,70));
+
         smallgmenu.setMaximumSize(new Dimension(5000,20));
+
         smallgmenu.setMinimumSize(new Dimension(width,width - height));
+
         smallgmenu.setDimensionButton(70, 20);
+        smallgmenu.setVisible(true);
+
+
     }
 
     /**Metoda opisujaca opcje pola gry*/
     private void opsGameField(Properties properties){
+
         width = Integer.parseInt(properties.getProperty("width"));
+
         height = Integer.parseInt(properties.getProperty("height"));
+
         gamefield.setVisible(true);
-        gamefield.setBackground(Color.black);
+
+        gamefield.setBackground(Color.white);
+
         gamefield.setPreferredSize(new Dimension(width,height));
+
         //gamefield.setMaximumSize(new Dimension(width,height));
+
         gamefield.setMinimumSize(new Dimension(width,height));
+
         //gamefield.setDimension(width, height);
 
     }
@@ -84,6 +106,7 @@ public class GameWindow extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
+        pack();
 
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);

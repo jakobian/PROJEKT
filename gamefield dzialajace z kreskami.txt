@@ -1,43 +1,30 @@
-/*Ta klasa nie dziala(meotdy dobre, zle odwolanie sie do niej), trzeba pomyslec jak ja zrobić zeby dziala*/
-
-
-
-
-
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import javax.swing.JPanel;
 
+/** Klasa glownego pola gry */
 
-/**
- * Created by Jakub on 11.04.2016.
- */
+public class GameField extends JPanel {
 
-
-/**
- * Klasa definujaca wszechswiat - podloze, grawitacje...
- */
-public class DrawUniverse extends GameField {
-
-    /**
-     *
-     */
-    private double gravity;
+    /*
+    private static final String Time = "Time";
+    private static final String Score = "Score";
+    private static final String Fuel = "Fuel";
+*/
 
     /**
      * Pole obiektu klasy punkt przechowujacego punkty potrzebne do narysowania podloza
      */
     private Point[] area;
 
-
-    /**
-     * Konstruktor klasy DrawUniverse
-     */
-    DrawUniverse() throws IOException{
+    /** Konstruktor pola gry */
+    public GameField() throws IOException{
         File file = new File("resources/area.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
@@ -46,6 +33,7 @@ public class DrawUniverse extends GameField {
 
         createAreaPoints(properties);
     }
+
 
     /**
      * Metoda pobierajaca punkty z pliku konfiguracyjnego i umieszczajaca je w obiekcie tablicowym area
@@ -58,12 +46,30 @@ public class DrawUniverse extends GameField {
                     Integer.parseInt(properties.getProperty("pointY_" + Integer.toString(i))));
         }
     }
+    
 
     /**
-     * Metoda zwracajaca obiekt area
-     * @return
+     * Metoda rysujaca podloze, jako parametry przyjmuje tablice punktow
+     * @param point
+     * @param g
      */
-    public Point[] getArea() {return area;}
+    private void drawArea(Graphics g, Point[] point){
+
+        for(int i=1; i<point.length;++i){
+            g.drawLine((int)(point[i-1].getX()), (int)(point[i-1].getY()),
+                    (int)(point[i].getX()), (int)(point[i].getY()));
+        }
+    }
+
+    /** Metoda wyswietlajaca obrazki w panelu */
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
 
 
+        if (area!=null) {
+            drawArea(g,area);
+        }
+    }
 }

@@ -29,6 +29,7 @@ public class SmallGMenu extends JPanel {
      */
     public SmallGMenu(){
         createButton();
+
     }
 
     /**
