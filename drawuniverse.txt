@@ -1,4 +1,4 @@
-/*Ta klasa nie dziala(meotdy dobre, zle odwolanie sie do niej), trzeba pomyslec jak ja zrobiÄ‡ zeby dziala*/
+/*Ta klasa nie dziala(meotdy dobre, zle odwolanie sie do niej), trzeba pomyslec jak ja zrobiæ zeby dziala*/
 
 
 
