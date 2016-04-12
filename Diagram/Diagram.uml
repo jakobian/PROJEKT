@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="397.0" y="77.0">SmallGMenu</node>
+    <node x="194.625" y="389.0">GameWindow</node>
+    <node x="0.0" y="0.0">GameField</node>
+    <node x="293.125" y="668.0">Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Main" target="GameWindow">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="114.5" />
+    </edge>
+    <edge source="GameWindow" target="GameField">
+      <point x="-43.75" y="-114.5" />
+      <point x="325.875" y="364.0" />
+      <point x="282.75" y="364.0" />
+      <point x="94.25" y="169.5" />
+    </edge>
+    <edge source="GameWindow" target="SmallGMenu">
+      <point x="43.75" y="-114.5" />
+      <point x="413.375" y="364.0" />
+      <point x="456.5" y="364.0" />
+      <point x="-59.5" y="92.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8484438430311232" x="317.5" y="359.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>Production</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
