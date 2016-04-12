@@ -55,11 +55,11 @@ public class GameWindow extends JFrame {
 
 
 
-        smallgmenu.setPreferredSize(new Dimension(120,70));
+        //smallgmenu.setPreferredSize(new Dimension(120,70));
 
         smallgmenu.setMaximumSize(new Dimension(5000,20));
 
-        smallgmenu.setMinimumSize(new Dimension(width,width - height));
+        smallgmenu.setMinimumSize(new Dimension(width,20));
 
         smallgmenu.setDimensionButton(70, 20);
         smallgmenu.setVisible(true);
@@ -106,7 +106,6 @@ public class GameWindow extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
-        pack();
 
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);
