@@ -53,7 +53,7 @@ public class GameField extends JPanel{
         }
     }
 
-    private Dimension  initSize = new Dimension(500,500);
+    private Dimension initSize = new Dimension(500,500);
 
     /**
      * Metoda rysujaca podloze
@@ -62,14 +62,6 @@ public class GameField extends JPanel{
      * @param point_y
      */
     private void drawArea(Graphics g, int[] point_x, int[] point_y){
-
-        g.fillPolygon(point_x, point_y, point_x.length);
-    }
-
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        //Graphics2D g2d = (Graphics2D) g;
 
         double xDim = getWidth();
         double yDim = getHeight();
@@ -84,8 +76,26 @@ public class GameField extends JPanel{
             current_point_y[i] = (int) yRatio*point_y[i];
         }
 
+        g.fillPolygon(point_x, point_y, point_x.length);
+    }
+
+    private int[] getAreaPointX(){
+        return point_x;
+    }
+
+    private int[] getAreaPointY(){
+        return point_y;
+    }
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        //Graphics2D g2d = (Graphics2D) g;
+
+
+
         g.setColor(Color.gray);
-        drawArea(g, current_point_x, current_point_y);
+        drawArea(g, getAreaPointX(), getAreaPointY());
     }
 }
 
