@@ -13,15 +13,21 @@ import java.util.Properties;
 public class GameField extends JPanel{
 
     /**
-     * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy
+     * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy, przed skalowaniem
      */
     private int[] point_x;
     /**
-     * Pole przechowujace tablice wspolrzednych Y potrzebnych do tworzenia planszy
+     * Pole przechowujace tablice wspolrzednych Y potrzebnych do tworzenia planszy, przed skalowaniem
      */
     private int[] point_y;
 
+    /**
+     * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia planszy, po skalowaniu
+     */
     private int[] current_point_x;
+    /**
+     * Pole przechowujace aktualna tablice wspolrzednych Y potrzebnych do tworzenia planszy, po skalowaniu
+     */
     private int[] current_point_y;
     /**
      * Konstruktor klasy GameField
@@ -35,7 +41,6 @@ public class GameField extends JPanel{
         fileInput.close();
 
         createAreaPoints(properties);
-
     }
 
 
@@ -53,7 +58,6 @@ public class GameField extends JPanel{
         }
     }
 
-    private Dimension  initSize = new Dimension(500,500);
 
     /**
      * Metoda rysujaca podloze
@@ -70,13 +74,13 @@ public class GameField extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //Graphics2D g2d = (Graphics2D) g;
-        setBorder(BorderFactory.createLineBorder(Color.red));
-        double xRatio = getWidth()/(double)480;
-        double yRatio = getHeight()/(double)480;
+        setBorder(BorderFactory.createLineBorder(Color.white));
+        double xRatio = getWidth()/(double)500;
+        double yRatio = getHeight()/(double)500;
         int total_number_points = point_x.length;
         current_point_x = new int[total_number_points];
         current_point_y = new int[total_number_points];
-        System.out.println(getWidth());
+
         for (int i = 0; i < total_number_points; ++i) {
             current_point_x[i] = (int)(xRatio*point_x[i]);
             current_point_y[i] = (int)(yRatio*point_y[i]);
