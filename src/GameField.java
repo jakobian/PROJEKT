@@ -5,11 +5,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
+/*
  * Created by Jakub on 12.04.2016.
  */
 
-
+/**
+ * Klasa tworzaca okno rozgrywki
+ */
 public class GameField extends JPanel{
 
     /**
