@@ -28,16 +28,22 @@ public class GameField extends JPanel{
 
 
     private void createAreaPoints(Properties properties) {
+        double xDim = getWidth();
+        double yDim = getHeight();
+        double xRatio = xDim/500;
+        double yRatio = yDim/500;
+
         int total_number_points = Integer.parseInt(properties.getProperty("total_number_points"));
         point_x = new int[total_number_points];
         point_y = new int[total_number_points];
         for (int i = 0; i < total_number_points; ++i) {
-            point_x[i] = Integer.parseInt(properties.getProperty("point_x_" + Integer.toString(i)));
-            point_y[i] = Integer.parseInt(properties.getProperty("point_y_" + Integer.toString(i)));
+            point_x[i] = (int) xRatio*Integer.parseInt(properties.getProperty("point_x_" + Integer.toString(i)));
+            point_y[i] = (int) yRatio*Integer.parseInt(properties.getProperty("point_y_" + Integer.toString(i)));
         }
     }
 
     private void drawArea(Graphics g, int[] point_x, int[] point_y){
+
         g.fillPolygon(point_x, point_y, point_x.length);
     }
 
@@ -45,7 +51,7 @@ public class GameField extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+        //Graphics2D g2d = (Graphics2D) g;
 
         g.setColor(Color.gray);
         drawArea(g, point_x, point_y);
