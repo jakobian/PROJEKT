@@ -55,7 +55,7 @@ public class GameWindow extends JFrame {
 
 
 
-        //smallgmenu.setPreferredSize(new Dimension(120,70));
+        smallgmenu.setPreferredSize(new Dimension(120,70));
 
         smallgmenu.setMaximumSize(new Dimension(5000,20));
 
