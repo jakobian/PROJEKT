@@ -63,8 +63,6 @@ public class GameWindow extends JFrame {
 
         smallgmenu.setDimensionButton(70, 20);
         smallgmenu.setVisible(true);
-
-
     }
 
     /**Metoda opisujaca opcje pola gry*/
