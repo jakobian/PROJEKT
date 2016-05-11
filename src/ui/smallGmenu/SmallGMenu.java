@@ -4,7 +4,7 @@ import java.awt.*;
 
 
 /** Klasa menu okna gry */
-public class SmallGMenu extends JPanel {
+public class SmallGMenu extends JPanel  {
 
     /**
      * Pola przechowujace nazwe przycisku "Menu" wyswietlanego w menu okna gry
@@ -43,6 +43,7 @@ public class SmallGMenu extends JPanel {
         pausebutton = new JButton(Pause);
         add(menubutton);
         add(pausebutton);
+
     }
 
     /**
@@ -52,4 +53,5 @@ public class SmallGMenu extends JPanel {
         menubutton.setPreferredSize(new Dimension(width, height));
         pausebutton.setPreferredSize(new Dimension(width, height));
     }
+
 }
