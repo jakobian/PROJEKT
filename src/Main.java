@@ -1,4 +1,5 @@
 import java.io.IOException;
+import ui.gamewindow.GameWindow;
 
 /** Klasa glowna programu */
 public class Main {

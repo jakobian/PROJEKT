@@ -1,3 +1,5 @@
+package ui.gamefield;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -117,11 +119,10 @@ public class GameField extends JPanel{
         g.fillPolygon(point_xc, point_yc, landingPoint_x.length);
     }
 
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        //Graphics2D g2d = (Graphics2D) g;
-        //setBorder(BorderFactory.createLineBorder(Color.red));
+    /**
+     * Metoda ustawiajaca aktualne rozmieszczenie punktow po zmianie wielkosci okna
+     */
+    private void setPoints(){
         double xRatio = getWidth()/(double)500;
         double yRatio = getHeight()/(double)500;
         int total_number_points = point_x.length;
@@ -140,8 +141,24 @@ public class GameField extends JPanel{
             current_landing_point_y[i] = (int)(yRatio*landingPoint_y[i]);
         }
 
+    }
+
+
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        //Graphics2D g2d = (Graphics2D) g;
+       // setBorder(BorderFactory.createLineBorder(Color.white));
+
+
+        setPoints();
         drawArea(g, current_point_x, current_point_y);
         g.setColor(Color.red);
         drawLandingArea(g, current_landing_point_x, current_landing_point_y);
     }
 }
+
+
+/*aktualna pozycja statku - watek, obliczanie w petli albo timerem ze swingu i wymuszanie cykliczne repainta*/
+

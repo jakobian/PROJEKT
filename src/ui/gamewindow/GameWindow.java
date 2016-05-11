@@ -1,9 +1,13 @@
+package ui.gamewindow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import ui.gamefield.GameField;
+import ui.smallGmenu.SmallGMenu;
 
 /**
  * Klasa tworzaca okno gry

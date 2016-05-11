@@ -1,3 +1,4 @@
+package ui.smallGmenu;
 import javax.swing.*;
 import java.awt.*;
 
