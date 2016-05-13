@@ -6,6 +6,7 @@ import java.awt.*;
 
 import sun.applet.Main;
 import ui.menu.MainMenu;
+import ui.menu.PauseMenu;
 
 
 /** Klasa menu okna gry */
@@ -40,6 +41,8 @@ public class SmallGMenu extends JPanel  {
     JButton pausebutton;
 
     MainMenu mainmenu;
+    PauseMenu pausemenu;
+    StartMenu startgame;
 
 
     /**
@@ -67,11 +70,24 @@ public class SmallGMenu extends JPanel  {
 
     private void setupEvent(){
         menubutton.addActionListener(e -> initMenu());
+        pausebutton.addActionListener(e -> initPause());
+        startbutton.addActionListener(e -> initStart());
+
     }
 
     private void initMenu(){
         mainmenu = new MainMenu();
         mainmenu.setVisible(true);
+    }
+
+    private void initPause(){
+        pausemenu = new PauseMenu();
+        pausemenu.setVisible(true);
+    }
+
+    private void initStart(){
+        startgame = new StartMenu();
+        startgame.setVisible(true);
     }
 
     /**
