@@ -7,7 +7,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import ui.gamefield.GameField;
-import ui.smallGmenu.SmallGMenu;
+import ui.menu.MainMenu;
+import ui.menu.SmallGMenu;
 
 /**
  * Klasa tworzaca okno gry
@@ -19,6 +20,8 @@ public class GameWindow extends JFrame {
     SmallGMenu smallgmenu;
     /** Inicjacja obiektu pola gry */
     GameField gamefield;
+
+    MainMenu mainmenu;
 
     /** Pole przechowujace szerokosc okna gry */
     private int width;
@@ -46,6 +49,8 @@ public class GameWindow extends JFrame {
 
         gamefield = new GameField();
 
+        mainmenu = new MainMenu();
+
     }
 
     /**Metoda opisujaca opcje menu gry*/
@@ -65,9 +70,10 @@ public class GameWindow extends JFrame {
 
         smallgmenu.setMinimumSize(new Dimension(width,20));
 
-        smallgmenu.setDimensionButton(70, 20);
+        smallgmenu.setDimensionButton(100, 20);
         smallgmenu.setVisible(true);
     }
+
 
     /**Metoda opisujaca opcje pola gry*/
     private void opsGameField(Properties properties){
@@ -109,6 +115,7 @@ public class GameWindow extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
+
 
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);
