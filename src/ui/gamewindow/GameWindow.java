@@ -51,6 +51,7 @@ public class GameWindow extends JFrame {
 
     }
 
+
     /**Metoda opisujaca opcje menu gry*/
     private void opsSmallGMenu(Properties properties){
 
@@ -74,6 +75,7 @@ public class GameWindow extends JFrame {
         height = Integer.parseInt(properties.getProperty("height"));
         gamefield.setVisible(true);
         gamefield.setBackground(Color.orange);
+        gamefield.setDoubleBuffered(true);
         gamefield.setPreferredSize(new Dimension(width,height));
         //gamefield.setMaximumSize(new Dimension(width,height));
 

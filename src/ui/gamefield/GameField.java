@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import ui.gamefield.Rocket;
 
 /*
  * Created by Jakub on 12.04.2016.
@@ -32,7 +33,6 @@ public class GameField extends JPanel implements ActionListener {
      * Pole przechowujace tablice wspolrzednych Y potrzebnych do tworzenia planszy, przed skalowaniem
      */
     private int[] point_y;
-
     /**
      * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia ladowiska przed skalowaniem
      */
@@ -41,7 +41,6 @@ public class GameField extends JPanel implements ActionListener {
      * Pole przechowujace tablice wspolrzednych Y potrzebnych do tworzenia ladowiska przed skalowaniem
      */
     private int[] landingPoint_y;
-
     /**
      * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia planszy, po skalowaniu
      */
@@ -50,7 +49,6 @@ public class GameField extends JPanel implements ActionListener {
      * Pole przechowujace aktualna tablice wspolrzednych Y potrzebnych do tworzenia planszy, po skalowaniu
      */
     private int[] current_point_y;
-
     /**
      * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
      */
@@ -59,7 +57,6 @@ public class GameField extends JPanel implements ActionListener {
      * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
      */
     private int[] current_landing_point_y;
-
     /**
      * Pole przechowujace aktualna szerokosc okna gry
      */
@@ -68,6 +65,22 @@ public class GameField extends JPanel implements ActionListener {
      * Pole przechowujace aktualna wysokosc okna gry
      */
     public static int gameHeight;
+    /**
+     * Pole przechowujace aktualna dlugosc statku
+     */
+    private double actualSizeWeidht;
+    /**
+     * Pole przechowujace aktualna szerokosc statku
+     */
+    private double actualSizeHeight;
+    /**
+     * Pole przechowujace aktualna wspolrzedna X pozycji statku
+     */
+    private double actualLocationX;
+    /**
+     * Pole przechowujace aktualna wspolrzedna Y pozycji statku
+     */
+    private double actualLocationY;
 
     /**
      * Konstruktor klasy GameField
@@ -84,10 +97,6 @@ public class GameField extends JPanel implements ActionListener {
         createLandingPoints(properties);
         initField();
     }
-
-
-
-
 
     /**
      * Metoda wczytujaca wsporzedne punktow z pliku konfiguracyjnego i zapisujaca je w tablicy
@@ -127,6 +136,59 @@ public class GameField extends JPanel implements ActionListener {
 
     //private Dimension  initSize = new Dimension(500,500);
 
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        gameWidth = this.getWidth();
+        gameHeight = this.getHeight();
+
+        setDimension();
+        setLocation();
+        drawRocket(g, (int)actualLocationX, (int)actualLocationY ,(int)actualSizeWeidht,(int)actualSizeHeight);
+        //setBorder(BorderFactory.createLineBorder(Color.white));
+
+        setPoints();
+        drawArea(g, current_point_x, current_point_y);
+        g.setColor(Color.red);
+        drawLandingArea(g, current_landing_point_x, current_landing_point_y);
+
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    /**
+     * Metoda pobierajaca i ustawiajaca akturalny rozmiar statku skalowanego na podstawie obecnego rozmiaru okna
+     */
+    private void setDimension(){
+        double xRatio = gameWidth/(double)500;
+        double yRatio = gameHeight/(double)500;
+
+        actualSizeWeidht = xRatio*rocket.getDimW();
+        actualSizeHeight = yRatio*rocket.getDimH();
+    }
+
+    /**
+     * Metoda ustawiająca aktualna pozycje statku dopasowujac ja do zmiany rozmiaru okna
+     */
+    private void setLocation(){
+        double xRatio = gameWidth/(double)500;
+        double yRatio = gameHeight/(double)500;
+
+        actualLocationX = xRatio*(double)rocket.getX();
+        actualLocationY = yRatio*(double)rocket.getY();
+    }
+
+    /**
+     * Metoda rysujaca statek powietrzny
+     * @param g
+     * @param Weidth
+     * @param Height
+     */
+    private void drawRocket(Graphics g, int CooX, int CooY, int Weidth, int Height){
+        g.drawImage(rocket.getImg(), CooX, CooY, Weidth, Height, this);
+    }
+
     /**
      * Metoda rysujaca podloze
      * @param g
@@ -153,8 +215,8 @@ public class GameField extends JPanel implements ActionListener {
      * Metoda ustawiajaca aktualne rozmieszczenie punktow po zmianie wielkosci okna
      */
     private void setPoints(){
-        gameWidth = this.getWidth();
-        gameHeight = this.getHeight();
+       /* gameWidth = this.getWidth();
+        gameHeight = this.getHeight();*/
         double xRatio = gameWidth/(double)500;
         double yRatio = gameHeight/(double)500;
         int total_number_points = point_x.length;
@@ -177,20 +239,6 @@ public class GameField extends JPanel implements ActionListener {
 
 
 
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(rocket.getImg(), rocket.getX(), rocket.getY(), this);
-        // setBorder(BorderFactory.createLineBorder(Color.white));
-
-        setPoints();
-        drawArea(g, current_point_x, current_point_y);
-        g.setColor(Color.red);
-        drawLandingArea(g, current_landing_point_x, current_landing_point_y);
-
-        Toolkit.getDefaultToolkit().sync();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

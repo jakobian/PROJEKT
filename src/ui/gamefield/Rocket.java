@@ -7,7 +7,11 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
+
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
 
 /**
  * Created by Michał on 2016-05-13.
@@ -18,35 +22,76 @@ public class Rocket {
     private int y;
     private int dx;
     private int dy;
+    /**
+     * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
+     */
+    public BufferedImage img;
+    /**
+     * Pole przechowujace wysokosc obrazka statku
+     */
+    public int h;
+    /**
+     * Pole przechowujace szerokosc obrazka statku
+     */
+    public int w;
 
-    private Image img;
+   // private Image img;
 
     public Rocket() {
         init();
         load();
+        checkDim();
     }
 
     private void init() {
         resetRocket();
-
-    }
-
-    private void load() {
-        ImageIcon i = new ImageIcon("../PROJEKT/images/space_ship.png");
-        img = i.getImage();
-
     }
 
     public void resetRocket() {
-        //x = (int)(0.5*GameField.gameWidth);
-        //y = (int)(0.1*GameField.gameHeight);
-        x = 300;
-        y = 200;
+        Random generator = new Random();
+        x = generator.nextInt(400)+20;
+        y = generator.nextInt(100)+20;
+
+       /*x = (int)(0.5*GameField.gameWidth);
+        y = (int)(0.1*GameField.gameHeight);*/
+        /*x = 100;
+        y = 200;*/
     }
+
+    /**
+     * Metoda wczytujaca obrazek statu z pliku
+     */
+    private void load() {
+        /*ImageIcon i = new ImageIcon("../PROJEKT/images/space_ship2.png");
+        img = i.getImage();*/
+
+        File imageFile = new File("../PROJEKT/images/space_ship.png");
+        try {
+            img = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void move() {
         x += dx;
         y += dy;
+    }
+
+
+    public int getDimH(){
+        return h;
+    }
+
+
+    public int getDimW(){
+        return w;
+    }
+
+    private void checkDim(){
+        h = img.getHeight();
+        w = img.getWidth();
     }
 
     public Image getImg() {
@@ -56,6 +101,8 @@ public class Rocket {
     public int getX() {
         return x;
     }
+
+
 
     public int getY() {
         return y;
