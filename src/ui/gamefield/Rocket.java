@@ -68,7 +68,7 @@ public class Rocket {
     }
 
     /**
-     * Metoda wczytujaca obrazek statu z pliku
+     * Metoda wczytujaca obrazek statku z pliku
      */
     private void load() {
         File imageFile = new File("../PROJEKT/images/space_ship.png");
@@ -81,6 +81,16 @@ public class Rocket {
 
 
     public void move() {
+        if (GameField.keyboardKeyState(KeyEvent.VK_UP))
+            dy = -1;
+        else if (GameField.keyboardKeyState(KeyEvent.VK_DOWN))
+            dy = 1;
+        else if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT))
+            dx = 1;
+        else if (GameField.keyboardKeyState(KeyEvent.VK_LEFT))
+            dx = -1;
+
+
         x += dx;
         y += dy;
     }
@@ -127,28 +137,5 @@ public class Rocket {
      */
     public int getY() {
         return y;
-    }
-
-
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_UP) {
-            dy = -1;
-        }
-        else if (key == KeyEvent.VK_DOWN) {
-            dy = 1;
-        }
-    }
-
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-        else if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
-        }
     }
 }

@@ -2,10 +2,7 @@ package ui.gamefield;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,11 +16,40 @@ import ui.gamefield.Rocket;
 /**
  * Klasa tworzaca okno rozgrywki
  */
-public class GameField extends JPanel implements ActionListener {
+public class GameField extends JPanel implements KeyListener {
 
+    private static boolean[] keyboardState = new boolean[500];
+    private final long updatePeriod = 50000;
+    private long gameTime;
+    private long lastTime;
     private Rocket rocket;
-    private Timer timer;
-    private final int DELAY = 10;
+
+    public static boolean keyboardKeyState(int key) {
+        return keyboardState[key];
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keyboardState[e.getKeyCode()] = true;
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        keyboardState[e.getKeyCode()] = false;
+        //keyReleasedFramework(e);
+    }
+
+    @Override
+    public void keyTyped (KeyEvent e) {}
+
+    /*@Override
+    public void keyReleasedFramework(KeyEvent e) {
+
+    }*/
+
+    //private Timer timer;
+    //private final int DELAY = 10;
+
 
     /**
      * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy, przed skalowaniem
@@ -82,6 +108,8 @@ public class GameField extends JPanel implements ActionListener {
      */
     private double actualLocationY;
 
+
+
     /**
      * Konstruktor klasy GameField
      * @throws IOException
@@ -93,9 +121,16 @@ public class GameField extends JPanel implements ActionListener {
         properties.load(fileInput);
         fileInput.close();
 
-        createAreaPoints(properties);
-        createLandingPoints(properties);
-        initField();
+        Thread gameThread = new Thread() {
+            @Override
+            public void run() {
+                initField();
+                createAreaPoints(properties);
+                createLandingPoints(properties);
+                gameLoop();
+            }
+        };
+        gameThread.start();
     }
 
     /**
@@ -126,12 +161,35 @@ public class GameField extends JPanel implements ActionListener {
     }
 
     private void initField() {
-        addKeyListener(new TAdapter());
+        //addKeyListener(new TAdapter());
 
         rocket = new Rocket();
 
-        timer = new Timer(DELAY, this);
-        timer.start();
+        //timer = new Timer(DELAY, this);
+        //timer.start();
+    }
+
+    private void gameLoop() {
+        long beginTime, timeTaken, timeLeft;
+
+        while (true) {
+            beginTime = System.currentTimeMillis();
+
+            updateGame();
+
+            repaint();
+
+            timeTaken = System.currentTimeMillis() - beginTime;
+            timeLeft = updatePeriod - timeTaken;
+            if (timeLeft < 10) timeLeft = 10;
+            try {
+                Thread.sleep(timeLeft);
+            } catch (InterruptedException ex) { }
+        }
+    }
+
+    public void updateGame() {
+        rocket.move();
     }
 
     //private Dimension  initSize = new Dimension(500,500);
@@ -139,7 +197,7 @@ public class GameField extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+        //Graphics2D g2d = (Graphics2D) g;
 
         gameWidth = this.getWidth();
         gameHeight = this.getHeight();
@@ -154,7 +212,7 @@ public class GameField extends JPanel implements ActionListener {
         g.setColor(Color.red);
         drawLandingArea(g, current_landing_point_x, current_landing_point_y);
 
-        Toolkit.getDefaultToolkit().sync();
+        //Toolkit.getDefaultToolkit().sync();
     }
 
     /**
@@ -182,11 +240,11 @@ public class GameField extends JPanel implements ActionListener {
     /**
      * Metoda rysujaca statek powietrzny
      * @param g
-     * @param Weidth
+     * @param Width
      * @param Height
      */
-    private void drawRocket(Graphics g, int CooX, int CooY, int Weidth, int Height){
-        g.drawImage(rocket.getImg(), CooX, CooY, Weidth, Height, this);
+    private void drawRocket(Graphics g, int CooX, int CooY, int Width, int Height){
+        g.drawImage(rocket.getImg(), CooX, CooY, Width, Height, this);
     }
 
     /**
@@ -235,9 +293,7 @@ public class GameField extends JPanel implements ActionListener {
 
     }
 
-
-
-
+/*
     @Override
     public void actionPerformed(ActionEvent e) {
         rocket.move();
@@ -254,7 +310,7 @@ public class GameField extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
             rocket.keyPressed(e);
         }
-    }
+    }*/
 }
 
 

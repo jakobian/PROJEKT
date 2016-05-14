@@ -1,10 +1,36 @@
+import java.awt.*;
 import java.io.IOException;
 import ui.gamewindow.GameWindow;
 
+import javax.swing.*;
+
 /** Klasa glowna programu */
 public class Main {
-    public static void main(String[] args) throws IOException{
-        GameWindow gmw = new GameWindow();
-        gmw.setVisible(true);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                GameWindow gmw = null;
+                try {
+                    gmw = new GameWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                gmw.setVisible(true);
+            }
+        });
+
+        /*EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                GameWindow gmw = null;
+                try {
+                    gmw = new GameWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                gmw.setVisible(true);
+            }
+        });*/
     }
 }

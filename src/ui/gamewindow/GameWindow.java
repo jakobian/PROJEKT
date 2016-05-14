@@ -82,6 +82,7 @@ public class GameWindow extends JFrame {
         gamefield.setMinimumSize(new Dimension(width,height));
         //gamefield.setDimension(width, height);
 
+        gamefield.addKeyListener(gamefield);
     }
 
     /**
