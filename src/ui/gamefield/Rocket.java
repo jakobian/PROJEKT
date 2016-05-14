@@ -4,6 +4,10 @@ package ui.gamefield;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  * Created by Michał on 2016-05-13.
@@ -28,8 +32,9 @@ public class Rocket {
     }
 
     private void load() {
-        ImageIcon i = new ImageIcon("/PROJEKT/images/space_ship.png");
+        ImageIcon i = new ImageIcon("../PROJEKT/images/space_ship.png");
         img = i.getImage();
+
     }
 
     public void resetRocket() {

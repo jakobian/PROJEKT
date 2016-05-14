@@ -88,6 +88,7 @@ public class GameField extends JPanel implements ActionListener {
 
 
 
+
     /**
      * Metoda wczytujaca wsporzedne punktow z pliku konfiguracyjnego i zapisujaca je w tablicy
      * @param properties
