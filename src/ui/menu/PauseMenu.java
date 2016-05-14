@@ -56,7 +56,7 @@ public class PauseMenu extends JDialog {
      */
     private void drawView(){
         this.add(panel);
-        this.setSize(300, 60);
+        this.setSize(180, 60);
         setResizable(false);
         setTitle("Pause");
         this.setLocationRelativeTo(null);

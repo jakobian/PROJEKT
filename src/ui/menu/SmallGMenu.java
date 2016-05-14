@@ -57,7 +57,7 @@ public class SmallGMenu extends JPanel  {
      * Metoda tworzaca przyciski menu okna gry
      */
     private void createButton(){
-       this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         startbutton = new JButton(Start);
         menubutton = new JButton(Menu);
@@ -72,21 +72,23 @@ public class SmallGMenu extends JPanel  {
         menubutton.addActionListener(e -> initMenu());
         pausebutton.addActionListener(e -> initPause());
         startbutton.addActionListener(e -> initStart());
-
     }
 
     private void initMenu(){
         mainmenu = new MainMenu();
+        mainmenu.setModal(true);
         mainmenu.setVisible(true);
     }
 
     private void initPause(){
         pausemenu = new PauseMenu();
+        pausemenu.setModal(true);
         pausemenu.setVisible(true);
     }
 
     private void initStart(){
         startgame = new StartMenu();
+        startgame.setModal(true);
         startgame.setVisible(true);
     }
 

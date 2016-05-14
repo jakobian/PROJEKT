@@ -46,9 +46,7 @@ public class GameWindow extends JFrame {
     private void initPanels() throws IOException{
 
         smallgmenu = new SmallGMenu();
-
         gamefield = new GameField();
-
         mainmenu = new MainMenu();
 
     }
@@ -57,19 +55,13 @@ public class GameWindow extends JFrame {
     private void opsSmallGMenu(Properties properties){
 
         width = Integer.parseInt(properties.getProperty("width"));
-
         height = Integer.parseInt(properties.getProperty("height"));
-
-        smallgmenu.setBackground(Color.green);
-
-
-
+        smallgmenu.setBackground(Color.orange);
+        smallgmenu.setBorder(BorderFactory.createLineBorder(Color.black));
         //smallgmenu.setPreferredSize(new Dimension(120,70));
 
         smallgmenu.setMaximumSize(new Dimension(5000,20));
-
         smallgmenu.setMinimumSize(new Dimension(width,20));
-
         smallgmenu.setDimensionButton(100, 20);
         smallgmenu.setVisible(true);
     }
@@ -79,20 +71,13 @@ public class GameWindow extends JFrame {
     private void opsGameField(Properties properties){
 
         width = Integer.parseInt(properties.getProperty("width"));
-
         height = Integer.parseInt(properties.getProperty("height"));
-
         gamefield.setVisible(true);
-
-
-        gamefield.setBackground(Color.white);
-
+        gamefield.setBackground(Color.orange);
         gamefield.setPreferredSize(new Dimension(width,height));
-
         //gamefield.setMaximumSize(new Dimension(width,height));
 
         gamefield.setMinimumSize(new Dimension(width,height));
-
         //gamefield.setDimension(width, height);
 
     }
