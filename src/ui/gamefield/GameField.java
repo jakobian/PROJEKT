@@ -196,7 +196,6 @@ public class GameField extends JPanel implements ActionListener {
      * @param point_yc
      */
     private void drawArea(Graphics g, int[] point_xc, int[] point_yc){
-
         g.fillPolygon(point_xc, point_yc, point_x.length);
     }
 
@@ -207,7 +206,6 @@ public class GameField extends JPanel implements ActionListener {
      * @param point_yc
      */
     private void drawLandingArea(Graphics g, int[] point_xc, int[] point_yc){
-
         g.fillPolygon(point_xc, point_yc, landingPoint_x.length);
     }
 
