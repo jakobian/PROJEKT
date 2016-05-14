@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.menu.mainmenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class MainMenu extends JDialog {
      */
     public final static String Internet = "Internet's function";
     /**
-    /**
+     * /**
      * Pola przechowujace nazwe przycisku "Quit" wyswietlanego w menu glownym
      */
     public final static String Quit = "Quit";
@@ -51,20 +51,23 @@ public class MainMenu extends JDialog {
      */
     private JPanel panel;
 
+    InstructionMenu insrmenu;
+
 
     /**
      * Konstruktor menu okna gry
      */
-    public MainMenu(){
+    public MainMenu() {
         createButton();
         drawView();
-        setDimensionButton(300,50);
+        setupEvent();
+        setDimensionButton(300, 50);
     }
 
     /**
      * Metoda tworzaca przyciski menu okna gry
      */
-    private void createButton(){
+    private void createButton() {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // pionowo;
         instructionbutton = new JButton(Instruction);
@@ -86,9 +89,9 @@ public class MainMenu extends JDialog {
     }
 
     /**
-     *  Metoda ustawiajaca wielkosc przyciskow menu okna gry
+     * Metoda ustawiajaca wielkosc przyciskow menu okna gry
      */
-    public void setDimensionButton(int width, int height){
+    public void setDimensionButton(int width, int height) {
         instructionbutton.setPreferredSize(new Dimension(width, height));
         resultsbutton.setPreferredSize(new Dimension(width, height));
         internetnbutton.setPreferredSize(new Dimension(width, height));
@@ -98,5 +101,23 @@ public class MainMenu extends JDialog {
         resultsbutton.setMaximumSize(new Dimension(width, height));
         internetnbutton.setMaximumSize(new Dimension(width, height));
         quitbutton.setMaximumSize(new Dimension(width, height));
+    }
+
+
+    /**
+     * Metoda wywolujaca akcje po nacisnieciu danego przycisku
+     */
+    private void setupEvent() {
+        instructionbutton.addActionListener(e -> initInstrMenu());
+        quitbutton.addActionListener(e ->  System.exit(0));
+    }
+
+    /**
+     * Metoda inicjujaca i wyswietlajaca okno menu glownego
+     */
+    private void initInstrMenu() {
+        insrmenu = new InstructionMenu();
+        insrmenu.setModal(true);
+        insrmenu.setVisible(true);
     }
 }

@@ -1,12 +1,12 @@
 package ui.menu;
 
 
+import ui.menu.mainmenu.MainMenu;
+import ui.menu.pausemenu.PauseMenu;
+import ui.menu.startmenu.StartMenu;
+
 import javax.swing.*;
 import java.awt.*;
-
-import sun.applet.Main;
-import ui.menu.MainMenu;
-import ui.menu.PauseMenu;
 
 
 /** Klasa menu okna gry */
@@ -68,24 +68,34 @@ public class SmallGMenu extends JPanel  {
 
     }
 
+    /**
+     * Metoda wywolujaca akcje po nacisnieciu danego przycisku
+     */
     private void setupEvent(){
         menubutton.addActionListener(e -> initMenu());
         pausebutton.addActionListener(e -> initPause());
         startbutton.addActionListener(e -> initStart());
     }
 
+    /**
+     * Metoda inicjujaca i wyswietlajaca okno menu glownego
+     */
     private void initMenu(){
         mainmenu = new MainMenu();
         mainmenu.setModal(true);
         mainmenu.setVisible(true);
     }
-
+    /**
+     * Metoda inicjujaca i wyswietlajaca okno menu pauzy
+     */
     private void initPause(){
         pausemenu = new PauseMenu();
         pausemenu.setModal(true);
         pausemenu.setVisible(true);
     }
-
+    /**
+     * Metoda inicjujaca i wyswietlajaca okno menu start
+     */
     private void initStart(){
         startgame = new StartMenu();
         startgame.setModal(true);

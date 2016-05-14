@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.menu.pausemenu;
 
 import javax.swing.*;
 
@@ -33,7 +33,7 @@ public class PauseMenu extends JDialog {
     /**
      * Konstruktor okna pauzy
      */
-    PauseMenu(){
+    public PauseMenu(){
         createPanel();
         drawView();
     }

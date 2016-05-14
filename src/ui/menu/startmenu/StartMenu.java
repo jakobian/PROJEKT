@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.menu.startmenu;
 
 import javax.swing.*;
 
@@ -40,7 +40,7 @@ public class StartMenu extends JDialog {
      */
     JButton okbutton;
 
-    StartMenu(){
+    public StartMenu(){
         createPanel();
         drawView();
     }

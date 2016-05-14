@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import ui.gamefield.GameField;
-import ui.menu.MainMenu;
+import ui.menu.mainmenu.MainMenu;
 import ui.menu.SmallGMenu;
 
 /**

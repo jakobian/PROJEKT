@@ -52,19 +52,12 @@ public class Rocket {
         x = generator.nextInt(400)+20;
         y = generator.nextInt(100)+20;
 
-       /*x = (int)(0.5*GameField.gameWidth);
-        y = (int)(0.1*GameField.gameHeight);*/
-        /*x = 100;
-        y = 200;*/
     }
 
     /**
      * Metoda wczytujaca obrazek statu z pliku
      */
     private void load() {
-        /*ImageIcon i = new ImageIcon("../PROJEKT/images/space_ship2.png");
-        img = i.getImage();*/
-
         File imageFile = new File("../PROJEKT/images/space_ship.png");
         try {
             img = ImageIO.read(imageFile);
