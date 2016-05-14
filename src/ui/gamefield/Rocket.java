@@ -19,15 +19,16 @@ import javax.swing.JPanel;
 public class Rocket {
 
     /**
-     * Pole przechowujace wspolrzedana x pozycji statku
+     * Pole przechowujace wspolrzedna x pozycji statku
      */
     private int x;
     /**
-     * Pole przechowujace wspolrzedana y pozycji statku
+     * Pole przechowujace wspolrzedna y pozycji statku
      */
     private int y;
     private int dx;
     private int dy;
+    private int accSpeed;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
@@ -64,6 +65,9 @@ public class Rocket {
         Random generator = new Random();
         x = generator.nextInt(400)+20;
         y = generator.nextInt(150)+20;
+        dx = 0;
+        dy = 0;
+        accSpeed = 2;
 
     }
 
@@ -81,18 +85,22 @@ public class Rocket {
 
 
     public void move() {
-        if (GameField.keyboardKeyState(KeyEvent.VK_UP))
+        if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
             dy = -1;
-        else if (GameField.keyboardKeyState(KeyEvent.VK_DOWN))
+        }
+        else if (GameField.keyboardKeyState(KeyEvent.VK_DOWN)) {
             dy = 1;
-        else if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT))
+        }
+        else if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
             dx = 1;
-        else if (GameField.keyboardKeyState(KeyEvent.VK_LEFT))
+        }
+        else if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
             dx = -1;
+        }
 
 
         x += dx;
-        y += dy;
+        y += accSpeed + dy;
     }
 
     /**

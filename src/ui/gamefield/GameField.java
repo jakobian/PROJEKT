@@ -18,7 +18,7 @@ import ui.gamefield.Rocket;
  */
 public class GameField extends JPanel implements KeyListener {
 
-    private static boolean[] keyboardState = new boolean[500];
+    private static boolean[] keyboardState = new boolean[525];
     private final long updatePeriod = 50000;
     private long gameTime;
     private long lastTime;
