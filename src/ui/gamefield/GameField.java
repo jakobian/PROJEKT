@@ -2,6 +2,10 @@ package ui.gamefield;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +18,11 @@ import java.util.Properties;
 /**
  * Klasa tworzaca okno rozgrywki
  */
-public class GameField extends JPanel{
+public class GameField extends JPanel implements ActionListener {
+
+    private Rocket rocket;
+    private Timer timer;
+    private final int DELAY = 10;
 
     /**
      * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy, przed skalowaniem
@@ -53,6 +61,15 @@ public class GameField extends JPanel{
     private int[] current_landing_point_y;
 
     /**
+     * Pole przechowujace aktualna szerokosc okna gry
+     */
+    public static int gameWidth;
+    /**
+     * Pole przechowujace aktualna wysokosc okna gry
+     */
+    public static int gameHeight;
+
+    /**
      * Konstruktor klasy GameField
      * @throws IOException
      */
@@ -65,7 +82,10 @@ public class GameField extends JPanel{
 
         createAreaPoints(properties);
         createLandingPoints(properties);
+        initField();
     }
+
+
 
 
     /**
@@ -93,6 +113,15 @@ public class GameField extends JPanel{
             landingPoint_x[i] = Integer.parseInt(properties.getProperty("landingPoint_x_" + Integer.toString(i)));
             landingPoint_y[i] = Integer.parseInt(properties.getProperty("landingPoint_y_" + Integer.toString(i)));
         }
+    }
+
+    private void initField() {
+        addKeyListener(new TAdapter());
+
+        rocket = new Rocket();
+
+        timer = new Timer(DELAY, this);
+        timer.start();
     }
 
     //private Dimension  initSize = new Dimension(500,500);
@@ -123,8 +152,10 @@ public class GameField extends JPanel{
      * Metoda ustawiajaca aktualne rozmieszczenie punktow po zmianie wielkosci okna
      */
     private void setPoints(){
-        double xRatio = getWidth()/(double)500;
-        double yRatio = getHeight()/(double)500;
+        gameWidth = this.getWidth();
+        gameHeight = this.getHeight();
+        double xRatio = gameWidth/(double)500;
+        double yRatio = gameHeight/(double)500;
         int total_number_points = point_x.length;
         current_point_x = new int[total_number_points];
         current_point_y = new int[total_number_points];
@@ -148,14 +179,34 @@ public class GameField extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        //Graphics2D g2d = (Graphics2D) g;
-       // setBorder(BorderFactory.createLineBorder(Color.white));
-
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(rocket.getImg(), rocket.getX(), rocket.getY(), this);
+        // setBorder(BorderFactory.createLineBorder(Color.white));
 
         setPoints();
         drawArea(g, current_point_x, current_point_y);
         g.setColor(Color.red);
         drawLandingArea(g, current_landing_point_x, current_landing_point_y);
+
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        rocket.move();
+        repaint();
+    }
+
+    private class TAdapter extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            rocket.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            rocket.keyPressed(e);
+        }
     }
 }
 
