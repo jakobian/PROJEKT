@@ -27,7 +27,8 @@ public class Rocket {
     private int y;
     private int dx;
     public int dy;
-    private float accSpeed;
+    private double accSpeed;
+    private double pom;
     public int maxLandingSpeed = 5;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
@@ -56,7 +57,7 @@ public class Rocket {
      */
     private void init() {
         resetRocket();
-        accSpeed = 1;
+        accSpeed = 0.5;
     }
 
     /**
@@ -99,7 +100,8 @@ public class Rocket {
 
 
         x += dx;
-        y += accSpeed + dy;
+        pom += accSpeed + dy;
+        y += (int)pom;
     }
 
     public boolean landed;
