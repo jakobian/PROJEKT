@@ -27,7 +27,7 @@ public class GameField extends JPanel {
     /**
      * Pole przechowujace czas odswiezania w milisekundach
      */
-    private final long updatePeriod = 50;
+    private final long updatePeriod = 25;
     //private long gameTime;
     //private long lastTime;
     /**
@@ -119,7 +119,7 @@ public class GameField extends JPanel {
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
-                state = statesOfGame.PLAY;
+                restartGame();
                 break;
 
             case END_GAME:
