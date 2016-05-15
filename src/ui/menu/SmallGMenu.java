@@ -25,8 +25,6 @@ public class SmallGMenu extends JPanel {
      */
     public final static String Pause = "Pause";
 
-
-
     /**
      * Pole inicjujace przycik "Star" okna gry
      */

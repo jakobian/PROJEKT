@@ -106,8 +106,6 @@ public class GameField extends JPanel {
      */
     private double actualLocationY;
 
-
-
     /**
      * Konstruktor klasy GameField
      * @throws IOException
@@ -132,7 +130,6 @@ public class GameField extends JPanel {
                 createAreaPoints(properties);
                 createLandingPoints(properties);
                 gameLoop();
-                checkLanding();
             }
         };
         gameThread.start();
@@ -218,6 +215,9 @@ public class GameField extends JPanel {
         drawLandingArea(g, current_landing_point_x, current_landing_point_y);
 
         rocket.Draw(g);
+
+        checkLanding();
+
 
         //Toolkit.getDefaultToolkit().sync();
     }
