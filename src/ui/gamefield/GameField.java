@@ -127,7 +127,7 @@ public class GameField extends JPanel {
                     state = statesOfGame.START_MENU;
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    state = statesOfGame.PLAY;
+                    restartGame();
                 }
         }
     }
@@ -244,6 +244,11 @@ public class GameField extends JPanel {
     public void updateGame() {
         rocket.move();
         checkLanding();
+    }
+
+    public void restartGame() {
+        rocket.resetRocket();
+        state = statesOfGame.PLAY;
     }
 
     //private Dimension  initSize = new Dimension(500,500);
