@@ -236,6 +236,7 @@ public class GameField extends JPanel {
 
     public void updateGame() {
         rocket.move();
+        checkLanding();
     }
 
     //private Dimension  initSize = new Dimension(500,500);
@@ -372,14 +373,15 @@ public class GameField extends JPanel {
     }
 
     private void checkLanding() {
-        if (rocket.getY()+rocket.getDimH() == current_landing_point_y[1]) {
-            if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - rocket.getDimW() >= current_landing_point_x[1]
-                    && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + rocket.getDimW() <= current_landing_point_x[2]) {
+        setDimension();
+        setPoints();
+        setLocation();
+        if (actualLocationY+actualSizeHeight == current_landing_point_y[1]) {
+            if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - actualSizeWeidht >= current_landing_point_x[1]
+                    && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + actualSizeWeidht <= current_landing_point_x[2]) {
                 if(rocket.dy < rocket.maxLandingSpeed){
                        rocket.landed = true;
                 }
-                System.out.println("wyladowal");
-
             }
         }
     }

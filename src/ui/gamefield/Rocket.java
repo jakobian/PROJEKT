@@ -88,7 +88,7 @@ public class Rocket {
             dy += -1;
         }
         else {
-            dy += accSpeed;
+            dy = accSpeed;
         }
         if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
             dx += 1;
@@ -96,7 +96,6 @@ public class Rocket {
         if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
             dx += -1;
         }
-
 
         x += dx;
         y += accSpeed + dy;
@@ -117,6 +116,8 @@ public class Rocket {
         }
 
     }
+
+
 
 
     /**

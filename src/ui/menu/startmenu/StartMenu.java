@@ -42,6 +42,7 @@ public class StartMenu extends JDialog {
 
     public StartMenu(){
         createPanel();
+        setupEvent();
         drawView();
     }
 
@@ -56,6 +57,10 @@ public class StartMenu extends JDialog {
         panel.add(nametextfield);
         panel.add(okbutton);
     }
+    private void setupEvent(){
+        okbutton.addActionListener(e -> dispose());
+    }
+
 
     /**
      * Metoda wyswitlajaca okno menu pauzy
