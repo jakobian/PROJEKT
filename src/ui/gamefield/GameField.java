@@ -26,7 +26,7 @@ public class GameField extends JPanel {
     private long lastTime;
     private Rocket rocket;
     public enum  statesOfGame{START_MENU, PLAY, END_GAME}
-    public static statesOfGame state;
+    public static statesOfGame state = statesOfGame.START_MENU;
 
     private BufferedImage menuImg;
 
@@ -247,10 +247,13 @@ public class GameField extends JPanel {
         gameWidth = this.getWidth();
         gameHeight = this.getHeight();
 
+
         switch (state) {
             case START_MENU:
-                g.drawImage(menuImg, gameWidth, gameHeight , null);
-                g.drawString("Nasisnij dowolny klawisz aby rozpoczac gre", gameWidth/2, gameHeight/2);
+
+                g.drawImage(menuImg, 0, 0, gameWidth, gameHeight , null);
+                g.setColor(Color.white);
+                g.drawString("Nasisnij dowolny klawisz aby rozpoczac gre", gameWidth/2 - 120, gameHeight/2);
                 break;
 
             case PLAY:
