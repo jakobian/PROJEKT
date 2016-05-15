@@ -104,14 +104,15 @@ public class Rocket {
     public boolean landed;
     public boolean crashed;
 
-    public void Draw(Graphics g)
+    public void Draw(Graphics g, int width, int height)
     {
         if(landed)
         {
-            g.drawImage(img, x, y, null);
+            g.drawString("Brawo, wyladowales!!!", width/2, height/2);
         }
         else if(crashed)
         {
+            g.drawString("Niestety rozbiles sie.", width/2, height/2);
 
         }
 
