@@ -34,7 +34,7 @@ public class GameWindow extends JFrame implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Abs");
+
         gamefield.keyPressed(e);
     }
 

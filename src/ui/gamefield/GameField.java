@@ -30,7 +30,6 @@ public class GameField extends JPanel {
 
     //@Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("Abs");
         keyboardState[e.getKeyCode()] = true;
     }
 
@@ -133,6 +132,7 @@ public class GameField extends JPanel {
                 createAreaPoints(properties);
                 createLandingPoints(properties);
                 gameLoop();
+                checkLanding();
             }
         };
         gameThread.start();
@@ -217,6 +217,8 @@ public class GameField extends JPanel {
         g.setColor(Color.red);
         drawLandingArea(g, current_landing_point_x, current_landing_point_y);
 
+        rocket.Draw(g);
+
         //Toolkit.getDefaultToolkit().sync();
     }
 
@@ -298,6 +300,17 @@ public class GameField extends JPanel {
 
     }
 
+    private void checkLanding() {
+        if (rocket.getY()+rocket.getDimH() == current_landing_point_y[1]) {
+            if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - rocket.getDimW() >= current_landing_point_x[1]
+                    && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + rocket.getDimW() <= current_landing_point_x[2]) {
+                if(rocket.dy < rocket.maxLandingSpeed){
+                       rocket.landed = true;
+                }
+
+            }
+        }
+    }
 /*
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -26,8 +26,9 @@ public class Rocket {
      */
     private int y;
     private int dx;
-    private int dy;
+    public int dy;
     private int accSpeed;
+    public int maxLandingSpeed = 5;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
@@ -51,11 +52,11 @@ public class Rocket {
     }
 
     /**
-     *
+     *Metoda inicjujaca rakiete
      */
     private void init() {
         resetRocket();
-        accSpeed = 2;
+        accSpeed = 1;
     }
 
     /**
@@ -84,32 +85,40 @@ public class Rocket {
 
     public void move() {
         if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
-            dy = -1;
+            dy = -4;
         }
         else {
-            dy = 0;
+            dy = accSpeed;
         }
         if (GameField.keyboardKeyState(KeyEvent.VK_DOWN)) {
             dy = 1;
         }
-        else {
-            dy = 0;
-        }
         if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
-            dx = 1;
-        }
-        else {
-            dx = 0;
+            dx = 2;
         }
         if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
-            dx = -1;
+            dx = -2;
         }
-        else {
-            dx = 0;
-        }
+
 
         x += dx;
         y += accSpeed + dy;
+    }
+
+    public boolean landed;
+    public boolean crashed;
+
+    public void Draw(Graphics g)
+    {
+        if(landed)
+        {
+            g.drawImage(img, x, y, null);
+        }
+        else if(crashed)
+        {
+
+        }
+
     }
 
 
