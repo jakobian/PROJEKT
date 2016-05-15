@@ -132,7 +132,6 @@ public class GameField extends JPanel {
                 createAreaPoints(properties);
                 createLandingPoints(properties);
                 gameLoop();
-                checkLanding();
             }
         };
         gameThread.start();
@@ -301,12 +300,14 @@ public class GameField extends JPanel {
     }
 
     private void checkLanding() {
+        System.out.println("wyladowal");
         if (rocket.getY()+rocket.getDimH() == current_landing_point_y[1]) {
             if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - rocket.getDimW() >= current_landing_point_x[1]
                     && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + rocket.getDimW() <= current_landing_point_x[2]) {
                 if(rocket.dy < rocket.maxLandingSpeed){
                        rocket.landed = true;
                 }
+                System.out.println("wyladowal");
 
             }
         }
