@@ -272,7 +272,7 @@ public class GameField extends JPanel {
                 g.setColor(Color.red);
                 drawLandingArea(g, current_landing_point_x, current_landing_point_y);
 
-                rocket.Draw(g,gameWidth,gameHeight);
+
                 break;
 
             case END_GAME:
@@ -286,18 +286,6 @@ public class GameField extends JPanel {
 
                 rocket.Draw(g,gameWidth,gameHeight);
 
-                if (rocket.landed) {
-                    g.setColor(Color.blue);
-                    g.drawString("Brawo, wyladowales!!!", gameWidth/2 - 20, gameHeight/2);
-                    g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", gameWidth/2 - 60, gameHeight/2 + 20);
-                    g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", gameWidth/2 - 120, gameHeight/2 + 40);
-                }
-                else {
-                    g.setColor(Color.blue);
-                    g.drawString("Niestety rozbiles sie.", gameWidth/2 - 20, gameHeight/2);
-                    g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", gameWidth/2 - 60, gameHeight/2 + 20);
-                    g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", gameWidth/2 - 120, gameHeight/2 + 40);
-                }
         }
 
     }
