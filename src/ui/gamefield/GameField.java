@@ -119,7 +119,7 @@ public class GameField extends JPanel {
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
-                state = statesOfGame.PLAY;
+                restartGame();
                 break;
 
             case END_GAME:
