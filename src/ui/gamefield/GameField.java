@@ -390,7 +390,7 @@ public class GameField extends JPanel {
             if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - actualSizeWeidht >= current_landing_point_x[1]
                     && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + actualSizeWeidht <= current_landing_point_x[2]) {
                 if(rocket.dy < rocket.maxLandingSpeed){
-                       rocket.landed = true;
+                    rocket.landed = true;
                     state = statesOfGame.END_GAME;
                 }
             }
