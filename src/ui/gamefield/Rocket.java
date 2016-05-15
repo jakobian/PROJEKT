@@ -28,7 +28,7 @@ public class Rocket {
     private int dx;
     public int dy;
     private int accSpeed;
-    public int maxLandingSpeed = 5;
+    public int maxLandingSpeed = 3;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
@@ -112,7 +112,7 @@ public class Rocket {
             g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width/2 - 60, height/2 + 20);
             g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width/2 - 120, height/2 + 40);
         }
-        else {
+        if (crashed){
             g.setColor(Color.blue);
             g.drawString("Niestety rozbiles sie.", width/2 - 20, height/2);
             g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width/2 - 60, height/2 + 20);
