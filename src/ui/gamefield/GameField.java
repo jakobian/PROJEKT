@@ -1,8 +1,10 @@
 package ui.gamefield;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,6 +25,11 @@ public class GameField extends JPanel {
     private long gameTime;
     private long lastTime;
     private Rocket rocket;
+    public enum  statesOfGame{START_MENU, PLAY, END_GAME}
+    public static statesOfGame state;
+
+    private BufferedImage menuImg;
+
 
     public static boolean keyboardKeyState(int key) {
         return keyboardState[key];
@@ -36,8 +43,24 @@ public class GameField extends JPanel {
     //@Override
     public void keyReleased(KeyEvent e) {
         keyboardState[e.getKeyCode()] = false;
-        //keyReleasedFramework(e);
     }
+
+    public void keyReleasedGame(KeyEvent e) {
+        switch (state) {
+            case START_MENU:
+                state = statesOfGame.PLAY;
+                break;
+
+            case END_GAME:
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    state = statesOfGame.START_MENU;
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    state = statesOfGame.PLAY;
+                }
+        }
+    }
+
 
 
     /*@Override
@@ -105,6 +128,7 @@ public class GameField extends JPanel {
      * Pole przechowujace aktualna wspolrzedna Y pozycji statku
      */
     private double actualLocationY;
+
 
     /**
      * Konstruktor klasy GameField
@@ -177,7 +201,18 @@ public class GameField extends JPanel {
         while (true) {
             beginTime = System.currentTimeMillis();
 
-            updateGame();
+            switch (state) {
+                case START_MENU:
+                    loadMenu();
+                    break;
+
+                case PLAY:
+                    updateGame();
+                    break;
+
+                case END_GAME:
+                    break;
+            }
 
             repaint();
 
@@ -187,6 +222,15 @@ public class GameField extends JPanel {
             try {
                 Thread.sleep(timeLeft);
             } catch (InterruptedException ex) { }
+        }
+    }
+
+    private void loadMenu() {
+        File imageFile = new File("../PROJEKT/images/makieta.jpg");
+        try {
+            menuImg = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -200,26 +244,50 @@ public class GameField extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //Graphics2D g2d = (Graphics2D) g;
-
         gameWidth = this.getWidth();
         gameHeight = this.getHeight();
 
-        setDimension();
-        setLocation();
-        drawRocket(g, (int)actualLocationX, (int)actualLocationY ,(int)actualSizeWeidht,(int)actualSizeHeight);
-        //setBorder(BorderFactory.createLineBorder(Color.white));
+        switch (state) {
+            case START_MENU:
+                g.drawImage(menuImg, gameWidth, gameHeight , null);
+                g.drawString("Nasisnij dowolny klawisz aby rozpoczac gre", gameWidth/2, gameHeight/2);
+                break;
 
-        setPoints();
-        drawArea(g, current_point_x, current_point_y);
-        g.setColor(Color.red);
-        drawLandingArea(g, current_landing_point_x, current_landing_point_y);
+            case PLAY:
+                setDimension();
+                setLocation();
+                drawRocket(g, (int)actualLocationX, (int)actualLocationY ,(int)actualSizeWeidht,(int)actualSizeHeight);
+                //setBorder(BorderFactory.createLineBorder(Color.white));
 
-        rocket.Draw(g);
+                setPoints();
+                drawArea(g, current_point_x, current_point_y);
+                g.setColor(Color.red);
+                drawLandingArea(g, current_landing_point_x, current_landing_point_y);
 
-        checkLanding();
+                rocket.Draw(g);
+                break;
 
+            case END_GAME:
+                setDimension();
+                setLocation();
+                drawRocket(g, (int)actualLocationX, (int)actualLocationY ,(int)actualSizeWeidht,(int)actualSizeHeight);
+                //setBorder(BorderFactory.createLineBorder(Color.white));
 
-        //Toolkit.getDefaultToolkit().sync();
+                setPoints();
+                drawArea(g, current_point_x, current_point_y);
+                g.setColor(Color.red);
+                drawLandingArea(g, current_landing_point_x, current_landing_point_y);
+
+                rocket.Draw(g);
+
+                if (rocket.landed) {
+                    g.drawString("Brawo, wyladowales!!!", gameWidth/2, gameHeight/2);
+                }
+                else {
+                    g.drawString("Niestety rozbiles sie.", gameWidth/2, gameHeight/2);
+                }
+        }
+
     }
 
     /**
@@ -301,7 +369,6 @@ public class GameField extends JPanel {
     }
 
     private void checkLanding() {
-        System.out.println("wyladowal");
         if (rocket.getY()+rocket.getDimH() == current_landing_point_y[1]) {
             if ((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - rocket.getDimW() >= current_landing_point_x[1]
                     && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + rocket.getDimW() <= current_landing_point_x[2]) {

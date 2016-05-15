@@ -34,19 +34,19 @@ public class GameWindow extends JFrame implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-
         gamefield.keyPressed(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         gamefield.keyReleased(e);
-        //keyReleasedFramework(e);
+        gamefield.keyReleasedGame(e);
     }
 
     @Override
     public void keyTyped (KeyEvent e) {
     }
+
 
     /**Konstruktor glownego okna gry*/
     public GameWindow() throws IOException{
