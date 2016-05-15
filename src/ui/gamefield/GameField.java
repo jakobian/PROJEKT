@@ -279,8 +279,6 @@ public class GameField extends JPanel {
                 setDimension();
                 setLocation();
                 drawRocket(g, (int)actualLocationX, (int)actualLocationY ,(int)actualSizeWeidht,(int)actualSizeHeight);
-                //setBorder(BorderFactory.createLineBorder(Color.white));
-
                 setPoints();
                 drawArea(g, current_point_x, current_point_y);
                 g.setColor(Color.red);
