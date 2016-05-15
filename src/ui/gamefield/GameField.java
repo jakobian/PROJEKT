@@ -26,7 +26,7 @@ public class GameField extends JPanel {
     private long lastTime;
     private Rocket rocket;
     public enum  statesOfGame{START_MENU, PLAY, END_GAME}
-    public static statesOfGame state = statesOfGame.START_MENU;
+    public static statesOfGame state; // = statesOfGame.END_GAME;
 
     private BufferedImage menuImg;
 
@@ -141,6 +141,8 @@ public class GameField extends JPanel {
         properties.load(fileInput);
         fileInput.close();
 
+        state = statesOfGame.START_MENU;
+
         //this.setFocusable(true);
         //this.requestFocusInWindow();
 
@@ -154,6 +156,8 @@ public class GameField extends JPanel {
                 createAreaPoints(properties);
                 createLandingPoints(properties);
                 gameLoop();
+
+                state = statesOfGame.PLAY;
             }
         };
         gameThread.start();
@@ -285,10 +289,16 @@ public class GameField extends JPanel {
                 rocket.Draw(g);
 
                 if (rocket.landed) {
-                    g.drawString("Brawo, wyladowales!!!", gameWidth/2, gameHeight/2);
+                    g.setColor(Color.blue);
+                    g.drawString("Brawo, wyladowales!!!", gameWidth/2 - 20, gameHeight/2);
+                    g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", gameWidth/2 - 60, gameHeight/2 + 20);
+                    g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", gameWidth/2 - 120, gameHeight/2 + 40);
                 }
                 else {
-                    g.drawString("Niestety rozbiles sie.", gameWidth/2, gameHeight/2);
+                    g.setColor(Color.blue);
+                    g.drawString("Niestety rozbiles sie.", gameWidth/2 - 20, gameHeight/2);
+                    g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", gameWidth/2 - 60, gameHeight/2 + 20);
+                    g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", gameWidth/2 - 120, gameHeight/2 + 40);
                 }
         }
 
@@ -381,6 +391,7 @@ public class GameField extends JPanel {
                     && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + actualSizeWeidht <= current_landing_point_x[2]) {
                 if(rocket.dy < rocket.maxLandingSpeed){
                        rocket.landed = true;
+                    state = statesOfGame.END_GAME;
                 }
             }
         }
