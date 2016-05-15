@@ -20,58 +20,32 @@ import ui.gamefield.Rocket;
  */
 public class GameField extends JPanel {
 
+    /**
+     * Pole przechowujace tablice stanow klawiszy klawiatury
+     */
     private static boolean[] keyboardState = new boolean[525];
+    /**
+     * Pole przechowujace czas odswiezania w milisekundach
+     */
     private final long updatePeriod = 50;
-    private long gameTime;
-    private long lastTime;
+    //private long gameTime;
+    //private long lastTime;
+    /**
+     * Inicjacja obiektu rakiety
+     */
     private Rocket rocket;
+    /**
+     * Tablica mozliwych stanow gry
+     */
     public enum  statesOfGame{START_MENU, PLAY, END_GAME}
-    public static statesOfGame state; // = statesOfGame.END_GAME;
-
+    /**
+     * Pole przechowujace aktualny stan gry
+     */
+    public static statesOfGame state;
+    /**
+     * Pole przechowujace obraz dla stanu gry state = START_MENU
+     */
     private BufferedImage menuImg;
-
-
-    public static boolean keyboardKeyState(int key) {
-        return keyboardState[key];
-    }
-
-    //@Override
-    public void keyPressed(KeyEvent e) {
-        keyboardState[e.getKeyCode()] = true;
-    }
-
-    //@Override
-    public void keyReleased(KeyEvent e) {
-        keyboardState[e.getKeyCode()] = false;
-    }
-
-    public void keyReleasedGame(KeyEvent e) {
-        switch (state) {
-            case START_MENU:
-                state = statesOfGame.PLAY;
-                break;
-
-            case END_GAME:
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    state = statesOfGame.START_MENU;
-                }
-                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    state = statesOfGame.PLAY;
-                }
-        }
-    }
-
-
-
-    /*@Override
-    public void keyTyped(KeyEvent e) {
-
-    }*/
-
-    //private Timer timer;
-    //private final int DELAY = 10;
-
-
     /**
      * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy, przed skalowaniem
      */
@@ -128,6 +102,35 @@ public class GameField extends JPanel {
      * Pole przechowujace aktualna wspolrzedna Y pozycji statku
      */
     private double actualLocationY;
+
+
+    public static boolean keyboardKeyState(int key) {
+        return keyboardState[key];
+    }
+
+   public void keyPressed(KeyEvent e) {
+        keyboardState[e.getKeyCode()] = true;
+    }
+    
+    public void keyReleased(KeyEvent e) {
+        keyboardState[e.getKeyCode()] = false;
+    }
+
+    public void keyReleasedGame(KeyEvent e) {
+        switch (state) {
+            case START_MENU:
+                state = statesOfGame.PLAY;
+                break;
+
+            case END_GAME:
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    state = statesOfGame.START_MENU;
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    state = statesOfGame.PLAY;
+                }
+        }
+    }
 
 
     /**
