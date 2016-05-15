@@ -2,6 +2,8 @@ package ui.gamewindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +16,9 @@ import ui.menu.SmallGMenu;
  * Klasa tworzaca okno gry
  */
 
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame implements KeyListener{
+
+
 
     /** Inicjacja obiektu menu */
     SmallGMenu smallgmenu;
@@ -28,6 +32,22 @@ public class GameWindow extends JFrame {
     /** Pole przechowujace wysokosc okna gry */
     private int height;
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Abs");
+        gamefield.keyPressed(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        gamefield.keyReleased(e);
+        //keyReleasedFramework(e);
+    }
+
+    @Override
+    public void keyTyped (KeyEvent e) {
+    }
+
     /**Konstruktor glownego okna gry*/
     public GameWindow() throws IOException{
         File file = new File("resources/window.properties");
@@ -35,6 +55,11 @@ public class GameWindow extends JFrame {
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+
+        addKeyListener(this);
 
         initPanels();
         opsGameWindow();
@@ -80,6 +105,7 @@ public class GameWindow extends JFrame {
         //gamefield.setMaximumSize(new Dimension(width,height));
 
         gamefield.setMinimumSize(new Dimension(width,height));
+        gamefield.setFocusable(true);
         //gamefield.setDimension(width, height);
     }
 

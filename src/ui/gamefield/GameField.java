@@ -16,7 +16,7 @@ import ui.gamefield.Rocket;
 /**
  * Klasa tworzaca okno rozgrywki
  */
-public class GameField extends JPanel implements KeyListener {
+public class GameField extends JPanel {
 
     private static boolean[] keyboardState = new boolean[525];
     private final long updatePeriod = 50;
@@ -28,24 +28,21 @@ public class GameField extends JPanel implements KeyListener {
         return keyboardState[key];
     }
 
-    @Override
+    //@Override
     public void keyPressed(KeyEvent e) {
         System.out.println("Abs");
         keyboardState[e.getKeyCode()] = true;
     }
 
-    @Override
+    //@Override
     public void keyReleased(KeyEvent e) {
         keyboardState[e.getKeyCode()] = false;
         //keyReleasedFramework(e);
     }
 
-    @Override
-    public void keyTyped (KeyEvent e) {
-    }
 
     /*@Override
-    public void keyReleasedFramework(KeyEvent e) {
+    public void keyTyped(KeyEvent e) {
 
     }*/
 
@@ -123,7 +120,11 @@ public class GameField extends JPanel implements KeyListener {
         properties.load(fileInput);
         fileInput.close();
 
-        addKeyListener(this);
+        //this.setFocusable(true);
+        //this.requestFocusInWindow();
+
+        //addKeyListener(this);
+
 
         Thread gameThread = new Thread() {
             @Override

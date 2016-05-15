@@ -10,7 +10,7 @@ import java.awt.*;
 
 
 /** Klasa menu okna gry */
-public class SmallGMenu extends JPanel  {
+public class SmallGMenu extends JPanel {
 
     /**
      * Pola przechowujace nazwe przycisku "Start" wyswietlanego w menu okna gry
@@ -72,9 +72,10 @@ public class SmallGMenu extends JPanel  {
      * Metoda wywolujaca akcje po nacisnieciu danego przycisku
      */
     private void setupEvent(){
+        startbutton.addActionListener(e -> initStart());
         menubutton.addActionListener(e -> initMenu());
         pausebutton.addActionListener(e -> initPause());
-        startbutton.addActionListener(e -> initStart());
+
     }
 
     /**
