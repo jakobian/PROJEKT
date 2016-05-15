@@ -1,6 +1,5 @@
 package ui.gamefield;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -56,6 +55,7 @@ public class Rocket {
      */
     private void init() {
         resetRocket();
+        accSpeed = 2;
     }
 
     /**
@@ -67,8 +67,6 @@ public class Rocket {
         y = generator.nextInt(150)+20;
         dx = 0;
         dy = 0;
-        accSpeed = 2;
-
     }
 
     /**
@@ -88,20 +86,32 @@ public class Rocket {
         if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
             dy = -1;
         }
-        else if (GameField.keyboardKeyState(KeyEvent.VK_DOWN)) {
+        else {
+            dy = 0;
+        }
+        if (GameField.keyboardKeyState(KeyEvent.VK_DOWN)) {
             dy = 1;
         }
-        else if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
+        else {
+            dy = 0;
+        }
+        if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
             dx = 1;
         }
-        else if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
+        else {
+            dx = 0;
+        }
+        if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
             dx = -1;
         }
-
+        else {
+            dx = 0;
+        }
 
         x += dx;
         y += accSpeed + dy;
     }
+
 
     /**
      * Metoda zwaracajaca wysokosc statku

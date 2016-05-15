@@ -19,7 +19,7 @@ import ui.gamefield.Rocket;
 public class GameField extends JPanel implements KeyListener {
 
     private static boolean[] keyboardState = new boolean[525];
-    private final long updatePeriod = 50000;
+    private final long updatePeriod = 50;
     private long gameTime;
     private long lastTime;
     private Rocket rocket;
@@ -30,6 +30,7 @@ public class GameField extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        System.out.println("Abs");
         keyboardState[e.getKeyCode()] = true;
     }
 
@@ -40,7 +41,8 @@ public class GameField extends JPanel implements KeyListener {
     }
 
     @Override
-    public void keyTyped (KeyEvent e) {}
+    public void keyTyped (KeyEvent e) {
+    }
 
     /*@Override
     public void keyReleasedFramework(KeyEvent e) {
@@ -120,6 +122,8 @@ public class GameField extends JPanel implements KeyListener {
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+
+        addKeyListener(this);
 
         Thread gameThread = new Thread() {
             @Override

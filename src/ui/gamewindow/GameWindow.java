@@ -81,8 +81,6 @@ public class GameWindow extends JFrame {
 
         gamefield.setMinimumSize(new Dimension(width,height));
         //gamefield.setDimension(width, height);
-
-        gamefield.addKeyListener(gamefield);
     }
 
     /**
@@ -103,7 +101,6 @@ public class GameWindow extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
         add(smallgmenu);
         add(gamefield);
-
 
         /**ustawia okno na srodku ekranu*/
         setLocationRelativeTo(null);
