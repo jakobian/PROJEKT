@@ -132,6 +132,7 @@ public class GameField extends JPanel {
                 createAreaPoints(properties);
                 createLandingPoints(properties);
                 gameLoop();
+                checkLanding();
             }
         };
         gameThread.start();
