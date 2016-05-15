@@ -26,7 +26,7 @@ public class Rocket {
      */
     private int y;
     private int dx;
-    public int dy;
+    public double dy;
     private double accSpeed;
     private double pom;
     public int maxLandingSpeed = 5;
@@ -57,7 +57,7 @@ public class Rocket {
      */
     private void init() {
         resetRocket();
-        accSpeed = 0.5;
+        accSpeed = 0.02;
     }
 
     /**
@@ -86,7 +86,7 @@ public class Rocket {
 
     public void move() {
         if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
-            dy += -1;
+            dy += -0.03;
         }
         else {
             dy += accSpeed;
