@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 
 /**
- * Created by Michał on 2016-05-13.
+ * Klasa implementujaca obiekt rakiety
  */
 public class Rocket {
 
@@ -86,16 +86,16 @@ public class Rocket {
      * Metoda opisujaca ruch statku
      */
     public void move() {
-        if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_W)) {
             dy += -1;
         }
         else {
             dy = accSpeed;
         }
-        if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_D)) {
             dx += 1;
         }
-        if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_A)) {
             dx += -1;
         }
 

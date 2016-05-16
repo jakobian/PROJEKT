@@ -19,18 +19,5 @@ public class Main {
                 gmw.setVisible(true);
             }
         });
-
-        /*EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                GameWindow gmw = null;
-                try {
-                    gmw = new GameWindow();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                gmw.setVisible(true);
-            }
-        });*/
     }
 }
