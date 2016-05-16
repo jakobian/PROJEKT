@@ -103,19 +103,35 @@ public class GameField extends JPanel {
      */
     private double actualLocationY;
 
-
+    /**
+     * Metoda
+     * @param key
+     * @return
+     */
     public static boolean keyboardKeyState(int key) {
         return keyboardState[key];
     }
 
+    /**
+     * Metoda przypsiujaca wartosc logiczna true gdy klawisz zostaje wcisniety
+     * @param e
+     */
    public void keyPressed(KeyEvent e) {
         keyboardState[e.getKeyCode()] = true;
     }
 
+    /**
+     * Meotda przypisujaca wartosc false w momencie puszczenia klawisza
+     * @param e
+     */
     public void keyReleased(KeyEvent e) {
         keyboardState[e.getKeyCode()] = false;
     }
 
+    /**
+     * Metoda obslugujaca klawisze
+     * @param e
+     */
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
@@ -193,6 +209,9 @@ public class GameField extends JPanel {
         }
     }
 
+    /**
+     * Meotda inicjujaca rakiete
+     */
     private void initField() {
         //addKeyListener(new TAdapter());
 
@@ -202,6 +221,9 @@ public class GameField extends JPanel {
         //timer.start();
     }
 
+    /**
+     * Metoda petli gry
+     */
     private void gameLoop() {
         long beginTime, timeTaken, timeLeft;
 
@@ -225,13 +247,16 @@ public class GameField extends JPanel {
 
             timeTaken = System.currentTimeMillis() - beginTime;
             timeLeft = updatePeriod - timeTaken;
-            if (timeLeft < 10) timeLeft = 10;
+            if (timeLeft < 5) timeLeft = 5;
             try {
                 Thread.sleep(timeLeft);
             } catch (InterruptedException ex) { }
         }
     }
 
+    /**
+     * Metoda ladujaca menu gry
+     */
     private void loadMenu() {
         File imageFile = new File("../PROJEKT/images/makieta.jpg");
         try {
@@ -241,11 +266,17 @@ public class GameField extends JPanel {
         }
     }
 
+    /**
+     * Metoda odswiezania gry
+     */
     public void updateGame() {
         rocket.move();
         checkLanding();
     }
 
+    /**
+     * Metoda restarutujaca gre podczas przejscia z jednego stanu do innego
+     */
     public void restartGame() {
         rocket.resetRocket();
         state = statesOfGame.PLAY;
@@ -376,13 +407,15 @@ public class GameField extends JPanel {
 
     }
 
+    /**
+     * Metoda sprawdzajaca pozycje statku wzgledem ladowiska
+     */
     private void checkLanding() {
         setDimension();
         setPoints();
         setLocation();
-        if ((int)actualLocationY+(int)actualSizeHeight == current_landing_point_y[1]) {
-            if (((current_landing_point_x[1] + current_landing_point_x[2]) / 2 - (int)actualSizeWeidht >= current_landing_point_x[1]
-                    && (current_landing_point_x[1] + current_landing_point_x[2]) / 2 + (int)actualSizeWeidht <= current_landing_point_x[2]))
+        if (((int)actualLocationY+(int)actualSizeHeight >= current_landing_point_y[1]) && (int)actualLocationY+(int)actualSizeHeight <= current_landing_point_y[1]+2){
+           if((int)actualLocationX > current_landing_point_x[1] && (int)actualLocationX+(int)actualSizeWeidht<current_landing_point_x[2])
             {
                 if(rocket.dy < rocket.maxLandingSpeed){
                     rocket.landed = true;

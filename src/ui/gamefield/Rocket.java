@@ -28,7 +28,7 @@ public class Rocket {
     private int dx;
     public int dy;
     private int accSpeed;
-    public int maxLandingSpeed = 3;
+    public int maxLandingSpeed = 2;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
@@ -82,7 +82,9 @@ public class Rocket {
         }
     }
 
-
+    /**
+     * Metoda opisujaca ruch statku
+     */
     public void move() {
         if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
             dy += -1;
@@ -101,9 +103,21 @@ public class Rocket {
         y += accSpeed + dy;
     }
 
+    /**
+     * Zmienna logiczna ladowania
+     */
     public boolean landed;
+    /**
+     * Zmienna logiczna wypadku statku
+     */
     public boolean crashed;
 
+    /**
+     * Meotda rysujaca reakcje na ladowanie/katastrofe statku
+     * @param g
+     * @param width
+     * @param height
+     */
     public void Draw(Graphics g, int width, int height)
     {
         if (landed) {
