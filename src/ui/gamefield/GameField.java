@@ -414,6 +414,8 @@ public class GameField extends JPanel {
         setDimension();
         setPoints();
         setLocation();
+
+
         if (((int)actualLocationY+(int)actualSizeHeight >= current_landing_point_y[1]) && (int)actualLocationY+(int)actualSizeHeight <= current_landing_point_y[1]+2){
            if((int)actualLocationX > current_landing_point_x[1] && (int)actualLocationX+(int)actualSizeWeidht<current_landing_point_x[2])
             {
