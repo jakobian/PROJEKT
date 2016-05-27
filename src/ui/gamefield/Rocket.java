@@ -41,6 +41,22 @@ public class Rocket {
      * Pole przechowujace szerokosc obrazka statku
      */
     public int w;
+    /**
+     * Pole przechowujace aktualna dlugosc statku
+     */
+    private double actualSizeWidth;
+    /**
+     * Pole przechowujace aktualna szerokosc statku
+     */
+    private double actualSizeHeight;
+    /**
+     * Pole przechowujace aktualna wspolrzedna X pozycji statku
+     */
+    private double actualLocationX;
+    /**
+     * Pole przechowujace aktualna wspolrzedna Y pozycji statku
+     */
+    private double actualLocationY;
 
     /**
      * Konstruktor klasy Rocket
@@ -86,16 +102,16 @@ public class Rocket {
      * Metoda opisujaca ruch statku
      */
     public void move() {
-        if (GameField.keyboardKeyState(KeyEvent.VK_W)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
             dy += -1;
         }
         else {
             dy = accSpeed;
         }
-        if (GameField.keyboardKeyState(KeyEvent.VK_D)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
             dx += 1;
         }
-        if (GameField.keyboardKeyState(KeyEvent.VK_A)) {
+        if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
             dx += -1;
         }
 
@@ -135,9 +151,6 @@ public class Rocket {
             }
         }
     }
-
-
-
 
     /**
      * Metoda zwaracajaca wysokosc statku
@@ -182,4 +195,39 @@ public class Rocket {
     public int getY() {
         return y;
     }
+
+    /**
+     * Metoda pobierajaca i ustawiajaca akturalny rozmiar statku skalowanego na podstawie obecnego rozmiaru okna
+     */
+    public void setDimension(int gameWidth, int gameHeight){
+        double xRatio = gameWidth/(double)500;
+        double yRatio = gameHeight/(double)500;
+
+        actualSizeWidth = xRatio*getDimW();
+        actualSizeHeight = yRatio*getDimH();
+    }
+
+    /**
+     * Metoda ustawiająca aktualna pozycje statku dopasowujac ja do zmiany rozmiaru okna
+     */
+    public void setLocation(int gameWidth, int gameHeight){
+        double xRatio = gameWidth/(double)500;
+        double yRatio = gameHeight/(double)500;
+
+        actualLocationX = xRatio*(double)getX();
+        actualLocationY = yRatio*(double)getY();
+    }
+
+    /**
+     * Metoda rysujaca statek powietrzny
+     * @param g
+     */
+    public void drawRocket(Graphics g){
+        /*
+        Pytanie czy bedzie dzialac z nullem jako osatnim parametrem ponizej
+         */
+        g.drawImage(getImg(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
+    }
+
 }
+

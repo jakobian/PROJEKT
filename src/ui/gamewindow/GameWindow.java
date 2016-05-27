@@ -24,7 +24,7 @@ public class GameWindow extends JFrame implements KeyListener{
     SmallGMenu smallgmenu;
     /** Inicjacja obiektu pola gry */
     GameField gamefield;
-
+    /** Inicjacja obiektu menu głownego */
     MainMenu mainmenu;
 
     /** Pole przechowujace szerokosc okna gry */
