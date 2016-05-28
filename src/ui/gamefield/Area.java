@@ -1,6 +1,9 @@
 package ui.gamefield;
 
+import com.sun.javafx.geom.*;
+
 import java.awt.*;
+import java.awt.Shape;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +12,7 @@ import java.util.Properties;
 /**
  * Created by Jakub on 25.05.2016.
  */
-public class Area {
+public class Area extends Polygon{
     /**
      * Pole przechowujace tablice wspolrzednych X potrzebnych do tworzenia planszy, przed skalowaniem
      */
@@ -50,7 +53,9 @@ public class Area {
         for (int i = 0; i < total_number_points; ++i) {
             current_point_x[i] = (int)(xRatio*point_x[i]);
             current_point_y[i] = (int)(yRatio*point_y[i]);
+            addPoint(current_point_x[i],current_point_y[i]);
         }
+
     }
 
     /**

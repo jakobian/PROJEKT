@@ -1,5 +1,7 @@
 package ui.gamefield;
 
+import org.omg.PortableServer.POAHelper;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -15,7 +17,7 @@ import javax.swing.JPanel;
 /**
  * Klasa implementujaca obiekt rakiety
  */
-public class Rocket {
+public class Rocket extends Polygon {
 
     /**
      * Pole przechowujace wspolrzedna x pozycji statku
@@ -33,6 +35,10 @@ public class Rocket {
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
     public BufferedImage img;
+    /**
+     * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
+     */
+    public BufferedImage exp;
     /**
      * Pole przechowujace wysokosc obrazka statku
      */
@@ -52,11 +58,11 @@ public class Rocket {
     /**
      * Pole przechowujace aktualna wspolrzedna X pozycji statku
      */
-    private double actualLocationX;
+    public double actualLocationX;
     /**
      * Pole przechowujace aktualna wspolrzedna Y pozycji statku
      */
-    private double actualLocationY;
+    public double actualLocationY;
 
     /**
      * Konstruktor klasy Rocket
@@ -91,8 +97,10 @@ public class Rocket {
      */
     private void load() {
         File imageFile = new File("../PROJEKT/images/space_ship.png");
+        File imageFile2 = new File("../PROJEKT/images/wybuch.png");
         try {
             img = ImageIO.read(imageFile);
+            exp = ImageIO.read(imageFile2);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -142,21 +150,19 @@ public class Rocket {
             g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width/2 - 60, height/2 + 20);
             g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width/2 - 120, height/2 + 40);
         }
-        else {
-            if (crashed) {
+        else if (crashed) {
                 g.setColor(Color.blue);
                 g.drawString("Niestety rozbiles sie.", width / 2 - 20, height / 2);
                 g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width / 2 - 60, height / 2 + 20);
                 g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width / 2 - 120, height / 2 + 40);
             }
-        }
     }
 
     /**
      * Metoda zwaracajaca wysokosc statku
      * @return
      */
-    public int getDimH(){
+    public double getDimH(){
         return h;
     }
 
@@ -164,8 +170,22 @@ public class Rocket {
      * Metoda zwracajaca szerkosc statku
      * @return
      */
-    public int getDimW(){
+    public double getDimW(){
         return w;
+    }
+
+    public double getActualLocationX(){
+        return actualLocationX;
+    }
+    public double getActualLocationY(){
+        return actualLocationY;
+    }
+
+    public double getActualSizeWidth(){
+        return actualSizeWidth;
+    }
+    public double getActualSizeHeight(){
+        return actualSizeHeight;
     }
 
     /**
@@ -180,11 +200,13 @@ public class Rocket {
         return img;
     }
 
+    public Image getExplosion() {return exp;}
+
     /**
      * Metoda zwracajaca wspolrzedna x pozycji statku
      * @return
      */
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -192,7 +214,7 @@ public class Rocket {
      * Metoda zwracajaca wspolrzedna y pozycji statku
      * @return
      */
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -205,6 +227,7 @@ public class Rocket {
 
         actualSizeWidth = xRatio*getDimW();
         actualSizeHeight = yRatio*getDimH();
+        addPoint((int)actualSizeWidth, (int)actualSizeHeight);
     }
 
     /**
@@ -214,19 +237,21 @@ public class Rocket {
         double xRatio = gameWidth/(double)500;
         double yRatio = gameHeight/(double)500;
 
-        actualLocationX = xRatio*(double)getX();
-        actualLocationY = yRatio*(double)getY();
+        actualLocationX = xRatio*getX();
+        actualLocationY = yRatio*getY();
     }
+
+
 
     /**
      * Metoda rysujaca statek powietrzny
      * @param g
      */
     public void drawRocket(Graphics g){
-        /*
-        Pytanie czy bedzie dzialac z nullem jako osatnim parametrem ponizej
-         */
         g.drawImage(getImg(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
+    }
+    public void drawExplosion(Graphics g){
+        g.drawImage(getExplosion(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
     }
 
 }

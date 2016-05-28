@@ -204,6 +204,36 @@ public class GameField extends JPanel {
 
     //private Dimension  initSize = new Dimension(500,500);
 
+    /**
+     * Metoda wykrywajaca kolizje miedzy statkiem a podlozem, ladowiskiem
+     */
+    private void checkLanding() {
+        rocket.setDimension(gameWidth,gameHeight);
+        rocket.setLocation(gameWidth,gameHeight);
+        landingArea.setPoints(gameWidth,gameHeight);
+        area.setPoints(gameWidth,gameHeight);
+
+
+
+        if((landingArea.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
+                rocket.getActualSizeWidth(), rocket.getActualSizeHeight()))
+                && (rocket.getActualLocationX()> landingArea.current_landing_point_x[1] &&
+                    rocket.actualLocationX+ rocket.getActualSizeWidth()<landingArea.current_landing_point_x[2]))
+        {
+            rocket.landed = true;
+            rocket.crashed = false;
+            state = statesOfGame.END_GAME;
+        }
+
+        else if(area.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
+                rocket.getActualSizeWidth(), rocket.getActualSizeHeight()))
+        {
+            rocket.crashed = true;
+            rocket.landed = false;
+            state = statesOfGame.END_GAME;
+        }
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -234,7 +264,13 @@ public class GameField extends JPanel {
             case END_GAME:
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
-                rocket.drawRocket(g);
+
+                if(rocket.landed) {
+                    rocket.drawRocket(g);
+                }
+                else if (rocket.crashed){
+                    rocket.drawExplosion(g);
+                }
 
                 area.setPoints(gameWidth,gameHeight);
                 area.drawArea(g);
@@ -243,26 +279,5 @@ public class GameField extends JPanel {
                 rocket.Draw(g,gameWidth,gameHeight);
 
         }
-
-    }
-
-    /**
-     * Metoda sprawdzajaca pozycje statku wzgledem ladowiska
-     */
-    private void checkLanding() {
-        rocket.setDimension(gameWidth,gameHeight);
-        rocket.setLocation(gameWidth,gameHeight);
-        landingArea.setPoints(gameWidth,gameHeight);
-        area.setPoints(gameWidth,gameHeight);
-
-
-                /*if(){
-                    rocket.landed = true;
-                    state = statesOfGame.END_GAME;
-                }
-                else
-                    rocket.crashed = true;
-                    state = statesOfGame.END_GAME;
-            */
     }
 }

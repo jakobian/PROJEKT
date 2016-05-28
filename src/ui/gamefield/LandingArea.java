@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by Jakub on 25.05.2016.
  */
-public class LandingArea {
+public class LandingArea extends Polygon {
 
     public LandingArea() throws IOException {
         File file = new File("resources/area.properties");
@@ -32,11 +32,11 @@ public class LandingArea {
     /**
      * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
      */
-    private int[] current_landing_point_x;
+    public int[] current_landing_point_x;
     /**
      * Pole przechowujace aktualna tablice wspolrzednych X potrzebnych do tworzenia ladowsika po skalowaniu
      */
-    private int[] current_landing_point_y;
+    public int[] current_landing_point_y;
 
 
     /**
@@ -52,6 +52,7 @@ public class LandingArea {
         for (int i = 0; i < total_number_points; ++i) {
             current_landing_point_x[i] = (int)(xRatio*landingPoint_x[i]);
             current_landing_point_y[i] = (int)(yRatio*landingPoint_y[i]);
+            addPoint(current_landing_point_x[i],current_landing_point_y[i]);
         }
     }
 
