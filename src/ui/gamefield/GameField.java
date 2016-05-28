@@ -202,8 +202,6 @@ public class GameField extends JPanel {
         state = statesOfGame.PLAY;
     }
 
-    //private Dimension  initSize = new Dimension(500,500);
-
     /**
      * Metoda wykrywajaca kolizje miedzy statkiem a podlozem, ladowiskiem
      */
