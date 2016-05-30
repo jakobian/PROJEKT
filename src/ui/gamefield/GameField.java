@@ -28,8 +28,6 @@ public class GameField extends JPanel {
      * Pole przechowujace czas odswiezania w milisekundach
      */
     private final long updatePeriod = 25;
-    //private long gameTime;
-    //private long lastTime;
     /**
      * Inicjacja obiektu rakiety
      */
@@ -115,6 +113,12 @@ public class GameField extends JPanel {
      */
     public GameField () {
         state = statesOfGame.START_MENU;
+        try {
+            initArea();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Thread gameThread = new Thread() {
             @Override
@@ -137,6 +141,10 @@ public class GameField extends JPanel {
      */
     private void initField() throws IOException{
         rocket = new Rocket();
+
+    }
+
+    private void initArea() throws IOException{
         area = new Area();
         landingArea = new LandingArea();
     }
@@ -191,6 +199,13 @@ public class GameField extends JPanel {
      */
     public void updateGame() {
         rocket.move();
+
+        try {
+            initArea();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         checkLanding();
     }
 
@@ -215,12 +230,14 @@ public class GameField extends JPanel {
 
         if((landingArea.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
                 rocket.getActualSizeWidth(), rocket.getActualSizeHeight()))
-                && (rocket.getActualLocationX()> landingArea.current_landing_point_x[1] &&
-                    rocket.actualLocationX+ rocket.getActualSizeWidth()<landingArea.current_landing_point_x[2]))
+                && (rocket.getActualLocationX()>= landingArea.current_landing_point_x[1] &&
+                    rocket.actualLocationX+ rocket.getActualSizeWidth()<=landingArea.current_landing_point_x[2]))
         {
             rocket.landed = true;
             rocket.crashed = false;
             state = statesOfGame.END_GAME;
+            System.out.println("landing area" + landingArea.getBounds2D());
+            System.out.println("rocket" + rocket.getBounds2D());
         }
 
         else if(area.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
@@ -229,6 +246,8 @@ public class GameField extends JPanel {
             rocket.crashed = true;
             rocket.landed = false;
             state = statesOfGame.END_GAME;
+            System.out.println("landing area" + landingArea.getBounds());
+            System.out.println("rocket" + rocket.getBounds2D());
         }
     }
 

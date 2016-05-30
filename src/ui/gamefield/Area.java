@@ -55,7 +55,6 @@ public class Area extends Polygon{
             current_point_y[i] = (int)(yRatio*point_y[i]);
             addPoint(current_point_x[i],current_point_y[i]);
         }
-
     }
 
     /**
