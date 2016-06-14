@@ -1,11 +1,16 @@
 package ui.menu.startmenu;
 
+import ui.results.UserResult;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by Jakub on 13.05.2016.
  */
-public class StartMenu extends JDialog {
+public class StartMenu extends JDialog{
 
 
     /**
@@ -20,8 +25,6 @@ public class StartMenu extends JDialog {
      * Pola przechowujace nazwe przycisku "Ok"
      */
     public final static String OkText = "Ok";
-
-
     /**
      * Pole inicjujace panel w ktorym umieszczone sa poszczegolne kontenery -
      * przycisk ok, teks, miejsce na nazwe
@@ -40,6 +43,8 @@ public class StartMenu extends JDialog {
      */
     JButton okbutton;
 
+    UserResult userResult;
+
     public StartMenu(){
         createPanel();
         setupEvent();
@@ -56,9 +61,25 @@ public class StartMenu extends JDialog {
         panel.add(infotext);
         panel.add(nametextfield);
         panel.add(okbutton);
+
+        try {
+            initUserResult();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    private void initUserResult() throws IOException{
+        userResult = new UserResult();
+    }
+
+
     private void setupEvent(){
+
+        okbutton.addActionListener(e -> userResult.writeUserName(nametextfield.getText()));
         okbutton.addActionListener(e -> dispose());
+        okbutton.addActionListener(e -> System.out.println(userResult.getUserName()));
     }
 
 

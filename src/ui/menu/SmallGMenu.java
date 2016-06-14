@@ -37,10 +37,19 @@ public class SmallGMenu extends JPanel {
      * Pole inicjujace przycik "Pause" okna gry
      */
     JButton pausebutton;
-
+    /**
+     * Pole inicjujace mainmenu
+     */
     MainMenu mainmenu;
+    /**
+     * Pole inicjujace pausemenu
+     */
     PauseMenu pausemenu;
+    /**
+     * Pole inicjujace startgame
+     */
     StartMenu startgame;
+
 
 
     /**

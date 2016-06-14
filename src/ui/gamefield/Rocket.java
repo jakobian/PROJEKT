@@ -30,7 +30,8 @@ public class Rocket extends Polygon {
     private int dx;
     public int dy;
     private int accSpeed;
-    public int maxLandingSpeed = 2;
+    public int maxLandingHorizontalSpeed;
+    public int maxLandingVerticalSpeed;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
      */
@@ -63,6 +64,14 @@ public class Rocket extends Polygon {
      * Pole przechowujace aktualna wspolrzedna Y pozycji statku
      */
     public double actualLocationY;
+    /**
+     * Zmienna logiczna ladowania
+     */
+    public boolean landed;
+    /**
+     * Zmienna logiczna wypadku statku
+     */
+    public boolean crashed;
 
     /**
      * Konstruktor klasy Rocket
@@ -79,6 +88,8 @@ public class Rocket extends Polygon {
     private void init() {
         resetRocket();
         accSpeed = 1;
+        maxLandingVerticalSpeed = 2;
+        maxLandingHorizontalSpeed = 2;
     }
 
     /**
@@ -111,10 +122,16 @@ public class Rocket extends Polygon {
      */
     public void move() {
         if (GameField.keyboardKeyState(KeyEvent.VK_UP)) {
-            dy += -1;
+            if (dy <= 3)
+                dy += -1;
+            else
+                dy = 1;
         }
         else {
-            dy = accSpeed;
+            if(dy <= 2)
+                dy += accSpeed;
+            else
+                dy = accSpeed;
         }
         if (GameField.keyboardKeyState(KeyEvent.VK_RIGHT)) {
             dx += 1;
@@ -127,14 +144,11 @@ public class Rocket extends Polygon {
         y += accSpeed + dy;
     }
 
-    /**
-     * Zmienna logiczna ladowania
-     */
-    public boolean landed;
-    /**
-     * Zmienna logiczna wypadku statku
-     */
-    public boolean crashed;
+    public int getDy() {return dy;}
+
+    public int getDx() {return dx;}
+
+
 
     /**
      * Meotda rysujaca reakcje na ladowanie/katastrofe statku
@@ -240,8 +254,6 @@ public class Rocket extends Polygon {
         actualLocationX = xRatio*getX();
         actualLocationY = yRatio*getY();
     }
-
-
 
     /**
      * Metoda rysujaca statek powietrzny

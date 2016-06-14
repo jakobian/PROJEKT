@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import ui.gamefield.Rocket;
+import ui.results.UserResult;
 
 /**
  * Created by Jakub on 12.04.2016.
@@ -60,6 +61,17 @@ public class GameField extends JPanel {
      * Pole przechowujace aktualna wysokosc okna gry
      */
     public static int gameHeight;
+    /**
+     * Pole przechowujace czas rozpoczecia rozgrywki
+     */
+    private long startTime;
+    /**
+     * Pole przechowujace calkowity czas rozgrywki
+     */
+    public long estimatedTime;
+
+
+    UserResult userResult;
 
 
     /**
@@ -76,7 +88,7 @@ public class GameField extends JPanel {
      * @param e
      */
    public void keyPressed(KeyEvent e) {
-        keyboardState[e.getKeyCode()] = true;
+       keyboardState[e.getKeyCode()] = true;
     }
 
     /**
@@ -91,17 +103,26 @@ public class GameField extends JPanel {
      * Metoda obslugujaca klawisze
      * @param e
      */
+
+
+
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
+                startTime = System.nanoTime();
+                estimatedTime = 0L;
                 restartGame();
                 break;
 
             case END_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    startTime = System.nanoTime();
+                    estimatedTime = 0L;
                     state = statesOfGame.START_MENU;
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    startTime = System.nanoTime();
+                    estimatedTime = 0L;
                     restartGame();
                 }
         }
@@ -149,6 +170,10 @@ public class GameField extends JPanel {
         landingArea = new LandingArea();
     }
 
+    private void initPointsCounter() throws IOException{
+        userResult = new UserResult();
+    }
+
     /**
      * Metoda petli gry
      */
@@ -157,6 +182,7 @@ public class GameField extends JPanel {
 
         while (true) {
             beginTime = System.currentTimeMillis();
+
 
             switch (state) {
                 case START_MENU:
@@ -194,6 +220,17 @@ public class GameField extends JPanel {
         }
     }
 
+    private void pointsManager(){
+        try {
+            initPointsCounter();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+       userResult.setTotalPoints(estimatedTime);
+    }
+
+
     /**
      * Metoda odswiezania gry
      */
@@ -206,6 +243,7 @@ public class GameField extends JPanel {
         catch (IOException e) {
             e.printStackTrace();
         }
+
         checkLanding();
     }
 
@@ -233,11 +271,28 @@ public class GameField extends JPanel {
                 && (rocket.getActualLocationX()>= landingArea.current_landing_point_x[1] &&
                     rocket.actualLocationX+ rocket.getActualSizeWidth()<=landingArea.current_landing_point_x[2]))
         {
-            rocket.landed = true;
-            rocket.crashed = false;
-            state = statesOfGame.END_GAME;
-            System.out.println("landing area" + landingArea.getBounds2D());
-            System.out.println("rocket" + rocket.getBounds2D());
+
+            if(rocket.getDy() <= rocket.maxLandingVerticalSpeed
+                    && rocket.getDx() <= rocket.maxLandingHorizontalSpeed
+                    && rocket.getDx() >= (-1)*rocket.maxLandingHorizontalSpeed) {
+
+                rocket.landed = true;
+                rocket.crashed = false;
+                state = statesOfGame.END_GAME;
+
+                estimatedTime = (System.nanoTime() - startTime);
+                pointsManager();
+            }
+            else if(rocket.getDy() > rocket.maxLandingVerticalSpeed
+                    || rocket.getDx() >= rocket.maxLandingHorizontalSpeed
+                    || rocket.getDx() <= (-1)*rocket.maxLandingHorizontalSpeed){
+                rocket.crashed = true;
+                rocket.landed = false;
+                state = statesOfGame.END_GAME;
+
+            }
+
+            System.out.println(userResult.getUserName());
         }
 
         else if(area.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
@@ -246,10 +301,10 @@ public class GameField extends JPanel {
             rocket.crashed = true;
             rocket.landed = false;
             state = statesOfGame.END_GAME;
-            System.out.println("landing area" + landingArea.getBounds());
-            System.out.println("rocket" + rocket.getBounds2D());
         }
     }
+
+
 
     @Override
     public void paintComponent(Graphics g){
@@ -264,10 +319,11 @@ public class GameField extends JPanel {
 
                 g.drawImage(menuImg, 0, 0, gameWidth, gameHeight , null);
                 g.setColor(Color.white);
-                g.drawString("Nasisnij dowolny klawisz aby rozpoczac gre", gameWidth/2 - 120, gameHeight/2);
+                g.drawString("Nacisnij dowolny klawisz aby rozpoczac gre", gameWidth/2 - 120, gameHeight/2);
                 break;
 
             case PLAY:
+
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
                 rocket.drawRocket(g);
@@ -279,14 +335,17 @@ public class GameField extends JPanel {
                 break;
 
             case END_GAME:
+
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
 
                 if(rocket.landed) {
                     rocket.drawRocket(g);
+                    g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight/2+100);
                 }
                 else if (rocket.crashed){
                     rocket.drawExplosion(g);
+                    g.drawString("Liczba zdobtych punktow: " + 0, gameWidth/2 -30, gameHeight/2+100);
                 }
 
                 area.setPoints(gameWidth,gameHeight);
@@ -294,6 +353,7 @@ public class GameField extends JPanel {
                 landingArea.setPoints(gameWidth,gameHeight);
                 landingArea.drawLandingArea(g);
                 rocket.Draw(g,gameWidth,gameHeight);
+
 
         }
     }

@@ -51,7 +51,7 @@ public class MainMenu extends JDialog {
      */
     private JPanel panel;
 
-    InstructionMenu insrmenu;
+    InstructionMenu instrmenu;
 
 
     /**
@@ -116,8 +116,8 @@ public class MainMenu extends JDialog {
      * Metoda inicjujaca i wyswietlajaca okno menu glownego
      */
     private void initInstrMenu() {
-        insrmenu = new InstructionMenu();
-        insrmenu.setModal(true);
-        insrmenu.setVisible(true);
+        instrmenu = new InstructionMenu();
+        instrmenu.setModal(true);
+        instrmenu.setVisible(true);
     }
 }
