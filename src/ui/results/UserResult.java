@@ -20,22 +20,42 @@ public class UserResult {
      * Pole przechowujace wynik gracza
      */
     public long user_result;
+    /**
+     * Pole przechowujace wynik po mapie
+     */
+    public long mapPoints;
 
     /**
      * Konstruktor wyniku gracza
      */
-    private long maxPoints;
+    public long maxPoints;
 
     private long coefficient;
 
-    public UserResult() throws IOException {
-        File file = new File("resources/area1.properties");
-        FileInputStream fileInput = new FileInputStream(file);
-        Properties properties = new Properties();
-        properties.load(fileInput);
-        fileInput.close();
+    public UserResult(int mapId) throws IOException {
+        switch (mapId) {
+            case 1: {
+                File file = new File("resources/area1.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
 
-        getMaxPoints(properties);
+                getMaxPoints(properties);
+                break;
+            }
+
+            case 2:{
+                File file = new File("resources/area2.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
+
+                getMaxPoints(properties);
+                break;
+            }
+        }
     }
 
     private void getMaxPoints(Properties properties){
@@ -44,8 +64,16 @@ public class UserResult {
         coefficient = Long.parseLong(properties.getProperty("coefficient"));
     }
 
-    public void setTotalPoints(long estimatedTime){
-        user_result = (maxPoints - estimatedTime)/(maxPoints/coefficient);
+    public void setTotalPoints(long estimatedTime, boolean rocketState){
+
+        if(rocketState == true) {
+            mapPoints = (maxPoints - estimatedTime) / (maxPoints / coefficient);
+        }
+        else {
+            mapPoints = 0;
+        }
+
+        user_result += mapPoints;
     }
 
     /**

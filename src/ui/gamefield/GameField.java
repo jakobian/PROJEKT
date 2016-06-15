@@ -111,11 +111,12 @@ public class GameField extends JPanel {
         switch (state) {
             case START_MENU:
                 restartGame();
+                resetResult();
                 break;
 
             case NEXT_LEVEL:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    mapNr = 1;
+                    resetResult();
                     state = statesOfGame.START_MENU;
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if(mapNr<2){
@@ -130,8 +131,9 @@ public class GameField extends JPanel {
             case END_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     state = statesOfGame.START_MENU;
+                    resetResult();
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    mapNr = 1;
+                    resetResult();
                     restartGame();
                 }
                 break;
@@ -139,6 +141,7 @@ public class GameField extends JPanel {
             case FINISH_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     state = statesOfGame.START_MENU;
+                    resetResult();
                 }
                 break;
 
@@ -156,6 +159,12 @@ public class GameField extends JPanel {
         }
     }
 
+    private void resetResult(){
+        mapNr = 1;
+        estimatedTime = 0L;
+        userResult.user_result=0;
+    }
+
     /**
      * Konstruktor klasy GameField
      * @throws IOException
@@ -164,6 +173,7 @@ public class GameField extends JPanel {
         state = statesOfGame.START_MENU;
         try {
             initArea(mapNr);
+            initPointsCounter(mapNr);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -198,8 +208,8 @@ public class GameField extends JPanel {
         landingArea = new LandingArea(mapId);
     }
 
-    private void initPointsCounter() throws IOException{
-        userResult = new UserResult();
+    private void initPointsCounter(int mapId) throws IOException{
+        userResult = new UserResult(mapId);
     }
 
     /**
@@ -257,14 +267,10 @@ public class GameField extends JPanel {
         }
     }
 
-    private void pointsManager(){
-        try {
-            initPointsCounter();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-       userResult.setTotalPoints(estimatedTime);
+    private void pointsManager(boolean rocketState){
+            estimatedTime = (System.nanoTime() - startTime);
+            userResult.setTotalPoints(estimatedTime, rocketState);
+
     }
 
 
@@ -289,7 +295,6 @@ public class GameField extends JPanel {
      */
     public void restartGame() {
         startTime = System.nanoTime();
-        estimatedTime = 0L;
         rocket.resetRocket();
         state = statesOfGame.PLAY;
     }
@@ -302,6 +307,7 @@ public class GameField extends JPanel {
         rocket.setLocation(gameWidth,gameHeight);
         landingArea.setPoints(gameWidth,gameHeight);
         area.setPoints(gameWidth,gameHeight);
+
 
 
 
@@ -318,9 +324,7 @@ public class GameField extends JPanel {
                 rocket.landed = true;
                 rocket.crashed = false;
                 state = statesOfGame.NEXT_LEVEL;
-
-                estimatedTime = (System.nanoTime() - startTime);
-                pointsManager();
+                pointsManager(true);
             }
             else if(rocket.getDy() > rocket.maxLandingVerticalSpeed
                     || rocket.getDx() >= rocket.maxLandingHorizontalSpeed
@@ -328,7 +332,7 @@ public class GameField extends JPanel {
                 rocket.crashed = true;
                 rocket.landed = false;
                 state = statesOfGame.END_GAME;
-
+                pointsManager(false);
             }
         }
 
@@ -338,6 +342,7 @@ public class GameField extends JPanel {
             rocket.crashed = true;
             rocket.landed = false;
             state = statesOfGame.END_GAME;
+            pointsManager(false);
         }
     }
 
@@ -377,7 +382,7 @@ public class GameField extends JPanel {
                 rocket.setLocation(gameWidth,gameHeight);
 
                 rocket.drawExplosion(g);
-                g.drawString("Liczba zdobtych punktow: " + 0, gameWidth/2 -30, gameHeight/2+100);
+                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2 -30, gameHeight- 400);
 
                 area.setPoints(gameWidth,gameHeight);
                 area.drawArea(g);
@@ -390,7 +395,7 @@ public class GameField extends JPanel {
             case NEXT_LEVEL:
 
                 rocket.drawRocket(g);
-                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight/2+100);
+                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight-400);
 
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
