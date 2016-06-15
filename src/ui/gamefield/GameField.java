@@ -273,7 +273,6 @@ public class GameField extends JPanel {
 
     }
 
-
     /**
      * Metoda odswiezania gry
      */
