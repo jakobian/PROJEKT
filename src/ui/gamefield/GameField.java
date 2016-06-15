@@ -44,7 +44,7 @@ public class GameField extends JPanel {
     /**
      * Tablica mozliwych stanow gry
      */
-    public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL, FINISH_GAME}
+    public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL, FINISH_GAME, PAUSE_GAME}
     /**
      * Pole przechowujace aktualny stan gry
      */
@@ -72,7 +72,7 @@ public class GameField extends JPanel {
     /**
      * Pole przechowujace numer planszy
      */
-   private int mapNr = 1;
+    private int mapNr = 1;
 
 
     UserResult userResult;
@@ -133,6 +133,24 @@ public class GameField extends JPanel {
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mapNr = 1;
                     restartGame();
+                }
+                break;
+
+            case FINISH_GAME:
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    state = statesOfGame.START_MENU;
+                }
+                break;
+
+            case PAUSE_GAME:
+                if (e.getKeyCode() == KeyEvent.VK_P) {
+                    state = statesOfGame.PLAY;
+                }
+                break;
+
+            case PLAY:
+                if (e.getKeyCode() == KeyEvent.VK_P) {
+                    state = statesOfGame.PAUSE_GAME;
                 }
                 break;
         }
@@ -210,6 +228,9 @@ public class GameField extends JPanel {
                     break;
 
                 case FINISH_GAME:
+                    break;
+
+                case PAUSE_GAME:
                     break;
             }
 

@@ -14,7 +14,7 @@ public class PauseMenu extends JDialog {
     /**
      * Pola przechowujace nazwe "Press any key to continue" wyswietlanego w menu pauzy
      */
-    public final static String PressKey = "Press any key to continue";
+    public final static String PressKey = "Press \"P\" key to continue";
 
 
     /**
@@ -26,7 +26,7 @@ public class PauseMenu extends JDialog {
      */
     private JLabel takeAbreak;
     /**
-     * Pole inicjujace napis "Press any key to continue"
+     * Pole inicjujace napis "Press "P" key to continue"
      */
     private JLabel presskey;
 
