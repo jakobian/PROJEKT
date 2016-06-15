@@ -116,24 +116,24 @@ public class GameField extends JPanel {
                 restartGame();
                 break;
 
-            case END_GAME:
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    state = statesOfGame.START_MENU;
-                }
-                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    mapNr = 1;
-                    restartGame();
-                }
             case NEXT_LEVEL:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     mapNr = 1;
                     state = statesOfGame.START_MENU;
-
-                }
-                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     ++mapNr;
                     restartGame();
                 }
+                break;
+
+            case END_GAME:
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    state = statesOfGame.START_MENU;
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    mapNr = 1;
+                    restartGame();
+                }
+                break;
         }
     }
 
@@ -206,7 +206,6 @@ public class GameField extends JPanel {
                     break;
 
                 case NEXT_LEVEL:
-                    state = statesOfGame.PLAY;
                     break;
             }
 
@@ -352,14 +351,8 @@ public class GameField extends JPanel {
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
 
-                if(rocket.landed) {
-                    rocket.drawRocket(g);
-                    g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight/2+100);
-                }
-                else if (rocket.crashed){
-                    rocket.drawExplosion(g);
-                    g.drawString("Liczba zdobtych punktow: " + 0, gameWidth/2 -30, gameHeight/2+100);
-                }
+                rocket.drawExplosion(g);
+                g.drawString("Liczba zdobtych punktow: " + 0, gameWidth/2 -30, gameHeight/2+100);
 
                 area.setPoints(gameWidth,gameHeight);
                 area.drawArea(g);
@@ -367,7 +360,22 @@ public class GameField extends JPanel {
                 landingArea.drawLandingArea(g);
                 rocket.Draw(g,gameWidth,gameHeight);
 
+                break;
 
+            case NEXT_LEVEL:
+
+                rocket.drawRocket(g);
+                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight/2+100);
+
+                rocket.setDimension(gameWidth,gameHeight);
+                rocket.setLocation(gameWidth,gameHeight);
+                area.setPoints(gameWidth,gameHeight);
+                area.drawArea(g);
+                landingArea.setPoints(gameWidth,gameHeight);
+                landingArea.drawLandingArea(g);
+                rocket.Draw(g,gameWidth,gameHeight);
+
+                break;
         }
     }
 }
