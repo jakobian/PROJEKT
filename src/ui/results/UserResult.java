@@ -20,6 +20,10 @@ public class UserResult {
      * Pole przechowujace wynik gracza
      */
     public long user_result;
+    /**
+     * Pole przechowujace wynik po mapie
+     */
+    public long mapPoints;
 
     /**
      * Konstruktor wyniku gracza
@@ -45,7 +49,9 @@ public class UserResult {
     }
 
     public void setTotalPoints(long estimatedTime){
-        user_result = (maxPoints - estimatedTime)/(maxPoints/coefficient);
+
+        mapPoints = (maxPoints - estimatedTime)/(maxPoints/coefficient);
+        user_result += mapPoints;
     }
 
     /**

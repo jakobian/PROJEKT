@@ -103,6 +103,11 @@ public class MainMenu extends JDialog {
         resultsbutton.setMaximumSize(new Dimension(width, height));
         internetnbutton.setMaximumSize(new Dimension(width, height));
         quitbutton.setMaximumSize(new Dimension(width, height));
+
+        instructionbutton.setRequestFocusEnabled(false);
+        resultsbutton.setRequestFocusEnabled(false);
+        internetnbutton.setRequestFocusEnabled(false);
+        quitbutton.setRequestFocusEnabled(false);
     }
 
 
