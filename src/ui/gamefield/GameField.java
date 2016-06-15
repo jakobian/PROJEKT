@@ -109,20 +109,14 @@ public class GameField extends JPanel {
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
-                //startTime = System.nanoTime();
-                //estimatedTime = 0L;
                 restartGame();
                 break;
 
             case END_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    //startTime = System.nanoTime();
-                    //estimatedTime = 0L;
                     state = statesOfGame.START_MENU;
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    //startTime = System.nanoTime();
-                    //estimatedTime = 0L;
                     restartGame();
                 }
         }

@@ -83,7 +83,6 @@ public class StartMenu extends JDialog{
             System.out.println(userResult.getUserName());
             dispose();
         });
-        //nametextfield.postActionEvent();
     }
 
 

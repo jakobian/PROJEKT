@@ -15,10 +15,18 @@ public class BestResults {
 
     private int size = 10;
 
-    UserResult[] list;
+    public String[] userName;
+    public int[] result;
 
     public BestResults() throws IOException {
         loadResults();
+        /*File file = new File("resources/results.properties");
+        FileInputStream fileInput = new FileInputStream(file);
+        Properties properties = new Properties();
+        properties.load(fileInput);
+        fileInput.close();*/
+
+        fromPropToArray(properties);
 
     }
 
@@ -28,6 +36,16 @@ public class BestResults {
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+    }
+
+    private void fromPropToArray(Properties properties){
+        userName = new String[size];
+        result = new int[size];
+
+        for (int i = 0; i < size; ++i) {
+            userName[i] = properties.getProperty("User_" + Integer.toString(i));
+            result[i] = Integer.parseInt(properties.getProperty("Result_" + Integer.toString(i)));
+        }
     }
 
     private void saveResults() throws IOException{
