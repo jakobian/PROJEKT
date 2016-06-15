@@ -30,14 +30,32 @@ public class Area extends Polygon{
      */
     private int[] current_point_y;
 
-    public Area() throws IOException {
-        File file = new File("resources/area.properties");
-        FileInputStream fileInput = new FileInputStream(file);
-        Properties properties = new Properties();
-        properties.load(fileInput);
-        fileInput.close();
+    public Area(int mapId) throws IOException {
 
-        createAreaPoints(properties);
+        switch(mapId) {
+            case 1: {
+                File file = new File("resources/area1.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
+
+                createAreaPoints(properties);
+                break;
+            }
+            case 2: {
+                File file = new File("resources/area2.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
+
+                createAreaPoints(properties);
+                break;
+            }
+        }
+
+
     }
 
     /**

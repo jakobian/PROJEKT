@@ -29,7 +29,7 @@ public class UserResult {
     private long coefficient;
 
     public UserResult() throws IOException {
-        File file = new File("resources/area.properties");
+        File file = new File("resources/area1.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
         properties.load(fileInput);

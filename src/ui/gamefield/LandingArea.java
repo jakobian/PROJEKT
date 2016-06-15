@@ -11,14 +11,29 @@ import java.util.Properties;
  */
 public class LandingArea extends Polygon {
 
-    public LandingArea() throws IOException {
-        File file = new File("resources/area.properties");
-        FileInputStream fileInput = new FileInputStream(file);
-        Properties properties = new Properties();
-        properties.load(fileInput);
-        fileInput.close();
+    public LandingArea(int mapId) throws IOException {
+        switch(mapId) {
+            case 1: {
+                File file = new File("resources/area1.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
 
-        createLandingPoints(properties);
+                createLandingPoints(properties);
+                break;
+            }
+            case 2: {
+                File file = new File("resources/area2.properties");
+                FileInputStream fileInput = new FileInputStream(file);
+                Properties properties = new Properties();
+                properties.load(fileInput);
+                fileInput.close();
+
+                createLandingPoints(properties);
+                break;
+            }
+        }
     }
 
     /**

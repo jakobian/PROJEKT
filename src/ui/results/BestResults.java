@@ -19,23 +19,14 @@ public class BestResults {
     public int[] result;
 
     public BestResults() throws IOException {
-        loadResults();
-        /*File file = new File("resources/results.properties");
-        FileInputStream fileInput = new FileInputStream(file);
-        Properties properties = new Properties();
-        properties.load(fileInput);
-        fileInput.close();*/
-
-        fromPropToArray(properties);
-
-    }
-
-    private void loadResults() throws IOException{
         File file = new File("resources/results.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
         properties.load(fileInput);
         fileInput.close();
+
+        fromPropToArray(properties);
+
     }
 
     private void fromPropToArray(Properties properties){

@@ -44,7 +44,7 @@ public class GameField extends JPanel {
     /**
      * Tablica mozliwych stanow gry
      */
-    public enum  statesOfGame{START_MENU, PLAY, END_GAME}
+    public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL}
     /**
      * Pole przechowujace aktualny stan gry
      */
@@ -69,6 +69,10 @@ public class GameField extends JPanel {
      * Pole przechowujace calkowity czas rozgrywki
      */
     public long estimatedTime;
+    /**
+     * Pole przechowujace numer planszy
+     */
+   private int mapNr = 1;
 
 
     UserResult userResult;
@@ -117,6 +121,17 @@ public class GameField extends JPanel {
                     state = statesOfGame.START_MENU;
                 }
                 else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    mapNr = 1;
+                    restartGame();
+                }
+            case NEXT_LEVEL:
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    mapNr = 1;
+                    state = statesOfGame.START_MENU;
+
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    ++mapNr;
                     restartGame();
                 }
         }
@@ -129,7 +144,7 @@ public class GameField extends JPanel {
     public GameField () {
         state = statesOfGame.START_MENU;
         try {
-            initArea();
+            initArea(mapNr);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -159,9 +174,9 @@ public class GameField extends JPanel {
 
     }
 
-    private void initArea() throws IOException{
-        area = new Area();
-        landingArea = new LandingArea();
+    private void initArea(int mapId) throws IOException{
+        area = new Area(mapId);
+        landingArea = new LandingArea(mapId);
     }
 
     private void initPointsCounter() throws IOException{
@@ -188,6 +203,10 @@ public class GameField extends JPanel {
                     break;
 
                 case END_GAME:
+                    break;
+
+                case NEXT_LEVEL:
+                    state = statesOfGame.PLAY;
                     break;
             }
 
@@ -232,7 +251,7 @@ public class GameField extends JPanel {
         rocket.move();
 
         try {
-            initArea();
+            initArea(mapNr);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -274,7 +293,7 @@ public class GameField extends JPanel {
 
                 rocket.landed = true;
                 rocket.crashed = false;
-                state = statesOfGame.END_GAME;
+                state = statesOfGame.NEXT_LEVEL;
 
                 estimatedTime = (System.nanoTime() - startTime);
                 pointsManager();
