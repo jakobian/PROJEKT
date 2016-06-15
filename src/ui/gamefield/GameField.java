@@ -44,7 +44,7 @@ public class GameField extends JPanel {
     /**
      * Tablica mozliwych stanow gry
      */
-    public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL}
+    public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL, FINISH_GAME}
     /**
      * Pole przechowujace aktualny stan gry
      */
@@ -121,8 +121,12 @@ public class GameField extends JPanel {
                     mapNr = 1;
                     state = statesOfGame.START_MENU;
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    ++mapNr;
-                    restartGame();
+                    if(mapNr<2){
+                        ++mapNr;
+                        restartGame();
+                    }
+                    else
+                    state = statesOfGame.FINISH_GAME;
                 }
                 break;
 
@@ -206,6 +210,9 @@ public class GameField extends JPanel {
                     break;
 
                 case NEXT_LEVEL:
+                    break;
+
+                case FINISH_GAME:
                     break;
             }
 
@@ -376,6 +383,18 @@ public class GameField extends JPanel {
                 rocket.Draw(g,gameWidth,gameHeight);
 
                 break;
+
+            case FINISH_GAME:
+
+                rocket.setDimension(gameWidth,gameHeight);
+                rocket.setLocation(gameWidth,gameHeight);
+                area.setPoints(gameWidth,gameHeight);
+                area.drawArea(g);
+                landingArea.setPoints(gameWidth,gameHeight);
+                landingArea.drawLandingArea(g);
+
+                g.drawString("KONIEC" , gameWidth/2-30, gameHeight/2);
+
         }
     }
 }

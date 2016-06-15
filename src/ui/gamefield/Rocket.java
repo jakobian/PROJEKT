@@ -98,7 +98,7 @@ public class Rocket extends Polygon {
     public void resetRocket() {
         Random generator = new Random();
         x = generator.nextInt(400)+20;
-        y = generator.nextInt(150)+20;
+        y = generator.nextInt(50)+20;
         dx = 0;
         dy = 0;
     }
