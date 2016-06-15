@@ -26,7 +26,7 @@ public class SmallGMenu extends JPanel {
     public final static String Pause = "Pause";
 
     /**
-     * Pole inicjujace przycik "Star" okna gry
+     * Pole inicjujace przycik "Start" okna gry
      */
     JButton startbutton;
     /**
@@ -117,6 +117,10 @@ public class SmallGMenu extends JPanel {
         startbutton.setPreferredSize(new Dimension(width, height));
         menubutton.setPreferredSize(new Dimension(width, height));
         pausebutton.setPreferredSize(new Dimension(width, height));
+
+        startbutton.setRequestFocusEnabled(false);
+        menubutton.setRequestFocusEnabled(false);
+        pausebutton.setRequestFocusEnabled(false);
     }
 
 }

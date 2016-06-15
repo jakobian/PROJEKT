@@ -27,7 +27,7 @@ public class StartMenu extends JDialog{
     public final static String OkText = "Ok";
     /**
      * Pole inicjujace panel w ktorym umieszczone sa poszczegolne kontenery -
-     * przycisk ok, teks, miejsce na nazwe
+     * przycisk ok, tekst, miejsce na nazwe
      */
     JPanel panel;
     /**
@@ -84,7 +84,7 @@ public class StartMenu extends JDialog{
 
 
     /**
-     * Metoda wyswitlajaca okno menu pauzy
+     * Metoda wyswietlajaca okno menu pauzy
      */
     private void drawView(){
         this.add(panel);
