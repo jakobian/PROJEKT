@@ -24,14 +24,7 @@ public class UserResult {
     /**
      * Konstruktor wyniku gracza
      */
-   /* public UserResult(String user_name,Integer user_result){
-        this.user_name = user_name;
-        this.user_result = user_result;
-    }*/
-
     private long maxPoints;
-
-
 
     private long coefficient;
 

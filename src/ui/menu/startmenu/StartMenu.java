@@ -47,8 +47,8 @@ public class StartMenu extends JDialog{
 
     public StartMenu(){
         createPanel();
-        setupEvent();
         drawView();
+        setupEvent();
     }
 
     private void createPanel(){
@@ -61,6 +61,7 @@ public class StartMenu extends JDialog{
         panel.add(infotext);
         panel.add(nametextfield);
         panel.add(okbutton);
+
 
         try {
             initUserResult();
@@ -75,12 +76,16 @@ public class StartMenu extends JDialog{
     }
 
 
-    private void setupEvent(){
+    public void setupEvent(){
 
-        okbutton.addActionListener(e -> userResult.writeUserName(nametextfield.getText()));
-        okbutton.addActionListener(e -> dispose());
-        okbutton.addActionListener(e -> System.out.println(userResult.getUserName()));
+        okbutton.addActionListener(e -> {
+            userResult.writeUserName(nametextfield.getText());
+            System.out.println(userResult.getUserName());
+            dispose();
+        });
+        //nametextfield.postActionEvent();
     }
+
 
 
     /**
@@ -92,5 +97,6 @@ public class StartMenu extends JDialog{
         setResizable(false);
         setTitle("Start the Game");
         this.setLocationRelativeTo(null);
+
     }
 }

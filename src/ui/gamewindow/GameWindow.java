@@ -17,10 +17,7 @@ import ui.menu.SmallGMenu;
 /**
  * Klasa tworzaca okno gry
  */
-
 public class GameWindow extends JFrame implements KeyListener{
-
-
 
     /** Inicjacja obiektu menu */
     SmallGMenu smallgmenu;

@@ -291,8 +291,6 @@ public class GameField extends JPanel {
                 state = statesOfGame.END_GAME;
 
             }
-
-            System.out.println(userResult.getUserName());
         }
 
         else if(area.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),

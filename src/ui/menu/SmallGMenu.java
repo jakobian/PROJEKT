@@ -57,7 +57,6 @@ public class SmallGMenu extends JPanel {
      */
     public SmallGMenu(){
         createButton();
-        setupEvent();
     }
 
     /**
@@ -72,7 +71,7 @@ public class SmallGMenu extends JPanel {
         add(startbutton);
         add(menubutton);
         add(pausebutton);
-
+        setupEvent();
     }
 
     /**
