@@ -72,7 +72,7 @@ public class StartMenu extends JDialog{
     }
 
     private void initUserResult() throws IOException{
-        userResult = new UserResult();
+        userResult = new UserResult(1);
     }
 
 
