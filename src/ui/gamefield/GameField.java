@@ -430,6 +430,8 @@ public class GameField extends JPanel {
                 landingArea.setPoints(gameWidth,gameHeight);
                 landingArea.drawLandingArea(g);
 
+                break;
+
         }
     }
 }
