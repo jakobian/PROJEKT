@@ -59,16 +59,21 @@ public class UserResult {
     }
 
     /**
-     * Metoda zapisujaca nazwe gracza
-     */
-    public void writeUserResult(Integer user_result) {this.user_result = user_result;}
-    /**
      * Metoda zapisujaca wynik gracza
      */
-    public void writeUserName(String user_name) {this.user_name = user_name;}
+    public void writeUserResult(Integer user_result) {
+        this.user_result = user_result;
+    }
+    /**
+     * Metoda zapisujaca nazwe gracza
+     */
+    public void writeUserName(String user_name) {
+        this.user_name = user_name;
+    }
     /**
      * Metoda wczytujaca nazwe gracza
      */
-    public String getUserName() {return user_name;}
-
+    public String getUserName() {
+        return user_name;
+    }
 }

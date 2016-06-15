@@ -3,6 +3,7 @@ package ui.menu.mainmenu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by Jakub on 11.05.2016.
@@ -52,6 +53,7 @@ public class MainMenu extends JDialog {
     private JPanel panel;
 
     InstructionMenu instrmenu;
+    ResultsMenu resMenu;
 
 
     /**
@@ -110,6 +112,13 @@ public class MainMenu extends JDialog {
     private void setupEvent() {
         instructionbutton.addActionListener(e -> initInstrMenu());
         quitbutton.addActionListener(e ->  System.exit(0));
+        resultsbutton.addActionListener(e -> {
+            try {
+                initResultsMenu();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     /**
@@ -119,5 +128,14 @@ public class MainMenu extends JDialog {
         instrmenu = new InstructionMenu();
         instrmenu.setModal(true);
         instrmenu.setVisible(true);
+    }
+
+    /**
+     * Metoda inicjujaca i wyswietlajaca okno menu rezultatow
+     */
+    private void initResultsMenu() throws IOException {
+        resMenu = new ResultsMenu();
+        resMenu.setModal(true);
+        resMenu.setVisible(true);
     }
 }
