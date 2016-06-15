@@ -112,12 +112,14 @@ public class GameField extends JPanel {
             case START_MENU:
                 restartGame();
                 estimatedTime = 0L;
+                userResult.user_result=0;
                 break;
 
             case NEXT_LEVEL:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     mapNr = 1;
                     estimatedTime = 0L;
+                    userResult.user_result=0;
                     state = statesOfGame.START_MENU;
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if(mapNr<2){
@@ -134,9 +136,11 @@ public class GameField extends JPanel {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     state = statesOfGame.START_MENU;
                     estimatedTime = 0L;
+                    userResult.user_result=0;
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mapNr = 1;
                     estimatedTime = 0L;
+                    userResult.user_result=0;
                     restartGame();
                 }
                 break;
@@ -151,6 +155,7 @@ public class GameField extends JPanel {
         state = statesOfGame.START_MENU;
         try {
             initArea(mapNr);
+            initPointsCounter();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -242,12 +247,6 @@ public class GameField extends JPanel {
     }
 
     private void pointsManager(){
-        try {
-            initPointsCounter();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
        estimatedTime = (System.nanoTime() - startTime);
        userResult.setTotalPoints(estimatedTime);
     }
