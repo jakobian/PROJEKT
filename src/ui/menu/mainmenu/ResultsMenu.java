@@ -1,11 +1,13 @@
 package ui.menu.mainmenu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.jar.Attributes;
 
 /**
  * Created by Michał on 2016-06-15.
@@ -15,11 +17,19 @@ public class ResultsMenu extends JDialog {
     private int size = 10;
 
     /**
-     * Pole przechowujace tutyl wyswietlany w oknie rezultatow
+     * Pole przechowujace tytul "Name" wyswietlany w oknie rezultatow
      */
-    public final static String Title = "Name     Score";
+    public final static String Title1 = "Name";
     /**
-     * Pole przechowujace razultaty wyswietlane w oknie rezultatow
+     * Pole przechowujace tytul "Score" wyswietlany w oknie rezultatow
+     */
+    public final static String Title2 = "Score";
+    /**
+     * Pole przechowujace nazwy graczy wyswietlane w oknie rezultatow
+     */
+    public String[] Names;
+    /**
+     * Pole przechowujace rezultaty wyswietlane w oknie rezultatow
      */
     public String[] Results;
 
@@ -30,7 +40,15 @@ public class ResultsMenu extends JDialog {
     /**
      * Pole inicjujace naglowek rezultatow
      */
-    private JLabel title;
+    private JLabel title1;
+    /**
+     * Pole inicjujace naglowek rezultatow
+     */
+    private JLabel title2;
+    /**
+     * Pole inicjujace rezultaty
+     */
+    private JLabel[] names;
     /**
      * Pole inicjujace rezultaty
      */
@@ -50,26 +68,29 @@ public class ResultsMenu extends JDialog {
     }
 
     private void createResults(Properties properties) {
-        String[] user = new String[size];
-        String[] res = new String[size];
+        Names = new String[size];
         Results = new String[size];
 
         for (int i = 0; i < size; i++) {
-            user[i] = properties.getProperty("User_" + Integer.toString(i+1));
-            res[i] = properties.getProperty("Result_" + Integer.toString(i+1));
-        }
-
-        for (int j = 0; j < size; j++) {
-            Results[j] = user[j] + "    " + res[j];
+            Names[i] = properties.getProperty("User_" + Integer.toString(i+1));
+            Results[i] = properties.getProperty("Result_" + Integer.toString(i+1));
         }
     }
 
-    private JLabel[] createLabels() {
-        JLabel[] labels = new JLabel[size];
+    private JLabel[] createNameLabels() {
+        JLabel[] nameLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
-            labels[i] = new JLabel(Results[i]);
+            nameLabels[i] = new JLabel(Names[i]);
         }
-        return labels;
+        return nameLabels;
+    }
+
+    private JLabel[] createResultsLabels() {
+        JLabel[] resultsLabels = new JLabel[size];
+        for (int i = 0; i < size; i++) {
+            resultsLabels[i] = new JLabel(Results[i]);
+        }
+        return resultsLabels;
     }
 
     /**
@@ -77,14 +98,18 @@ public class ResultsMenu extends JDialog {
      */
     private void createPanel(){
         panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS)); // pionowo;
-        title = new JLabel(Title);
-        JLabel[] labels = createLabels();
+        panel.setLayout(new GridLayout(size+1, 2)); // pionowo;
+        title1 = new JLabel(Title1);
+        title2 = new JLabel(Title2);
+        JLabel[] nameLabels = createNameLabels();
+        JLabel[] resultsLabels = createResultsLabels();
 
-        panel.add(title);
+        panel.add(title1);
+        panel.add(title2);
 
         for (int i = 0; i < size; i++) {
-            panel.add(labels[i]);
+            panel.add(nameLabels[i]);
+            panel.add(resultsLabels[i]);
         }
     }
 
