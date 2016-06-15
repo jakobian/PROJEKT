@@ -138,7 +138,6 @@ public class Rocket extends Polygon {
         }
         if (GameField.keyboardKeyState(KeyEvent.VK_LEFT)) {
             dx += -1;
-            System.out.println("cipka");
         }
 
         x += dx;
