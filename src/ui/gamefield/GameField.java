@@ -107,9 +107,6 @@ public class GameField extends JPanel {
      * Metoda obslugujaca klawisze
      * @param e
      */
-
-
-
     public void keyReleasedGame(KeyEvent e) {
         switch (state) {
             case START_MENU:
