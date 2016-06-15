@@ -42,6 +42,10 @@ public class GameField extends JPanel {
      */
     private LandingArea landingArea;
     /**
+     * Inicjacja obiektu menadzera uzytkownika
+     */
+    private UserResult userResult;
+    /**
      * Tablica mozliwych stanow gry
      */
     public enum  statesOfGame{START_MENU, PLAY, END_GAME, NEXT_LEVEL, FINISH_GAME, PAUSE_GAME}
@@ -74,10 +78,7 @@ public class GameField extends JPanel {
      */
     private int mapNr = 1;
 
-
-    UserResult userResult;
-
-
+    
     /**
      * Metoda
      * @param key
@@ -416,6 +417,18 @@ public class GameField extends JPanel {
                 landingArea.drawLandingArea(g);
 
                 g.drawString("KONIEC" , gameWidth/2-30, gameHeight/2);
+
+                break;
+
+            case PAUSE_GAME:
+
+                rocket.drawRocket(g);
+                rocket.setDimension(gameWidth,gameHeight);
+                rocket.setLocation(gameWidth,gameHeight);
+                area.setPoints(gameWidth,gameHeight);
+                area.drawArea(g);
+                landingArea.setPoints(gameWidth,gameHeight);
+                landingArea.drawLandingArea(g);
 
         }
     }
