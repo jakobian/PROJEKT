@@ -11,8 +11,11 @@ import ui.gamefield.GameField;
 /**
  * Created by Jakub on 13.05.2016.
  */
-public class StartMenu extends JDialog{
 
+/**
+ * Klasa opisujaca menu start gry
+ */
+public class StartMenu extends JDialog{
 
     /**
      * Pola przechowujace nazwe pola informacyjnego infotext
@@ -44,10 +47,13 @@ public class StartMenu extends JDialog{
      */
     JButton okbutton;
 
+    /**
+     * Pole inicjujace obiekt userResult
+     */
     private UserResult userResult;
 
     /**
-     * Konstruktor klasy StartMenu
+     * Konstruktor klasy Start Menu
      */
     public StartMenu(){
         createPanel();
@@ -56,7 +62,7 @@ public class StartMenu extends JDialog{
     }
 
     /**
-     * Metoda tworzaca okno start menu
+     * Metoda tworzaca i dodajaca czesci do okna
      */
     private void createPanel(){
         panel = new JPanel();
@@ -69,18 +75,19 @@ public class StartMenu extends JDialog{
         panel.add(nametextfield);
         panel.add(okbutton);
 
-
-
         initUserResult();
-
     }
 
+    /**
+     *Metoda inicjujaca odwolanie do obiektu klasy User Result
+     */
     private void initUserResult(){
         userResult = UserResult.getInstance();
     }
 
     /**
-     * Metoda odbierajaca akcje klawiatury, pozwalajaca wpisac imie uzytkownika
+     * Metoda opisujaca zachowanie programu po nacisnieciu przycsku "ok" wyswietlonego okna - zamkniecie go, pobranie
+     * i zapis nazwy uzytkownika z pola tekstowego
      */
     public void setupEvent(){
         okbutton.addActionListener(e -> {
@@ -98,6 +105,5 @@ public class StartMenu extends JDialog{
         setResizable(false);
         setTitle("Start the Game");
         this.setLocationRelativeTo(null);
-
     }
 }

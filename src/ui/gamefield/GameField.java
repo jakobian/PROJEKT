@@ -79,7 +79,9 @@ public class GameField extends JPanel {
      * Pole przechowujace numer planszy
      */
     private int mapNr = 1;
-
+    /**
+     * Pole inicjujace obiekt klasy Best Result
+     */
     BestResults bestResults;
 
     
@@ -140,6 +142,7 @@ public class GameField extends JPanel {
                     initBestResult();
                     resetResult();
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    initBestResult();
                     resetResult();
                     restartGame();
                 }
@@ -168,7 +171,7 @@ public class GameField extends JPanel {
     }
 
     /**
-     * Metoda ustawiajaca parametry rezultatu do wartosci poczatkowych
+     * Metoda resetujaca wynik gracza
      */
     private void resetResult(){
         mapNr = 1;
@@ -223,12 +226,17 @@ public class GameField extends JPanel {
         landingArea = new LandingArea(mapId);
     }
 
-
+    /**
+     * Metoda inicjujaca menadzer liczenia punktow
+     */
     public void initPointsCounter() {
 
         userResult = UserResult.getInstance();
     }
 
+    /**
+     * Metoda inicjujaca menadzer zbioru najlepszych rezultatow
+     */
     private void initBestResult(){
         try {
             bestResults = new BestResults();
@@ -292,6 +300,10 @@ public class GameField extends JPanel {
         }
     }
 
+    /**
+     * Metoda okreslajaca menadzer punktow
+     * @param rocketState
+     */
     private void pointsManager(boolean rocketState){
             estimatedTime = (System.nanoTime() - startTime);
             userResult.setTotalPoints(estimatedTime, rocketState, area.getLevelPoint(), area.getLevelCoefficient());

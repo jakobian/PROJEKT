@@ -5,12 +5,16 @@ import javax.swing.*;
 /**
  * Created by Jakub on 13.05.2016.
  */
+
+/**
+ * Klasa opisujaca menu pauzy
+ */
 public class PauseMenu extends JDialog {
 
     /**
-     * Pola przechowujace nazwe "You have taken a break" wyswietlanego w menu pauzy
+     * Pola przechowujace nazwe "Press "P" key to pause" wyswietlanego w menu pauzy
      */
-    public final static String TakeAbreak = "You have taken a break";
+    public final static String TakeAbreak = "Press \"P\" key to pause";
     /**
      * Pola przechowujace nazwe "Press any key to continue" wyswietlanego w menu pauzy
      */
@@ -22,7 +26,7 @@ public class PauseMenu extends JDialog {
      */
     private JPanel panel;
     /**
-     * Pole inicjujace napis "You have taken a break"
+     * Pole inicjujace napis "Press "P" key to pause"
      */
     private JLabel takeAbreak;
     /**

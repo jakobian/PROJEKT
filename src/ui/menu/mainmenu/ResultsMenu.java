@@ -12,13 +12,16 @@ import java.util.Properties;
 import java.util.jar.Attributes;
 import ui.results.BestResults;
 
+
 /**
- * Created by Michał on 2016-06-15.
+ * Klasa wyswietlajaca w oknie tablice wynikow
  */
 public class ResultsMenu extends JDialog {
 
+    /**
+     * Pole przechowujace maksymalny rozmiar tabeli z wynikami graczy
+     */
     private int size = 10;
-
     /**
      * Pole przechowujace tytul "Name" wyswietlany w oknie rezultatow
      */
@@ -35,7 +38,6 @@ public class ResultsMenu extends JDialog {
      * Pole przechowujace rezultaty wyswietlane w oknie rezultatow
      */
     public int[] Results;
-
     /**
      * Pole inicjujace panel w ktorym umieszczone sa napisy menu rezultatow
      */
@@ -58,7 +60,7 @@ public class ResultsMenu extends JDialog {
     private JLabel[] resultsLabels;
 
     /**
-     * Konstruktor klasy ResultsMenu
+     * Konstruktor klasy Result Menu
      * @throws IOException
      */
     public ResultsMenu() throws IOException{
@@ -75,7 +77,7 @@ public class ResultsMenu extends JDialog {
     }
 
     /**
-     * Metoda przeksztalcajaca wczytanie rezulataty z pliku w tablice
+     * Metoda pobierajaca dane - wynik i nick z pliku konfiguracyjnego
      * @param properties
      */
     private void fromPropToArray(Properties properties){
@@ -89,8 +91,8 @@ public class ResultsMenu extends JDialog {
     }
 
     /**
-     * Metoda tworzaca etykiety nazw zawodnikow do wyswietlenia tablicy wynikow
-     * @return
+     * Metoda tworzaca etykiety i przypisujaca im nazwy gracza
+     * @return tablica z nickami graczy
      */
     private JLabel[] createNameLabels() {
         nameLabels = new JLabel[size];
@@ -101,7 +103,7 @@ public class ResultsMenu extends JDialog {
     }
 
     /**
-     * Metoda tworzaca etykiety rezultatow zawodnikow do wyswietlenia tablicy wynikow
+     * Metoda tworzaca etykiety i przypisujaca im wartosci wyniku
      * @return
      */
     private JLabel[] createResultsLabels() {

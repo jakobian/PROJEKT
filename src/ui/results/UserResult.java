@@ -69,10 +69,6 @@ public class UserResult {
             return 0;
     }
 
-
-    public void writeUserResult(Integer user_result) {
-        this.user_result = user_result;
-    }
     /**
      * Metoda zapisujaca nazwe gracza
      */
