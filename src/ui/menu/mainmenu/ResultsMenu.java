@@ -57,36 +57,36 @@ public class ResultsMenu extends JDialog {
      */
     private JLabel[] resultsLabels;
 
-    private BestResults bestResults;
 
 
 
-    public ResultsMenu(){
-        initBestResults();
+
+    public ResultsMenu() throws IOException{
+        File file = new File("resources/result.properties");
+        FileInputStream fileInput = new FileInputStream(file);
+        Properties properties = new Properties();
+        properties.load(fileInput);
+        fileInput.close();
+
+        fromPropToArray(properties);
+
         createPanel();
         drawView();
     }
 
-    private void initBestResults(){
-        try {
-            bestResults = new BestResults();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void setNames(){
-            Names = bestResults.getUserNames();
-    }
+    private void fromPropToArray(Properties properties){
+        Names = new String[size];
+        Results = new int[size];
 
-    private void setResults(){
-            Results = bestResults.getResults();
+        for (int i = 0; i < size; ++i) {
+            Names[i] = properties.getProperty("User_" + Integer.toString(i));
+            Results[i] = Integer.parseInt(properties.getProperty("Result_" + Integer.toString(i)));
+        }
     }
 
     private JLabel[] createNameLabels() {
         nameLabels = new JLabel[size];
-        setNames();
         for (int i = 0; i < size; i++) {
             nameLabels[i] = new JLabel(Names[i]);
         }
@@ -95,7 +95,6 @@ public class ResultsMenu extends JDialog {
 
     private JLabel[] createResultsLabels() {
         resultsLabels = new JLabel[size];
-        setResults();
         for (int i = 0; i < size; i++) {
             resultsLabels[i] = new JLabel(String.valueOf(Results[i]));
         }

@@ -133,7 +133,12 @@ public class MainMenu extends JDialog {
      * Metoda inicjujaca i wyswietlajaca okno menu rezultatow
      */
     private void initResultsMenu() {
-        resMenu = new ResultsMenu();
+        try {
+            resMenu = new ResultsMenu();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         resMenu.setModal(true);
         resMenu.setVisible(true);
     }
