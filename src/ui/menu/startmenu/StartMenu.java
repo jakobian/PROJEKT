@@ -44,7 +44,7 @@ public class StartMenu extends JDialog{
      */
     JButton okbutton;
 
-    //public UserResult userResult;
+    public UserResult userResult;
 
     public StartMenu(){
         createPanel();
@@ -64,16 +64,13 @@ public class StartMenu extends JDialog{
         panel.add(okbutton);
 
 
-        try {
-            initUserResult();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        initUserResult();
+
     }
 
-    private void initUserResult() throws IOException{
-        userResult = new UserResult(1);
+    private void initUserResult(){
+        userResult = UserResult.getInstance();
     }
 
 

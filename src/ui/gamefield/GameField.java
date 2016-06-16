@@ -173,9 +173,9 @@ public class GameField extends JPanel {
      */
     public GameField () {
         state = statesOfGame.START_MENU;
+        initPointsCounter();
         try {
             initArea(mapNr);
-            initPointsCounter(mapNr);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -209,8 +209,8 @@ public class GameField extends JPanel {
         landingArea = new LandingArea(mapId);
     }
 
-    public void initPointsCounter(int mapId) throws IOException{
-        userResult = new UserResult(mapId);
+    public void initPointsCounter() {
+        userResult = UserResult.getInstance();
     }
 
     /**

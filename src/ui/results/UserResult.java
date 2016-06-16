@@ -4,12 +4,13 @@ package ui.results;
  * Created by Jakub on 12.05.2016.
  */
 
+import javax.jws.soap.SOAPBinding;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/** Klasa zapisujaca dane i osiagniecia uzytkownika */
+/** Klasa zapisujaca dane i osiagniecia uzytkownika, klasa typu singleton */
 public class UserResult {
 
     /**
@@ -32,30 +33,19 @@ public class UserResult {
 
     private long coefficient;
 
-    public UserResult(int mapId) throws IOException {
-        switch (mapId) {
-            case 1: {
-                File file = new File("resources/area1.properties");
-                FileInputStream fileInput = new FileInputStream(file);
-                Properties properties = new Properties();
-                properties.load(fileInput);
-                fileInput.close();
+    /**
+     * Konstruktor klasy
+     */
+    private UserResult(){
 
-                getMaxPoints(properties);
-                break;
-            }
+    }
 
-            case 2:{
-                File file = new File("resources/area2.properties");
-                FileInputStream fileInput = new FileInputStream(file);
-                Properties properties = new Properties();
-                properties.load(fileInput);
-                fileInput.close();
+    private static class UserResultHolder{
+        private static final UserResult instance = new UserResult();}
 
-                getMaxPoints(properties);
-                break;
-            }
-        }
+
+    public static UserResult getInstance(){
+        return UserResultHolder.instance;
     }
 
     private void getMaxPoints(Properties properties){
@@ -67,7 +57,7 @@ public class UserResult {
     public void setTotalPoints(long estimatedTime, boolean rocketState){
 
         if(rocketState == true) {
-            mapPoints = (maxPoints - estimatedTime) / (maxPoints / coefficient);
+            mapPoints = (maxPoints - estimatedTime);
         }
         else {
             mapPoints = 0;
@@ -81,6 +71,7 @@ public class UserResult {
      */
     public long getUserResult(){
         if (user_result >0) {
+            System.out.println(getUserName());
             return user_result;
         }
         else

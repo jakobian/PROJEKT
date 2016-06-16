@@ -63,6 +63,7 @@ public class BestResults {
     private void findSlot(){
         actualResult = (int)userResult.getUserResult();
 
+
         for(int i=0; i < size; ++i ){
             if(actualResult<result[i]){
 
