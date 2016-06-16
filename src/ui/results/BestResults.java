@@ -76,7 +76,7 @@ public class BestResults {
         actualResult = (int)userResult.getUserResult();
         position = -1;
 
-        for (int i = size-1; i > 0; --i ) {
+        for (int i = size-1; i >= 0; --i ) {
             if (actualResult > result[i]) {
                 if (i == size-1) {
                     result[i] = actualResult;
@@ -95,7 +95,7 @@ public class BestResults {
         actualName = userResult.getUserName();
 
         if (position > -1) {
-            for (int i = size-1; i > position; --i) {
+            for (int i = size-1; i >= position; --i) {
                 if (i == size-1) {
                     userName[i] = actualName;
                 }
