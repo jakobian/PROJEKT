@@ -78,7 +78,7 @@ public class BestResults {
 
         for (int i = size-1; i > 0; --i ) {
             if (actualResult > result[i]) {
-                if (i == size) {
+                if (i == size-1) {
                     result[i] = actualResult;
                 }
                 else {
