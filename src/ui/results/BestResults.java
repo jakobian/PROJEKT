@@ -30,6 +30,9 @@ public class BestResults {
         fileInput.close();
 
         fromPropToArray(properties);
+        findSlot();
+        replaceName();
+        fromArrayToProp();
 
     }
 
