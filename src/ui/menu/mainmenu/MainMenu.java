@@ -14,7 +14,6 @@ import java.io.IOException;
  */
 public class MainMenu extends JDialog {
 
-
     /**
      * Pola przechowujace nazwe przycisku "Instruction" wyswietlanego w menu glownym
      */
