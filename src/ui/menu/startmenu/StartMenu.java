@@ -82,8 +82,6 @@ public class StartMenu extends JDialog{
         });
     }
 
-
-
     /**
      * Metoda wyswietlajaca okno menu pauzy
      */

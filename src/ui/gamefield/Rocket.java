@@ -175,15 +175,15 @@ public class Rocket extends Polygon {
     {
         if (landed) {
             g.setColor(Color.blue);
-            g.drawString("Brawo, wyladowales!!!", width/2 - 20, height/2);
-            g.drawString("Nasisnij ENTER aby przejsc do nastepnego poziomu", width/2 - 60, height/2 + 20);
-            g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width/2 - 120, height/2 + 40);
+            g.drawString("Brawo, wyladowales!!!", width/2 - 30, height/8);
+            g.drawString("Nasisnij ENTER aby przejsc do nastepnego poziomu", width/2 - 120, height/8 + 20);
+            g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width/2 - 120, height/8 + 40);
         }
         else if (crashed) {
             g.setColor(Color.blue);
-            g.drawString("Niestety rozbiles sie.", width / 2 - 20, height / 2);
-            g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width / 2 - 60, height / 2 + 20);
-            g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width / 2 - 120, height / 2 + 40);
+            g.drawString("Niestety rozbiles sie.", width / 2 - 30, height / 8);
+            g.drawString("Nasisnij ENTER aby zagrac jeszcze raz", width / 2 - 120, height / 8 + 20);
+            g.drawString("Nasisnij SPACJE aby powrocic do menu poczatkowego", width / 2 - 120, height / 8 + 40);
             }
     }
 

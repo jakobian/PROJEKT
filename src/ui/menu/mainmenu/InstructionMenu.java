@@ -13,32 +13,32 @@ import java.io.IOException;
 public class InstructionMenu extends JDialog {
 
     /**
-     * Pola przechowujace nazwe "To move left, press key "A"" wyswietlanego w oknie instrukcji
+     * Pola przechowujace nazwe "To move left, press left arrow" wyswietlanego w oknie instrukcji
      */
-    public final static String PressKeyA = "To move left, press key \"A\"";
+    public final static String PressKeyA = "To move left, press left arrow";
     /**
-     * Pola przechowujace nazwe "To move up, press key "W"" wyswietlanego w oknie instrukcji
+     * Pola przechowujace nazwe "To move up, press up arrow" wyswietlanego w oknie instrukcji
      */
-    public final static String PressKeyW = "To move up, press key \"W\"";
+    public final static String PressKeyW = "To move up, press up arrow";
     /**
-     * Pola przechowujace nazwe "To move up, press key "W"" wyswietlanego w oknie instrukcji
+     * Pola przechowujace nazwe "To move up, press right arrow" wyswietlanego w oknie instrukcji
      */
-    public final static String PressKeyD = "To move right, press key \"D\"";
+    public final static String PressKeyD = "To move right, press right arrow";
 
     /**
      * Pole inicjujace panel w ktorym umieszczone sa napisy menu pauzy
      */
     private JPanel panel;
     /**
-     * Pole inicjujace napis "KeyW"
+     * Pole inicjujace napis "up arrow"
      */
     private JLabel keyW;
     /**
-     * Pole inicjujace napis "KeyA"
+     * Pole inicjujace napis "left arrow"
      */
     private JLabel keyA;
     /**
-     * Pole inicjujace napis "KeyD"
+     * Pole inicjujace napis "right arrow"
      */
     private JLabel keyD;
 
@@ -68,7 +68,7 @@ public class InstructionMenu extends JDialog {
      */
     private void drawView(){
         this.add(panel);
-        this.setSize(180, 80);
+        this.setSize(200, 80);
         setResizable(false);
         setTitle("Instruction");
         this.setLocationRelativeTo(null);
