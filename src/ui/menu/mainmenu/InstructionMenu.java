@@ -10,6 +10,10 @@ import java.io.IOException;
 /**
  * Created by Jakub on 14.05.2016.
  */
+
+/**
+ * Metoda opisujaca menu instrukcji
+ */
 public class InstructionMenu extends JDialog {
 
     /**
@@ -41,8 +45,6 @@ public class InstructionMenu extends JDialog {
      * Pole inicjujace napis "KeyD"
      */
     private JLabel keyD;
-
-    public BufferedImage imgD;
 
     public InstructionMenu(){
         createPanel();

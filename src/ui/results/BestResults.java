@@ -7,22 +7,48 @@ import ui.results.UserResult;
 
 
 
-/**
+/*
  * Created by Jakub on 12.05.2016.
+ */
+
+/**
+ * Klasa pobierajaca wynik gracza i zapsujaca go w tablicy wynikow
  */
 public class BestResults {
 
+    /**
+     * Pole przechowujace i okreslajace rozmiar tabeli wynikow
+     */
     private int size = 10;
+    /**
+     * Pole przechowujace pozycje na ktora zostal wstawiony rezultat/nazwa uzytkownika
+     */
     private int position;
-
+    /**
+     * Pole przechowujace tablice z nazwami uzytkownikow
+     */
     public String[] userName;
+    /**
+     * Pole przechowujace tablice z rezultatami
+     */
     public int[] result;
-
+    /**
+     * Pole przechowujace aktualny rezultat uzytkownika
+     */
     private int actualResult;
+    /**
+     * Pole przechowujace aktualna nazwe uzytkownika
+     */
     private String actualName;
-
+    /**
+     * Pole inicjujace obiekt klasy User Result
+     */
     private UserResult userResult;
 
+    /**
+     * Konstruktor klasy Best Result
+     * @throws IOException
+     */
     public BestResults() throws IOException {
         initUserResult();
 
@@ -36,13 +62,19 @@ public class BestResults {
         findSlot();
         replaceName();
         fromArrayToProp();
-
     }
 
+    /**
+     * Metoda odwolujaca sie do obiektu klasy UserResult
+     */
     private void initUserResult(){
         userResult = UserResult.getInstance();
     }
 
+    /**
+     * Metoda pobierajaca dane - wynik i nick z pliku konfiguracyjnego
+     * @param properties
+     */
     private void fromPropToArray(Properties properties){
         userName = new String[size];
         result = new int[size];
@@ -53,6 +85,10 @@ public class BestResults {
         }
     }
 
+    /**
+     * Metoda zapisujaca dane - wynik i nick z pliku konfiguracyjnego
+     * @param
+     */
     private void fromArrayToProp() throws IOException {
         Properties props = new Properties();
         for (int i = 0; i < size; ++i) {
@@ -64,14 +100,10 @@ public class BestResults {
         props.store(out, "Best Results");
     }
 
-    public String[] getUserNames(){
-        return userName;
-    }
-
-    public int[] getResults(){
-        return result;
-    }
-
+    /**
+     * Metoda wstawiajaca wynik uzytkownika do tablcy wynikow
+     * @return zwraca pozycje na ktora zostal wstawiony wynik do tablicy
+     */
     private int findSlot(){
         actualResult = (int)userResult.getUserResult();
         position = -1;
@@ -91,6 +123,9 @@ public class BestResults {
         return position;
     }
 
+    /**
+     * Metoda wstawiajaca nazwe uzytkownika do tabeli wynikow
+     */
     private void replaceName() {
         actualName = userResult.getUserName();
 

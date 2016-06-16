@@ -12,13 +12,16 @@ import java.util.Properties;
 import java.util.jar.Attributes;
 import ui.results.BestResults;
 
+
 /**
- * Created by Michał on 2016-06-15.
+ * Klasa wyswietlajaca w oknie tablice wynikow
  */
 public class ResultsMenu extends JDialog {
 
+    /**
+     * Pole przechowujace maksymalny rozmiar tabeli z wynikami graczy
+     */
     private int size = 10;
-
     /**
      * Pole przechowujace tytul "Name" wyswietlany w oknie rezultatow
      */
@@ -35,7 +38,6 @@ public class ResultsMenu extends JDialog {
      * Pole przechowujace rezultaty wyswietlane w oknie rezultatow
      */
     public int[] Results;
-
     /**
      * Pole inicjujace panel w ktorym umieszczone sa napisy menu rezultatow
      */
@@ -58,9 +60,10 @@ public class ResultsMenu extends JDialog {
     private JLabel[] resultsLabels;
 
 
-
-
-
+    /**
+     * Konstruktor klasy Result Menu
+     * @throws IOException
+     */
     public ResultsMenu() throws IOException{
         File file = new File("resources/result.properties");
         FileInputStream fileInput = new FileInputStream(file);
@@ -74,7 +77,10 @@ public class ResultsMenu extends JDialog {
         drawView();
     }
 
-
+    /**
+     * Metoda pobierajaca dane - wynik i nick z pliku konfiguracyjnego
+     * @param properties
+     */
     private void fromPropToArray(Properties properties){
         Names = new String[size];
         Results = new int[size];
@@ -85,6 +91,10 @@ public class ResultsMenu extends JDialog {
         }
     }
 
+    /**
+     * Metoda tworzaca etykiety i przypisujaca im nazwy gracza
+     * @return tablica z nickami graczy
+     */
     private JLabel[] createNameLabels() {
         nameLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
@@ -93,6 +103,10 @@ public class ResultsMenu extends JDialog {
         return nameLabels;
     }
 
+    /**
+     * Metoda tworzaca etykiety i przypisujaca im wartosci wyniku
+     * @return
+     */
     private JLabel[] createResultsLabels() {
         resultsLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {

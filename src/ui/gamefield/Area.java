@@ -9,8 +9,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
+/*
  * Created by Jakub on 25.05.2016.
+ */
+
+/**
+ * Klasa definiujaca podloze planszy
  */
 public class Area extends Polygon{
     /**
@@ -29,9 +33,13 @@ public class Area extends Polygon{
      * Pole przechowujace aktualna tablice wspolrzednych Y potrzebnych do tworzenia planszy, po skalowaniu
      */
     private int[] current_point_y;
-
+    /**
+     * Pole przechowujace maksymalna liczbe punktow mozliwa do uzyskania na danej planszy
+     */
     private long maxPoints;
-
+    /**
+     * Pole przechowujace wspolczynnik trudnosci przypisany do danej planszy
+     */
     private long coefficient;
 
     public Area(int mapId) throws IOException {
@@ -60,8 +68,6 @@ public class Area extends Polygon{
                 break;
             }
         }
-
-
     }
 
     /**
@@ -81,16 +87,26 @@ public class Area extends Polygon{
         }
     }
 
+    /**
+     * Metoda pobierajaca z pliku konfiguracyjnego wspolczynnik i maksymalna liczbe punktow przypisana do danej planszy
+     * @param properties
+     */
     private void getMaxPoints(Properties properties){
-
         maxPoints = Long.parseLong(properties.getProperty("maxPoints"));
         coefficient = Long.parseLong(properties.getProperty("coefficient"));
     }
 
+    /**
+     * Metoda zwracajaca maksymalna liczbe punktow mozliwa do uzyskania na danej planszy
+     * @return
+     */
     public long getLevelPoint(){
         return maxPoints;
     }
 
+    /**Metoda zwracajaca wspolczynnik trudnosci danej planszy
+     * @return
+     */
     public long getLevelCoefficient(){
         return coefficient;
     }

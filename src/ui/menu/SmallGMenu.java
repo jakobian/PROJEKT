@@ -81,7 +81,6 @@ public class SmallGMenu extends JPanel {
         startbutton.addActionListener(e -> initStart());
         menubutton.addActionListener(e -> initMenu());
         pausebutton.addActionListener(e -> initPause());
-
     }
 
     /**

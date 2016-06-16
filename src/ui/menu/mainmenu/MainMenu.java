@@ -5,8 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/*
+ * Created by Jakub on 12.05.2016.
+ */
+
 /**
- * Created by Jakub on 11.05.2016.
+ * Klasa wyswietlajaca okno z menu gry
  */
 public class MainMenu extends JDialog {
 
@@ -28,8 +32,6 @@ public class MainMenu extends JDialog {
      * Pola przechowujace nazwe przycisku "Quit" wyswietlanego w menu glownym
      */
     public final static String Quit = "Quit";
-
-
     /**
      * Pole inicjujace przycik "instruction" w menu
      */
@@ -46,13 +48,17 @@ public class MainMenu extends JDialog {
      * Pole inicjujace przycik "Internet's function" w menu
      */
     JButton internetnbutton;
-
     /**
      * Pole inicjujace panel do ktorego beda wstawiane przyciski w oknie dialogowym menu glownego
      */
     private JPanel panel;
-
+    /**
+     * Pole inicjujace obiekt menu instrukcji
+     */
     InstructionMenu instrmenu;
+    /**
+     * Pole inicjujace obiekt menu rezultatow
+     */
     ResultsMenu resMenu;
 
 
@@ -82,6 +88,9 @@ public class MainMenu extends JDialog {
         panel.add(quitbutton);
     }
 
+    /**
+     * Metoda wyswietlająca okno
+     */
     private void drawView() {
         this.add(panel);
         this.setSize(300, 150);

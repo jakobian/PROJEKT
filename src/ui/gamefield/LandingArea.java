@@ -9,6 +9,10 @@ import java.util.Properties;
 /**
  * Created by Jakub on 25.05.2016.
  */
+
+/**
+ * Klasa opisujaca ladowisko
+ */
 public class LandingArea extends Polygon {
 
     public LandingArea(int mapId) throws IOException {

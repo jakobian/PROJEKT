@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 
 /**
- * Klasa implementujaca obiekt rakiety
+ * Klasa opisujaca obiekt rakiete
  */
 public class Rocket extends Polygon {
 
@@ -159,11 +159,17 @@ public class Rocket extends Polygon {
         y += accSpeed + dy;
     }
 
+    /**
+     * Metoda zwracajaca przyspieszenie wertykalne
+     * @return
+     */
     public int getDy() {return dy;}
 
+    /**
+     * Metoda zwracajaca przyspieszenie horyzontalne
+     * @return
+     */
     public int getDx() {return dx;}
-
-
 
     /**
      * Meotda rysujaca reakcje na ladowanie/katastrofe statku
@@ -202,17 +208,31 @@ public class Rocket extends Polygon {
     public double getDimW(){
         return w;
     }
-
+    /**
+     * Metoda zwaracajaca aktualna pozycje X statku
+     * @return
+     */
     public double getActualLocationX(){
         return actualLocationX;
     }
+    /**
+     * Metoda zwaracajaca aktualna pozycje Y statku
+     * @return
+     */
     public double getActualLocationY(){
         return actualLocationY;
     }
-
+    /**
+     * Metoda zwaracajaca aktualna szerokosc statku
+     * @return
+     */
     public double getActualSizeWidth(){
         return actualSizeWidth;
     }
+    /**
+     * Metoda zwaracajaca aktualna wysokosc statku
+     * @return
+     */
     public double getActualSizeHeight(){
         return actualSizeHeight;
     }
@@ -225,10 +245,17 @@ public class Rocket extends Polygon {
         w = img.getWidth();
     }
 
+    /**
+     * Metoda zwracajaca obrazek statku
+     * @return
+     */
     public Image getImg() {
         return img;
     }
-
+    /**
+     * Metoda zwracajaca obrazek wybuchu
+     * @return
+     */
     public Image getExplosion() {return exp;}
 
     /**
@@ -277,6 +304,10 @@ public class Rocket extends Polygon {
     public void drawRocket(Graphics g){
         g.drawImage(getImg(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
     }
+    /**
+     * Metoda rysujaca eksplozje statku
+     * @param g
+     */
     public void drawExplosion(Graphics g){
         g.drawImage(getExplosion(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
     }
