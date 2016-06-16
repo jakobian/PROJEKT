@@ -6,11 +6,6 @@ import java.util.Properties;
 import ui.results.UserResult;
 
 
-
-/*
- * Created by Jakub on 12.05.2016.
- */
-
 /**
  * Klasa pobierajaca wynik gracza i zapsujaca go w tablicy wynikow
  */

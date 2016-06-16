@@ -3,10 +3,6 @@ package ui.menu.pausemenu;
 import javax.swing.*;
 
 /**
- * Created by Jakub on 13.05.2016.
- */
-
-/**
  * Klasa opisujaca menu pauzy
  */
 public class PauseMenu extends JDialog {

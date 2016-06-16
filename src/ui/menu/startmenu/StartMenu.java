@@ -9,10 +9,6 @@ import java.io.IOException;
 import ui.gamefield.GameField;
 
 /**
- * Created by Jakub on 13.05.2016.
- */
-
-/**
  * Klasa opisujaca menu start gry
  */
 public class StartMenu extends JDialog{

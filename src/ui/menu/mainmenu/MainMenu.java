@@ -5,9 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-/*
- * Created by Jakub on 12.05.2016.
- */
 
 /**
  * Klasa wyswietlajaca okno z menu gry

@@ -7,10 +7,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by Jakub on 25.05.2016.
- */
-
-/**
  * Klasa opisujaca ladowisko
  */
 public class LandingArea extends Polygon {
