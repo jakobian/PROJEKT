@@ -201,7 +201,6 @@ public class GameField extends JPanel {
      */
     private void initField() throws IOException{
         rocket = new Rocket();
-
     }
 
     private void initArea(int mapId) throws IOException{
@@ -271,7 +270,6 @@ public class GameField extends JPanel {
     private void pointsManager(boolean rocketState){
             estimatedTime = (System.nanoTime() - startTime);
             userResult.setTotalPoints(estimatedTime, rocketState);
-
     }
 
     /**
@@ -307,9 +305,6 @@ public class GameField extends JPanel {
         rocket.setLocation(gameWidth,gameHeight);
         landingArea.setPoints(gameWidth,gameHeight);
         area.setPoints(gameWidth,gameHeight);
-
-
-
 
         if((landingArea.intersects(rocket.getActualLocationX(), rocket.getActualLocationY(),
                 rocket.getActualSizeWidth(), rocket.getActualSizeHeight()))

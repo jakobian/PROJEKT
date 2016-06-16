@@ -31,7 +31,7 @@ public class ResultsMenu extends JDialog {
     /**
      * Pole przechowujace rezultaty wyswietlane w oknie rezultatow
      */
-    public String[] Results;
+    public int[] Results;
 
     /**
      * Pole inicjujace panel w ktorym umieszczone sa napisy menu rezultatow
@@ -46,13 +46,13 @@ public class ResultsMenu extends JDialog {
      */
     private JLabel title2;
     /**
-     * Pole inicjujace rezultaty
+     * Pole inicjujace nazwy najlepszych graczy
      */
-    private JLabel[] names;
+    private JLabel[] nameLabels;
     /**
-     * Pole inicjujace rezultaty
+     * Pole inicjujace rezultaty najlepszych graczy
      */
-    private JLabel[] results;
+    private JLabel[] resultsLabels;
 
 
     public ResultsMenu() throws IOException{
@@ -69,16 +69,16 @@ public class ResultsMenu extends JDialog {
 
     private void createResults(Properties properties) {
         Names = new String[size];
-        Results = new String[size];
+        Results = new int[size];
 
         for (int i = 0; i < size; i++) {
             Names[i] = properties.getProperty("User_" + Integer.toString(i+1));
-            Results[i] = properties.getProperty("Result_" + Integer.toString(i+1));
+            Results[i] = Integer.parseInt(properties.getProperty("Result_" + Integer.toString(i+1));)
         }
     }
 
     private JLabel[] createNameLabels() {
-        JLabel[] nameLabels = new JLabel[size];
+        nameLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
             nameLabels[i] = new JLabel(Names[i]);
         }
@@ -86,7 +86,7 @@ public class ResultsMenu extends JDialog {
     }
 
     private JLabel[] createResultsLabels() {
-        JLabel[] resultsLabels = new JLabel[size];
+        resultsLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
             resultsLabels[i] = new JLabel(Results[i]);
         }
