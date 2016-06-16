@@ -3,6 +3,7 @@ package ui.results;
 import javax.swing.*;
 import java.io.*;
 import java.util.Properties;
+import ui.results.UserResult;
 
 
 
@@ -23,6 +24,8 @@ public class BestResults {
     private UserResult userResult;
 
     public BestResults() throws IOException {
+        initUserResult();
+
         File file = new File("resources/result.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
@@ -34,6 +37,10 @@ public class BestResults {
         replaceName();
         fromArrayToProp();
 
+    }
+
+    private void initUserResult(){
+        userResult = UserResult.getInstance();
     }
 
     private void fromPropToArray(Properties properties){
