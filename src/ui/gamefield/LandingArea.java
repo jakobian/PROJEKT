@@ -11,6 +11,11 @@ import java.util.Properties;
  */
 public class LandingArea extends Polygon {
 
+    /**
+     * Konstruktor klasy LandingArea obslugujacy wybor i wczytanie mapy poziomu z pliku konfiguracyjnego
+     * @param mapId
+     * @throws IOException
+     */
     public LandingArea(int mapId) throws IOException {
         switch(mapId) {
             case 1: {

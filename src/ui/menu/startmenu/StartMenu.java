@@ -46,12 +46,18 @@ public class StartMenu extends JDialog{
 
     private UserResult userResult;
 
+    /**
+     * Konstruktor klasy StartMenu
+     */
     public StartMenu(){
         createPanel();
         drawView();
         setupEvent();
     }
 
+    /**
+     * Metoda tworzaca okno start menu
+     */
     private void createPanel(){
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -73,9 +79,10 @@ public class StartMenu extends JDialog{
         userResult = UserResult.getInstance();
     }
 
-
+    /**
+     * Metoda odbierajaca akcje klawiatury, pozwalajaca wpisac imie uzytkownika
+     */
     public void setupEvent(){
-
         okbutton.addActionListener(e -> {
             userResult.writeUserName(nametextfield.getText());
             dispose();
@@ -83,7 +90,7 @@ public class StartMenu extends JDialog{
     }
 
     /**
-     * Metoda wyswietlajaca okno menu pauzy
+     * Metoda wyswietlajaca okno menu start
      */
     private void drawView(){
         this.add(panel);

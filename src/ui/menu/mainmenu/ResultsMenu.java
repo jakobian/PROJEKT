@@ -57,10 +57,10 @@ public class ResultsMenu extends JDialog {
      */
     private JLabel[] resultsLabels;
 
-
-
-
-
+    /**
+     * Konstruktor klasy ResultsMenu
+     * @throws IOException
+     */
     public ResultsMenu() throws IOException{
         File file = new File("resources/result.properties");
         FileInputStream fileInput = new FileInputStream(file);
@@ -74,7 +74,10 @@ public class ResultsMenu extends JDialog {
         drawView();
     }
 
-
+    /**
+     * Metoda przeksztalcajaca wczytanie rezulataty z pliku w tablice
+     * @param properties
+     */
     private void fromPropToArray(Properties properties){
         Names = new String[size];
         Results = new int[size];
@@ -85,6 +88,10 @@ public class ResultsMenu extends JDialog {
         }
     }
 
+    /**
+     * Metoda tworzaca etykiety nazw zawodnikow do wyswietlenia tablicy wynikow
+     * @return
+     */
     private JLabel[] createNameLabels() {
         nameLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
@@ -93,6 +100,10 @@ public class ResultsMenu extends JDialog {
         return nameLabels;
     }
 
+    /**
+     * Metoda tworzaca etykiety rezultatow zawodnikow do wyswietlenia tablicy wynikow
+     * @return
+     */
     private JLabel[] createResultsLabels() {
         resultsLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {

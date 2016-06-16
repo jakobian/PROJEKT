@@ -167,6 +167,9 @@ public class GameField extends JPanel {
         }
     }
 
+    /**
+     * Metoda ustawiajaca parametry rezultatu do wartosci poczatkowych
+     */
     private void resetResult(){
         mapNr = 1;
         estimatedTime = 0L;
@@ -210,10 +213,16 @@ public class GameField extends JPanel {
         rocket = new Rocket();
     }
 
+    /**
+     * Metoda inicjujaca teren ksiezyca
+     * @param mapId
+     * @throws IOException
+     */
     private void initArea(int mapId) throws IOException{
         area = new Area(mapId);
         landingArea = new LandingArea(mapId);
     }
+
 
     public void initPointsCounter() {
 
@@ -270,8 +279,6 @@ public class GameField extends JPanel {
             } catch (InterruptedException ex) { }
         }
     }
-
-
 
     /**
      * Metoda ladujaca menu gry

@@ -277,6 +277,11 @@ public class Rocket extends Polygon {
     public void drawRocket(Graphics g){
         g.drawImage(getImg(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
     }
+
+    /**
+     * Metoda rysujaca wybuch statku po nieudanym ladowaniu
+     * @param g
+     */
     public void drawExplosion(Graphics g){
         g.drawImage(getExplosion(),(int)actualLocationX, (int)actualLocationY ,(int)actualSizeWidth,(int)actualSizeHeight, null);
     }

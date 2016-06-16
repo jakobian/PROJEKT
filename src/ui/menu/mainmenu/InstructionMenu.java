@@ -44,6 +44,9 @@ public class InstructionMenu extends JDialog {
 
     public BufferedImage imgD;
 
+    /**
+     * Konstruktor klasy InstructionMenu
+     */
     public InstructionMenu(){
         createPanel();
         drawView();
