@@ -47,7 +47,7 @@ public class BestResults {
         Properties props = new Properties();
         for (int i = 0; i < size; ++i) {
             props.setProperty("User_" + Integer.toString(i), userName[i]);
-            //props.setProperty("Result_" + Integer.toString(i), Integer.toString(result[i]));
+            props.setProperty("Result_" + Integer.toString(i), Integer.toString(result[i]));
         }
         File file = new File("resources/result.properties");
         OutputStream out = new FileOutputStream(file);
@@ -62,8 +62,7 @@ public class BestResults {
         return result;
     }
 
-
-   /* private int findSlot(){
+    private int findSlot(){
         actualResult = (int)userResult.getUserResult();
         position = -1;
 
@@ -96,5 +95,5 @@ public class BestResults {
                 }
             }
         }
-    }*/
+    }
 }
