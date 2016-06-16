@@ -54,20 +54,12 @@ public class BestResults {
         props.store(out, "Best Results");
     }
 
-    public String[] getUserNames(){
+    public String[] getNames(){
         return userName;
     }
 
     public int[] getResults(){
         return result;
-    }
-
-    private void saveResults() throws IOException{
-        File file = new File("resources/results.properties");
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        Properties properties = new Properties();
-
-        fileOutputStream.close();
     }
 
     private int findSlot(){

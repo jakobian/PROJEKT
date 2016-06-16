@@ -27,10 +27,25 @@ public class Rocket extends Polygon {
      * Pole przechowujace wspolrzedna y pozycji statku
      */
     private int y;
+    /**
+     * Pole przechowujace zmiany wspolrzednej x statku
+     */
     private int dx;
+    /**
+     * Pole przechowujace zmiany wspolrzednej y statku
+     */
     public int dy;
+    /**
+     * Pole przechowujace wartosc przyspieszenia statku
+     */
     private int accSpeed;
+    /**
+     * Pole przechowujace wartosc maksymalnej dopuszczalnej pionowej predkosci ladowania
+     */
     public int maxLandingHorizontalSpeed;
+    /**
+     * Pole przechowujace wartosc maksymalnej dopuszczalnej poziomej predkosci ladowania
+     */
     public int maxLandingVerticalSpeed;
     /**
      * Pole przechowujace obiekt subklasy BufferedImage - opisuje obrazek i jego dane
