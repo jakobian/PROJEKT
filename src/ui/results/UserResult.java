@@ -29,14 +29,16 @@ public class UserResult {
     /**
      * Konstruktor wyniku gracza
      */
-    public long maxPoints;
+    public long maxPoints = 10000000000L;
 
-    private long coefficient;
+    private long coefficient = 1000;
 
     /**
      * Konstruktor klasy
      */
     private UserResult(){
+        user_name = "user";
+        user_result = 0;
 
     }
 
@@ -54,10 +56,14 @@ public class UserResult {
         coefficient = Long.parseLong(properties.getProperty("coefficient"));
     }
 
+
+    /**
+     * Metoda ustalajaca i zapisujaca wynik gracza
+     */
     public void setTotalPoints(long estimatedTime, boolean rocketState){
 
         if(rocketState == true) {
-            mapPoints = (maxPoints - estimatedTime);
+            mapPoints = (maxPoints - estimatedTime)/(maxPoints/coefficient);
         }
         else {
             mapPoints = 0;
@@ -71,16 +77,13 @@ public class UserResult {
      */
     public long getUserResult(){
         if (user_result >0) {
-            System.out.println(getUserName());
             return user_result;
         }
         else
             return 0;
     }
 
-    /**
-     * Metoda zapisujaca wynik gracza
-     */
+
     public void writeUserResult(Integer user_result) {
         this.user_result = user_result;
     }

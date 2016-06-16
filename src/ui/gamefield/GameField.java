@@ -45,7 +45,7 @@ public class GameField extends JPanel {
     /**
      * Inicjacja obiektu menadzera uzytkownika
      */
-    public UserResult userResult;
+    private UserResult userResult;
     /**
      * Tablica mozliwych stanow gry
      */

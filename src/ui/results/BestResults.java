@@ -44,11 +44,11 @@ public class BestResults {
         }
     }
 
-    public String[] getUserNames(){
+    public String[] getNames(){
         return userName;
     }
 
-    public int[] getUserResults(){
+    public int[] getResults(){
         return result;
     }
 

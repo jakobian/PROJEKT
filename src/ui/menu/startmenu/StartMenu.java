@@ -44,7 +44,7 @@ public class StartMenu extends JDialog{
      */
     JButton okbutton;
 
-    public UserResult userResult;
+    private UserResult userResult;
 
     public StartMenu(){
         createPanel();
@@ -78,7 +78,6 @@ public class StartMenu extends JDialog{
 
         okbutton.addActionListener(e -> {
             userResult.writeUserName(nametextfield.getText());
-            System.out.println(userResult.getUserName());
             dispose();
         });
     }
