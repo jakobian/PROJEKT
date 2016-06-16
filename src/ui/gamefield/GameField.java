@@ -12,6 +12,7 @@ import java.util.Properties;
 import ui.gamefield.Rocket;
 import ui.results.UserResult;
 
+
 /**
  * Created by Jakub on 12.04.2016.
  */
@@ -44,7 +45,7 @@ public class GameField extends JPanel {
     /**
      * Inicjacja obiektu menadzera uzytkownika
      */
-    private UserResult userResult;
+    public UserResult userResult;
     /**
      * Tablica mozliwych stanow gry
      */
@@ -208,7 +209,7 @@ public class GameField extends JPanel {
         landingArea = new LandingArea(mapId);
     }
 
-    private void initPointsCounter(int mapId) throws IOException{
+    public void initPointsCounter(int mapId) throws IOException{
         userResult = new UserResult(mapId);
     }
 

@@ -56,25 +56,8 @@ public class ResultsMenu extends JDialog {
 
 
     public ResultsMenu() throws IOException{
-        File file = new File("resources/result.properties");
-        FileInputStream fileInput = new FileInputStream(file);
-        Properties properties = new Properties();
-        properties.load(fileInput);
-        fileInput.close();
-
-        createResults(properties);
         createPanel();
         drawView();
-    }
-
-    private void createResults(Properties properties) {
-        Names = new String[size];
-        Results = new int[size];
-
-        for (int i = 0; i < size; i++) {
-            Names[i] = properties.getProperty("User_" + Integer.toString(i+1));
-            Results[i] = Integer.parseInt(properties.getProperty("Result_" + Integer.toString(i+1));)
-        }
     }
 
     private JLabel[] createNameLabels() {
@@ -88,7 +71,7 @@ public class ResultsMenu extends JDialog {
     private JLabel[] createResultsLabels() {
         resultsLabels = new JLabel[size];
         for (int i = 0; i < size; i++) {
-            resultsLabels[i] = new JLabel(Results[i]);
+            resultsLabels[i] = new JLabel(String.valueOf(Results[i]));
         }
         return resultsLabels;
     }

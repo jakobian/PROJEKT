@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import ui.gamefield.GameField;
 
 /**
  * Created by Jakub on 13.05.2016.
@@ -43,7 +44,7 @@ public class StartMenu extends JDialog{
      */
     JButton okbutton;
 
-    UserResult userResult;
+    //public UserResult userResult;
 
     public StartMenu(){
         createPanel();

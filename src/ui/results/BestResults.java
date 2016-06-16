@@ -1,5 +1,6 @@
 package ui.results;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,6 +18,10 @@ public class BestResults {
 
     public String[] userName;
     public int[] result;
+
+    private int actualResult;
+
+    private UserResult userResult;
 
     public BestResults() throws IOException {
         File file = new File("resources/results.properties");
@@ -39,6 +44,14 @@ public class BestResults {
         }
     }
 
+    public String[] getUserNames(){
+        return userName;
+    }
+
+    public int[] getUserResults(){
+        return result;
+    }
+
     private void saveResults() throws IOException{
         File file = new File("resources/results.properties");
         FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -46,5 +59,17 @@ public class BestResults {
 
         fileOutputStream.close();
     }
+
+    private void findSlot(){
+        actualResult = (int)userResult.getUserResult();
+
+        for(int i=0; i < size; ++i ){
+            if(actualResult<result[i]){
+
+            }
+        }
+    }
+
+
 
 }

@@ -73,15 +73,16 @@ public class UserResult {
             mapPoints = 0;
         }
 
-        user_result += mapPoints;
+        this.user_result += mapPoints;
     }
 
     /**
      * Metoda wczytujaca wynik gracza
      */
     public long getUserResult(){
-        if (user_result >0)
+        if (user_result >0) {
             return user_result;
+        }
         else
             return 0;
     }
