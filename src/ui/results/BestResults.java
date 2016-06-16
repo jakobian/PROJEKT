@@ -76,9 +76,9 @@ public class BestResults {
         actualResult = (int)userResult.getUserResult();
         position = -1;
 
-        for (int i = size-1; i > 0; i-- ) {
+        for (int i = size-1; i > 0; --i ) {
             if (actualResult > result[i]) {
-                if (i == size-1) {
+                if (i == size) {
                     result[i] = actualResult;
                 }
                 else {
