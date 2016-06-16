@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import ui.gamefield.Rocket;
+import ui.results.BestResults;
 import ui.results.UserResult;
 
 
@@ -79,6 +80,8 @@ public class GameField extends JPanel {
      */
     private int mapNr = 1;
 
+    BestResults bestResults;
+
     
     /**
      * Metoda
@@ -118,6 +121,7 @@ public class GameField extends JPanel {
 
             case NEXT_LEVEL:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    initBestResult();
                     resetResult();
                     state = statesOfGame.START_MENU;
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -133,6 +137,7 @@ public class GameField extends JPanel {
             case END_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     state = statesOfGame.START_MENU;
+                    initBestResult();
                     resetResult();
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     resetResult();
@@ -143,6 +148,7 @@ public class GameField extends JPanel {
             case FINISH_GAME:
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     state = statesOfGame.START_MENU;
+                    initBestResult();
                     resetResult();
                 }
                 break;
@@ -210,7 +216,17 @@ public class GameField extends JPanel {
     }
 
     public void initPointsCounter() {
+
         userResult = UserResult.getInstance();
+    }
+
+    private void initBestResult(){
+        try {
+            bestResults = new BestResults();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
