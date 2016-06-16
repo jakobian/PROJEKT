@@ -117,13 +117,7 @@ public class MainMenu extends JDialog {
     private void setupEvent() {
         instructionbutton.addActionListener(e -> initInstrMenu());
         quitbutton.addActionListener(e ->  System.exit(0));
-        resultsbutton.addActionListener(e -> {
-            try {
-                initResultsMenu();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
+        resultsbutton.addActionListener(e -> initResultsMenu());
     }
 
     /**
@@ -138,7 +132,7 @@ public class MainMenu extends JDialog {
     /**
      * Metoda inicjujaca i wyswietlajaca okno menu rezultatow
      */
-    private void initResultsMenu() throws IOException {
+    private void initResultsMenu() {
         resMenu = new ResultsMenu();
         resMenu.setModal(true);
         resMenu.setVisible(true);

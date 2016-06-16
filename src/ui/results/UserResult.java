@@ -26,10 +26,6 @@ public class UserResult {
      */
     public long mapPoints;
 
-    /**
-     * Konstruktor wyniku gracza
-     */
-
 
     /**
      * Konstruktor klasy

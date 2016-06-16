@@ -27,6 +27,7 @@ public class Rocket extends Polygon {
      * Pole przechowujace wspolrzedna y pozycji statku
      */
     private int y;
+
     private int dx;
     public int dy;
     private int accSpeed;
@@ -241,7 +242,6 @@ public class Rocket extends Polygon {
 
         actualSizeWidth = xRatio*getDimW();
         actualSizeHeight = yRatio*getDimH();
-        addPoint((int)actualSizeWidth, (int)actualSizeHeight);
     }
 
     /**

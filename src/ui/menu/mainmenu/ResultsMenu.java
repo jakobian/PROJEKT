@@ -1,5 +1,7 @@
 package ui.menu.mainmenu;
 
+import ui.results.BestResults;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.jar.Attributes;
+import ui.results.BestResults;
 
 /**
  * Created by Michał on 2016-06-15.
@@ -54,15 +57,36 @@ public class ResultsMenu extends JDialog {
      */
     private JLabel[] resultsLabels;
 
+    private BestResults bestResults;
 
 
-    public ResultsMenu() throws IOException{
+
+    public ResultsMenu(){
+        initBestResults();
         createPanel();
         drawView();
     }
 
+    private void initBestResults(){
+        try {
+            bestResults = new BestResults();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setNames(){
+            Names = bestResults.getUserNames();
+    }
+
+    private void setResults(){
+            Results = bestResults.getResults();
+    }
+
     private JLabel[] createNameLabels() {
         nameLabels = new JLabel[size];
+        setNames();
         for (int i = 0; i < size; i++) {
             nameLabels[i] = new JLabel(Names[i]);
         }
@@ -71,6 +95,7 @@ public class ResultsMenu extends JDialog {
 
     private JLabel[] createResultsLabels() {
         resultsLabels = new JLabel[size];
+        setResults();
         for (int i = 0; i < size; i++) {
             resultsLabels[i] = new JLabel(String.valueOf(Results[i]));
         }
@@ -91,7 +116,7 @@ public class ResultsMenu extends JDialog {
         panel.add(title1);
         panel.add(title2);
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++){
             panel.add(nameLabels[i]);
             panel.add(resultsLabels[i]);
         }
