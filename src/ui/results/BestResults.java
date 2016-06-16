@@ -1,10 +1,7 @@
 package ui.results;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 
@@ -15,16 +12,18 @@ import java.util.Properties;
 public class BestResults {
 
     private int size = 10;
+    private int position;
 
     public String[] userName;
     public int[] result;
 
     private int actualResult;
+    private String actualName;
 
     private UserResult userResult;
 
     public BestResults() throws IOException {
-        File file = new File("resources/results.properties");
+        File file = new File("resources/result.properties");
         FileInputStream fileInput = new FileInputStream(file);
         Properties properties = new Properties();
         properties.load(fileInput);
@@ -44,7 +43,18 @@ public class BestResults {
         }
     }
 
-    public String[] getNames(){
+    private void fromArrayToProp() throws IOException {
+        Properties props = new Properties();
+        for (int i = 0; i < size; ++i) {
+            props.setProperty("User_" + Integer.toString(i), userName[i]);
+            props.setProperty("Result_" + Integer.toString(i), Integer.toString(result[i]));
+        }
+        File file = new File("resources/result.properties");
+        OutputStream out = new FileOutputStream(file);
+        props.store(out, "Best Results");
+    }
+
+    public String[] getUserNames(){
         return userName;
     }
 
@@ -60,17 +70,38 @@ public class BestResults {
         fileOutputStream.close();
     }
 
-    private void findSlot(){
+    private int findSlot(){
         actualResult = (int)userResult.getUserResult();
+        position = -1;
 
+        for (int i = size; i > 0; --i ) {
+            if (actualResult > result[i]) {
+                if (i == size) {
+                    result[i] = actualResult;
+                }
+                else {
+                    result[i+1] = result[i];
+                    result[i] = actualResult;
+                }
+                position = i;
+            }
+        }
+        return position;
+    }
 
-        for(int i=0; i < size; ++i ){
-            if(actualResult<result[i]){
+    private void replaceName() {
+        actualName = userResult.getUserName();
 
+        if (position > -1) {
+            for (int i = size; i > position; --i) {
+                if (i == size) {
+                    userName[i] = actualName;
+                }
+                else {
+                    userName[i+1] = userName[i];
+                    userName[i] = actualName;
+                }
             }
         }
     }
-
-
-
 }

@@ -55,6 +55,7 @@ public class ResultsMenu extends JDialog {
     private JLabel[] resultsLabels;
 
 
+
     public ResultsMenu() throws IOException{
         createPanel();
         drawView();
