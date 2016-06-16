@@ -4,7 +4,9 @@ import ui.gamewindow.GameWindow;
 
 import javax.swing.*;
 
-/** Klasa glowna programu */
+/**
+ * Klasa glowna programu
+ */
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

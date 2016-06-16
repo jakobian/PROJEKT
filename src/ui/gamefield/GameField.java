@@ -389,7 +389,8 @@ public class GameField extends JPanel {
 
                 g.drawImage(menuImg, 0, 0, gameWidth, gameHeight , null);
                 g.setColor(Color.white);
-                g.drawString("Nacisnij dowolny klawisz aby rozpoczac gre", gameWidth/2 - 120, gameHeight/2);
+                g.drawString("Nacisnij dowolny klawisz, aby rozpoczac gre", gameWidth/2 - 120, gameHeight/2);
+                g.drawString("Wybierz START, aby wprowadzic swoje imie", gameWidth/2 - 120, gameHeight/2 + 20);
                 break;
 
             case PLAY:
@@ -410,7 +411,7 @@ public class GameField extends JPanel {
                 rocket.setLocation(gameWidth,gameHeight);
 
                 rocket.drawExplosion(g);
-                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2 -30, gameHeight- 400);
+                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2 - 50, gameHeight/8 + 80);
 
                 area.setPoints(gameWidth,gameHeight);
                 area.drawArea(g);
@@ -423,7 +424,7 @@ public class GameField extends JPanel {
             case NEXT_LEVEL:
 
                 rocket.drawRocket(g);
-                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2-30, gameHeight-400);
+                g.drawString("Liczba zdobtych punktow: " + userResult.getUserResult(), gameWidth/2 - 50, gameHeight/8 + 80);
 
                 rocket.setDimension(gameWidth,gameHeight);
                 rocket.setLocation(gameWidth,gameHeight);
@@ -444,7 +445,7 @@ public class GameField extends JPanel {
                 landingArea.setPoints(gameWidth,gameHeight);
                 landingArea.drawLandingArea(g);
 
-                g.drawString("KONIEC" , gameWidth/2-30, gameHeight/2);
+                g.drawString("KONIEC" , gameWidth/2 - 15, gameHeight/9);
 
                 break;
 

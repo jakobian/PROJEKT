@@ -24,9 +24,9 @@ public class MainMenu extends JDialog {
      */
     public final static String Results = "Results";
     /**
-     * Pola przechowujace nazwe przycisku "Internet function" wyswietlanego w menu glownym
+     * Pola przechowujace nazwe przycisku "Internet functions" wyswietlanego w menu glownym
      */
-    public final static String Internet = "Internet's function";
+    public final static String Internet = "Internet functions";
     /**
      * /**
      * Pola przechowujace nazwe przycisku "Quit" wyswietlanego w menu glownym
@@ -45,7 +45,7 @@ public class MainMenu extends JDialog {
      */
     JButton quitbutton;
     /**
-     * Pole inicjujace przycik "Internet's function" w menu
+     * Pole inicjujace przycik "Internet functions" w menu
      */
     JButton internetnbutton;
     /**
@@ -89,7 +89,7 @@ public class MainMenu extends JDialog {
     }
 
     /**
-     * Metoda wyswietlająca okno
+     * Metoda ustawiajaca opcje rysowania menu okna gry
      */
     private void drawView() {
         this.add(panel);
