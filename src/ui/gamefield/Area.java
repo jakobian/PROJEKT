@@ -9,9 +9,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/*
- * Created by Jakub on 25.05.2016.
- */
 
 /**
  * Klasa definiujaca podloze planszy
@@ -42,6 +39,11 @@ public class Area extends Polygon{
      */
     private long coefficient;
 
+    /**
+     * Konstruktor klasy Area
+     * @param mapId
+     * @throws IOException
+     */
     public Area(int mapId) throws IOException {
 
         switch(mapId) {

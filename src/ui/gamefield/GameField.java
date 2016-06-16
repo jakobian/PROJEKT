@@ -15,10 +15,6 @@ import ui.results.UserResult;
 
 
 /**
- * Created by Jakub on 12.04.2016.
- */
-
-/**
  * Klasa tworzaca okno rozgrywki
  */
 public class GameField extends JPanel {

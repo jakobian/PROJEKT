@@ -1,9 +1,5 @@
 package ui.results;
 
-/**
- * Created by Jakub on 12.05.2016.
- */
-
 import javax.jws.soap.SOAPBinding;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,7 +33,8 @@ public class UserResult {
     }
 
     private static class UserResultHolder{
-        private static final UserResult instance = new UserResult();}
+        private static final UserResult instance = new UserResult();
+    }
 
 
     public static UserResult getInstance(){
