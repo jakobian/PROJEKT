@@ -30,6 +30,10 @@ public class Area extends Polygon{
      */
     private int[] current_point_y;
 
+    private long maxPoints;
+
+    private long coefficient;
+
     public Area(int mapId) throws IOException {
 
         switch(mapId) {
@@ -41,6 +45,7 @@ public class Area extends Polygon{
                 fileInput.close();
 
                 createAreaPoints(properties);
+                getMaxPoints(properties);
                 break;
             }
             case 2: {
@@ -51,6 +56,7 @@ public class Area extends Polygon{
                 fileInput.close();
 
                 createAreaPoints(properties);
+                getMaxPoints(properties);
                 break;
             }
         }
@@ -73,6 +79,20 @@ public class Area extends Polygon{
             current_point_y[i] = (int)(yRatio*point_y[i]);
             addPoint(current_point_x[i],current_point_y[i]);
         }
+    }
+
+    private void getMaxPoints(Properties properties){
+
+        maxPoints = Long.parseLong(properties.getProperty("maxPoints"));
+        coefficient = Long.parseLong(properties.getProperty("coefficient"));
+    }
+
+    public long getLevelPoint(){
+        return maxPoints;
+    }
+
+    public long getLevelCoefficient(){
+        return coefficient;
     }
 
     /**

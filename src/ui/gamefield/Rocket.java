@@ -89,7 +89,7 @@ public class Rocket extends Polygon {
         resetRocket();
         accSpeed = 1;
         maxLandingVerticalSpeed = 2;
-        maxLandingHorizontalSpeed = 2;
+        maxLandingHorizontalSpeed = 3;
     }
 
     /**

@@ -222,7 +222,6 @@ public class GameField extends JPanel {
         while (true) {
             beginTime = System.currentTimeMillis();
 
-
             switch (state) {
                 case START_MENU:
                     loadMenu();
@@ -256,6 +255,8 @@ public class GameField extends JPanel {
         }
     }
 
+
+
     /**
      * Metoda ladujaca menu gry
      */
@@ -270,7 +271,7 @@ public class GameField extends JPanel {
 
     private void pointsManager(boolean rocketState){
             estimatedTime = (System.nanoTime() - startTime);
-            userResult.setTotalPoints(estimatedTime, rocketState);
+            userResult.setTotalPoints(estimatedTime, rocketState, area.getLevelPoint(), area.getLevelCoefficient());
     }
 
     /**
