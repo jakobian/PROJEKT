@@ -177,7 +177,6 @@ public class GameField extends JPanel {
 
     /**
      * Konstruktor klasy GameField
-     * @throws IOException
      */
     public GameField () {
         state = statesOfGame.START_MENU;

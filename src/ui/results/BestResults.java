@@ -82,7 +82,6 @@ public class BestResults {
 
     /**
      * Metoda zapisujaca dane - wynik i nick z pliku konfiguracyjnego
-     * @param
      */
     private void fromArrayToProp() throws IOException {
         Properties props = new Properties();
